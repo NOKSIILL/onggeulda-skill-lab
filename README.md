@@ -28,15 +28,12 @@ FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 �
 game-hub/
 
 ├─ index.html # 메인 HTML 파일
-
 ├─ assets/
-
 ├─├─ css/
 │ ├── main.css # 메인 스타일
 │ ├── games.css # 게임 관련 스타일
 │ ├── tools.css # 도구 관련 스타일
 │ └── responsive.css # 반응형 스타일
-
 ├─├─ js/
 │ ├─ main.js # 메인 애플리케이션 로직
 │ ├─ games/
@@ -53,15 +50,11 @@ game-hub/
 │ │ └──── translations.js # 다국어 번역 데이터
 │ ├─ utils/
 │ │ └──── helpers.js # 공통 유틸리티 함수
-
 ├─├─ images/ # 이미지 파일들
-
 ├─ README.md # 프로젝트 설명서
-
 ├─ config/
 │ └── seo.json # SEO 메타데이터 설정
 
-text
 
 ## 🚀 설치 및 실행
 
@@ -250,3 +243,4 @@ text
 ---
 
 **⭐ 이 프로젝트가 유용하다면 스타를 눌러주세요!**
+
