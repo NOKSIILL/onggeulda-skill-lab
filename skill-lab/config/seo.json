@@ -1,0 +1,69 @@
+{
+  "defaultMeta": {
+    "title": "Onggeulda Skill Lab — Daily Skill Practice & Tools",
+    "description": "Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공.",
+    "keywords": "FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트",
+    "author": "Onggeulda Studio",
+    "robots": "index, follow",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "theme-color": "#00ff88"
+  },
+  "openGraph": {
+    "type": "website",
+    "site_name": "Onggeulda Skill Lab",
+    "title": "Onggeulda Skill Lab — Daily Skill Practice & Tools",
+    "description": "Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구.",
+    "image": "assets/images/og-image.jpg",
+    "url": "",
+    "locale": "ko_KR"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "site": "@onggeulda_skill_lab",
+    "creator": "@onggeulda_studio",
+    "title": "Onggeulda Skill Lab — Daily Skill Practice & Tools",
+    "description": "Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구.",
+    "image": "assets/images/twitter-card.jpg"
+  },
+  "structuredData": {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Onggeulda Skill Lab",
+    "description": "FPS 에임 훈련과 창작 도구를 제공하는 웹 애플리케이션",
+    "url": "https://yourdomain.com",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "FPS 에임 훈련",
+      "반응속도 테스트",
+      "메모리 게임",
+      "색깔 맞추기",
+      "색상 팔레트 생성기",
+      "키워드 생성기",
+      "단위 변환기",
+      "텍스트 변환기"
+    ]
+  },
+  "pageSpecific": {
+    "games": {
+      "title": "게임 - 게임 허브",
+      "description": "FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 게임을 즐기세요.",
+      "keywords": "FPS 게임, 에임 훈련, 반응속도 게임, 메모리 게임, 색깔 맞추기"
+    },
+    "tools": {
+      "title": "창작 도구 - 게임 허브",
+      "description": "색상 팔레트 생성기, 키워드 생성기, 단위 변환기, 텍스트 변환기 등 유용한 도구들.",
+      "keywords": "색상 팔레트, 키워드 생성기, 단위 변환기, 텍스트 변환기, 창작 도구"
+    },
+    "about": {
+      "title": "소개 - 게임 허브",
+      "description": "게임 허브는 재미있는 게임과 유용한 창작 도구를 한 곳에서 제공하는 웹사이트입니다.",
+      "keywords": "게임 허브, 소개, 웹 게임, 온라인 도구"
+    }
+  }
+}
