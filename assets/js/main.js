@@ -115,39 +115,6 @@ function selectTool(toolId) {
   }
 }
 
-// 언어 설정 함수
-function setLanguage(lang) {
-  currentLanguage = lang;
-
-  // 언어 버튼 활성화 상태 변경
-  document
-    .querySelectorAll(".lang-btn")
-    .forEach((btn) => btn.classList.remove("active"));
-  event.target.classList.add("active");
-
-  // HTML lang 속성 변경
-  document.documentElement.lang = lang;
-
-  // 모든 텍스트 업데이트
-  const texts = translations[lang];
-  Object.keys(texts).forEach((key) => {
-    const element = document.getElementById(key);
-    if (element) {
-      if (key.includes("Subtitle")) {
-        element.innerHTML = texts[key];
-      } else {
-        element.textContent = texts[key];
-      }
-    }
-  });
-
-  // SEO 메타 태그 업데이트
-  document.title = texts.pageTitle;
-  document.getElementById("pageDescription").content = texts.pageDescription;
-  document.getElementById("pageKeywords").content = texts.pageKeywords;
-  document.getElementById("ogTitle").content = texts.pageTitle;
-  document.getElementById("ogDescription").content = texts.pageDescription;
-}
 
 // DOM 로드 완료 후 초기 설정
 document.addEventListener("DOMContentLoaded", function () {
@@ -602,3 +569,142 @@ document.addEventListener("DOMContentLoaded", function () {
   if (fromUnit) fromUnit.addEventListener("change", convertUnits);
   if (toUnit) toUnit.addEventListener("change", convertUnits);
 });
+
+
+
+// main.js에 추가할 언어 감지 및 개선된 언어 설정 함수
+
+// 기존 setLanguage 함수를 개선된 버전으로 교체
+function setLanguage(lang) {
+  currentLanguage = lang;
+  
+  // 언어 설정을 로컬 스토리지에 저장
+  localStorage.setItem('userLanguage', lang);
+
+  // 모든 언어 버튼의 활성화 상태 변경 (헤더 + 푸터)
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.classList.remove('active');
+  });
+  
+  // 클릭된 버튼이 있다면 활성화, 없다면 해당 언어 버튼들 모두 활성화
+  if (event && event.target) {
+    event.target.classList.add('active');
+    // 같은 언어의 다른 버튼도 활성화
+    const langButtons = document.querySelectorAll(`[onclick*="'${lang}'"]`);
+    langButtons.forEach(btn => btn.classList.add('active'));
+  } else {
+    // 자동 감지시에는 해당 언어 버튼들 모두 활성화
+    const langButtons = document.querySelectorAll(`[onclick*="'${lang}'"]`);
+    langButtons.forEach(btn => btn.classList.add('active'));
+  }
+
+  // HTML lang 속성 변경
+  document.documentElement.lang = lang;
+
+  // 모든 텍스트 업데이트
+  const texts = translations[lang];
+  if (texts) {
+    Object.keys(texts).forEach((key) => {
+      const element = document.getElementById(key);
+      if (element) {
+        if (key.includes("Subtitle")) {
+          element.innerHTML = texts[key];
+        } else {
+          element.textContent = texts[key];
+        }
+      }
+    });
+
+    // SEO 메타 태그 업데이트
+    document.title = texts.pageTitle;
+    const descMeta = document.getElementById("pageDescription");
+    const keywordsMeta = document.getElementById("pageKeywords");
+    const ogTitle = document.getElementById("ogTitle");
+    const ogDesc = document.getElementById("ogDescription");
+    
+    if (descMeta) descMeta.content = texts.pageDescription;
+    if (keywordsMeta) keywordsMeta.content = texts.pageKeywords;
+    if (ogTitle) ogTitle.content = texts.pageTitle;
+    if (ogDesc) ogDesc.content = texts.pageDescription;
+  }
+}
+
+// 저장된 언어 설정 불러오기
+function loadSavedLanguage() {
+  const savedLang = localStorage.getItem('userLanguage');
+  if (savedLang && translations[savedLang]) {
+    setLanguage(savedLang);
+    return true;
+  }
+  return false;
+}
+
+// 브라우저 언어 자동 감지
+function detectBrowserLanguage() {
+  const browserLang = navigator.language || navigator.userLanguage;
+  
+  // 한국어 감지 (ko, ko-KR 등)
+  if (browserLang.startsWith('ko')) {
+    return 'ko';
+  } 
+  // 영어 감지 (en, en-US 등)
+  else if (browserLang.startsWith('en')) {
+    return 'en';
+  }
+  // 기본값은 한국어
+  else {
+    return 'ko';
+  }
+}
+
+// 언어 초기화 함수
+function initializeLanguage() {
+  // 1. 저장된 언어 설정이 있으면 그것을 사용
+  if (loadSavedLanguage()) {
+    return;
+  }
+  
+  // 2. 저장된 설정이 없으면 브라우저 언어 감지
+  const detectedLang = detectBrowserLanguage();
+  setLanguage(detectedLang);
+}
+
+// 기존 DOM 로드 완료 이벤트에 언어 초기화 추가
+document.addEventListener('DOMContentLoaded', function() {
+  // 언어 초기화 (가장 먼저 실행)
+  initializeLanguage();
+  
+  // 기존 초기화 코드들
+  updateStats();
+  generateColorPalette();
+  generateKeywords();
+  
+  // 반응형 기능 초기화 (이전에 만든 것이 있다면)
+  if (typeof initResponsiveFeatures === 'function') {
+    initResponsiveFeatures();
+  }
+  
+  // 단위 변환기 이벤트 리스너
+  const inputValue = document.getElementById("inputValue");
+  const fromUnit = document.getElementById("fromUnit");
+  const toUnit = document.getElementById("toUnit");
+
+  if (inputValue) inputValue.addEventListener("input", convertUnits);
+  if (fromUnit) fromUnit.addEventListener("change", convertUnits);
+  if (toUnit) toUnit.addEventListener("change", convertUnits);
+});
+
+// 언어 변경 시 푸터 버튼 동기화를 위한 개선된 함수
+function syncLanguageButtons(selectedLang) {
+  // 모든 언어 버튼 비활성화
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // 선택된 언어의 모든 버튼 활성화
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.onclick && btn.onclick.toString().includes(`'${selectedLang}'`)) {
+      btn.classList.add('active');
+    }
+  });
+}
