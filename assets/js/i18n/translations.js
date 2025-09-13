@@ -1,7 +1,7 @@
-// 다국어 번역 객체
+// 통일된 사이트 정보를 반영한 다국어 번역 객체
 const translations = {
   ko: {
-    siteLogo: "🎮 게임 허브",
+    siteLogo: "Onggeulda Skill Lab",
     navHome: "홈",
     navGames: "게임",
     navTools: "도구",
@@ -47,14 +47,15 @@ const translations = {
     footerContact: "📧 문의하기",
     footerPrivacy: "🔒 개인정보처리방침",
     footerTerms: "📋 이용약관",
-    pageTitle: "게임 허브 - FPS 에임 훈련 및 온라인 게임",
+    footerLangTitle: "🌐 언어 / Language",
+    pageTitle: "Onggeulda Skill Lab — Daily Skill Practice & Tools",
     pageDescription:
-      "무료 FPS 에임 훈련 게임과 다양한 온라인 게임을 즐기세요. 반응속도 향상과 정확도 훈련을 위한 최고의 게임 사이트입니다.",
+      "Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공.",
     pageKeywords:
       "FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트",
   },
   en: {
-    siteLogo: "🎮 Game Hub",
+    siteLogo: "Onggeulda Skill Lab",
     navHome: "Home",
     navGames: "Games",
     navTools: "Tools",
@@ -102,9 +103,10 @@ const translations = {
     footerContact: "📧 Contact",
     footerPrivacy: "🔒 Privacy Policy",
     footerTerms: "📋 Terms of Service",
-    pageTitle: "Game Hub - FPS Aim Training & Online Games",
+    footerLangTitle: "🌐 Language / 언어",
+    pageTitle: "Onggeulda Skill Lab — Daily Skill Practice & Tools",
     pageDescription:
-      "Play free FPS aim training games and various online games. The best gaming site for improving reaction speed and accuracy training.",
+      "Onggeulda Skill Lab: Daily skill training and simple creative tools. Providing practical training like Static Click, Flick, Tracking and more.",
     pageKeywords:
       "FPS games, aim training, reaction speed games, online games, free games, click games, creative tools, color palette",
   },
