@@ -1,5 +1,222 @@
-/* 반응형 디자인 */
-@media (max-width: 768px) {
+/* 개선된 반응형 디자인 */
+
+/* ===== 기본 반응형 유틸리티 ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 화면 크기별 숨김/표시 유틸리티 */
+.desktop-only {
+  display: block;
+}
+.tablet-only,
+.mobile-only {
+  display: none;
+}
+
+/* ===== 태블릿 (768px ~ 1199px) ===== */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  .tablet-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
+
+  /* 헤더 조정 */
+  .header-container {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+  }
+
+  .nav-item {
+    padding: 8px 14px;
+    font-size: 15px;
+  }
+
+  /* 배너 조정 */
+  .banner-title {
+    font-size: 38px;
+  }
+
+  .banner-subtitle {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  /* 사이트맵 조정 */
+  .sitemap-container {
+    padding: 30px 15px;
+    gap: 25px;
+  }
+
+  .sitemap-section {
+    padding: 20px;
+  }
+
+  /* 게임/도구 컨테이너 */
+  .games-container,
+  .tools-container {
+    flex-direction: row; /* 태블릿은 사이드바 유지 */
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  /* 광고 사이드바 조정 */
+  .ad-sidebar {
+    width: 160px;
+    padding: 15px;
+  }
+
+  .ad-slot {
+    min-height: 200px;
+    font-size: 12px;
+  }
+
+  /* 게임 스타일 조정 */
+  .game-header {
+    padding: 12px 20px;
+  }
+
+  .game-title {
+    font-size: 20px;
+  }
+
+  .game-stats {
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  /* 게임 영역 조정 */
+  .target {
+    width: 55px;
+    height: 55px;
+  }
+
+  .memory-grid {
+    max-width: 350px;
+    gap: 12px;
+  }
+
+  .memory-card {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+
+  .color-options {
+    gap: 15px;
+  }
+
+  .color-option {
+    width: 85px;
+    height: 85px;
+  }
+
+  /* 도구 영역 */
+  .tool-area {
+    padding: 30px;
+  }
+
+  .color-palette {
+    gap: 15px;
+  }
+
+  .color-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  .transform-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ===== 고화질 모바일 (480px ~ 767px) ===== */
+@media (max-width: 767px) and (min-width: 480px) {
+  .desktop-only,
+  .tablet-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+
+  /* 컨테이너 조정 */
+  .container {
+    padding: 0 15px;
+  }
+
+  /* 헤더 모바일 최적화 */
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .nav-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    min-height: 44px; /* 터치 친화적 */
+    display: flex;
+    align-items: center;
+  }
+
+  .language-selector {
+    gap: 8px;
+  }
+
+  .lang-btn {
+    padding: 8px 12px;
+    min-height: 36px;
+  }
+
+  /* 배너 모바일 최적화 */
+  .hero-banner {
+    height: 250px;
+  }
+
+  .banner-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .banner-subtitle {
+    font-size: 15px;
+    padding: 0 20px;
+    line-height: 1.4;
+  }
+
+  /* 레이아웃 변경 */
   .games-container,
   .tools-container {
     flex-direction: column;
@@ -8,65 +225,56 @@
   .sidebar {
     width: 100%;
     order: 2;
-    height: auto;
+    border-right: none;
+    border-top: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(0, 0, 0, 0.9);
   }
 
   .game-content {
     order: 1;
-    height: 60vh;
+    min-height: 60vh;
   }
 
-  .header-container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .nav-menu {
+  .game-list {
+    display: flex;
     flex-wrap: wrap;
+    gap: 8px;
     justify-content: center;
   }
 
-  .banner-title {
-    font-size: 32px;
+  .game-item {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+    padding: 10px 16px;
+    border-radius: 20px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 
-  .banner-subtitle {
-    font-size: 16px;
-    padding: 0 20px;
-  }
-
-  .sitemap-container {
-    grid-template-columns: 1fr;
-    padding: 20px 10px;
-  }
-
+  /* 광고 영역 재배치 */
   .ad-sidebar {
     width: 100%;
     flex-direction: row;
     overflow-x: auto;
-    padding: 10px;
+    padding: 15px;
+    gap: 15px;
+    order: 3;
   }
 
   .ad-slot {
-    min-width: 200px;
+    min-width: 250px;
+    min-height: 150px;
     flex-shrink: 0;
   }
 
-  .about-container {
-    flex-direction: column;
+  /* 게임 헤더 */
+  .game-header {
+    padding: 15px;
   }
 
-  .about-content {
-    padding: 20px 10px;
-  }
-
-  .about-card {
-    padding: 20px;
-  }
-
-  .about-title {
-    font-size: 24px;
+  .game-title {
+    font-size: 18px;
   }
 
   .game-stats {
@@ -75,34 +283,146 @@
     justify-content: center;
   }
 
-  .final-stats {
-    grid-template-columns: 1fr 1fr;
+  .stat-item {
+    min-width: 80px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  /* 게임 영역 터치 최적화 */
+  .game-area {
+    min-height: 400px;
+    cursor: default; /* 모바일에서는 crosshair 제거 */
+  }
+
+  .start-title {
+    font-size: 24px;
+  }
+
+  .start-subtitle {
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  .start-button,
+  .restart-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    min-height: 52px;
+    border-radius: 26px;
+  }
+
+  /* FPS 게임 조정 */
+  .target {
+    width: 70px; /* 모바일에서 더 큰 타겟 */
+    height: 70px;
+  }
+
+  /* 반응속도 게임 */
+  .reaction-area {
+    min-height: 300px;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  /* 메모리 게임 */
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 280px;
     gap: 10px;
   }
 
-  .memory-grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 300px;
-  }
-
   .memory-card {
-    width: 60px;
-    height: 60px;
-    font-size: 18px;
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    border-radius: 12px;
   }
 
+  /* 색상 게임 */
+  .color-game-area {
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .target-color {
+    width: 120px;
+    height: 120px;
+  }
+
+  .color-options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .color-option {
+    width: 90px;
+    height: 90px;
+    border-radius: 15px;
+  }
+
+  /* 도구 영역 */
+  .tool-area {
+    padding: 20px 15px;
+  }
+
+  .tool-instructions h2 {
+    font-size: 20px;
+  }
+
+  .tool-instructions p {
+    font-size: 14px;
+  }
+
+  .tool-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .tool-button {
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 22px;
+    flex: 0 1 auto;
+  }
+
+  /* 색상 팔레트 */
   .color-palette {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
   }
 
   .color-box {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
 
+  /* 키워드 */
   .keyword-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .keyword-tag {
+    padding: 12px 16px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 단위 변환기 */
+  .unit-converter-form {
+    padding: 20px;
   }
 
   .conversion-row {
@@ -117,98 +437,421 @@
 
   .unit-selectors {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .input-group input,
+  .unit-group select {
+    min-height: 44px;
+    font-size: 16px; /* iOS 줌 방지 */
+  }
+
+  /* 텍스트 변환기 */
+  .text-transformer-form {
+    max-width: 100%;
+  }
+
+  .input-section textarea {
+    min-height: 120px;
+    font-size: 16px; /* iOS 줌 방지 */
   }
 
   .transform-buttons {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
-  .tool-controls {
+  /* 통계 영역 */
+  .final-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .final-stat {
+    padding: 15px;
+  }
+
+  /* 소개/정보 페이지 */
+  .about-container {
     flex-direction: column;
+  }
+
+  .about-content {
+    padding: 20px 15px;
+  }
+
+  .about-card {
+    padding: 20px;
+  }
+
+  .about-title {
+    font-size: 22px;
+  }
+
+  .about-card p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* 사이트맵 */
+  .sitemap-container {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .sitemap-section {
+    padding: 20px;
+  }
+
+  .sitemap-title {
+    font-size: 18px;
+  }
+
+  .sitemap-item {
+    padding: 12px 0;
+    min-height: 44px;
+    display: flex;
     align-items: center;
   }
 
-  .start-title {
-    font-size: 32px;
+  /* 푸터 */
+  .footer-info {
+    padding: 20px 15px;
   }
 
-  .start-subtitle {
-    font-size: 16px;
-    padding: 0 20px;
+  .footer-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-item {
+    padding: 10px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 480px) {
+/* ===== 소형 모바일 (479px 이하) ===== */
+@media (max-width: 479px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  /* 헤더 */
   .header-container {
-    padding: 5px;
+    padding: 10px;
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .nav-item {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* 배너 */
+  .hero-banner {
+    height: 200px;
   }
 
   .banner-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .banner-subtitle {
     font-size: 14px;
+    padding: 0 15px;
   }
 
-  .sitemap-title {
-    font-size: 20px;
+  /* 게임 영역 */
+  .game-header {
+    padding: 10px 15px;
   }
 
   .game-title {
-    font-size: 20px;
+    font-size: 16px;
   }
 
-  .stat-item {
+  .game-stats {
+    gap: 10px;
+  }
+
+  .stat-value {
     font-size: 14px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  /* 타겟 크기 */
+  .target {
+    width: 60px;
+    height: 60px;
   }
 
   .memory-grid {
     grid-template-columns: repeat(2, 1fr);
     max-width: 200px;
+    gap: 8px;
   }
 
   .memory-card {
-    width: 50px;
-    height: 50px;
-    font-size: 16px;
-  }
-
-  .color-palette {
-    grid-template-columns: repeat(2, 1fr);
+    width: 70px;
+    height: 70px;
+    font-size: 18px;
   }
 
   .color-options {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .color-option {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* 도구 */
+  .tool-area {
+    padding: 15px 10px;
+  }
+
+  .color-palette {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .color-box {
+    width: 70px;
+    height: 70px;
   }
 
   .transform-buttons {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .tool-button {
+    min-height: 40px;
+    padding: 10px 16px;
   }
 
   .final-stats {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .about-title {
-    font-size: 20px;
+  /* 폼 요소 */
+  .input-group input,
+  .unit-group select,
+  .input-section textarea {
+    font-size: 16px; /* iOS 줌 방지 */
+  }
+}
+
+/* ===== 터치 디바이스 전용 개선 ===== */
+@media (hover: none) and (pointer: coarse) {
+  /* 터치 디바이스에서 호버 효과 제거하고 탭 효과로 대체 */
+  .nav-item:hover,
+  .game-item:hover,
+  .sitemap-item:hover,
+  .footer-item:hover,
+  .keyword-tag:hover,
+  .color-box:hover,
+  .color-option:hover {
+    transform: none;
   }
 
-  .about-card {
+  /* 터치 피드백 */
+  .nav-item:active,
+  .game-item:active,
+  .tool-button:active,
+  .start-button:active,
+  .restart-button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  .target:active {
+    transform: scale(1.1);
+  }
+
+  /* 터치 영역 확대 */
+  .memory-card,
+  .color-option,
+  .keyword-tag {
+    position: relative;
+  }
+
+  .memory-card::after,
+  .color-option::after,
+  .keyword-tag::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+/* ===== 접근성 개선 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== 고화질 디스플레이 최적화 ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .target::before,
+  .target::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* main.css 또는 responsive.css에 추가할 터치 상태 스타일 */
+
+/* ===== 터치 상태 스타일 ===== */
+.touching {
+  transform: scale(0.95) !important;
+  opacity: 0.8;
+  transition: all 0.1s ease;
+}
+
+/* 모바일 네비게이션 개선 */
+.mobile-nav {
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 15px;
+  margin: 0 10px;
+}
+
+.mobile-sidebar {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 15px 15px 0 0;
+}
+
+/* 뷰포트 높이 CSS 변수 사용 */
+.main-container {
+  min-height: calc(var(--vh, 1vh) * 100 - 70px);
+}
+
+.game-area {
+  min-height: calc(var(--vh, 1vh) * 50);
+}
+
+/* 터치 디바이스를 위한 버튼 개선 */
+@media (hover: none) and (pointer: coarse) {
+  .tool-button,
+  .start-button,
+  .restart-button {
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+
+  .nav-item {
+    padding: 12px 16px;
+    border-radius: 20px;
+    margin: 2px;
+  }
+
+  .game-item {
+    padding: 12px 16px;
+    border-radius: 20px;
+    margin: 4px 0;
+  }
+}
+
+/* 모바일에서 입력 필드 개선 */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* iOS 확대 방지 */
     padding: 15px;
   }
 
-  .footer-list {
-    flex-direction: column;
-    gap: 10px;
+  /* 키보드가 올라올 때 레이아웃 조정 */
+  .input-focused .game-area,
+  .input-focused .tool-area {
+    min-height: 200px;
+  }
+}
+
+/* 가로 모드 최적화 */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-banner {
+    height: 150px;
+  }
+
+  .banner-title {
+    font-size: 20px;
+  }
+
+  .banner-subtitle {
+    font-size: 12px;
+  }
+
+  .game-area {
+    min-height: 300px;
+  }
+
+  .sidebar {
+    display: none; /* 가로 모드에서는 사이드바 숨김 */
+  }
+}
+
+/* 접근성을 위한 고대비 모드 */
+@media (prefers-contrast: high) {
+  .nav-item,
+  .game-item,
+  .tool-button,
+  .start-button,
+  .restart-button {
+    border: 2px solid currentColor;
+  }
+
+  .target {
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 2px #000000;
+  }
+}
+
+/* 애니메이션 감소 선호 사용자를 위한 최적화 */
+@media (prefers-reduced-motion: reduce) {
+  .banner-slide {
+    transition: none;
+  }
+
+  .target {
+    animation: none;
+  }
+
+  .touching {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* 저전력 모드 최적화 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
   }
 }
