@@ -78,8 +78,6 @@ class ComponentLoader {
         e.preventDefault();
       });
     });
-
-    // 헤더 언어 버튼 이벤트 제거 (푸터에서만 처리)
   }
 
   static initFooterEvents() {
@@ -93,14 +91,34 @@ class ComponentLoader {
       });
     });
 
-    // 언어 버튼 이벤트
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const lang = btn.dataset.lang;
+    // 푸터 언어 버튼 이벤트 (즉시 실행과 이벤트 위임 둘 다 적용)
+    document
+      .querySelectorAll(".footer-lang-buttons .lang-btn")
+      .forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const lang = btn.dataset.lang;
+          console.log("Footer language button clicked:", lang);
+          if (lang && typeof setLanguage === "function") {
+            setLanguage(lang);
+          } else if (lang && window.setLanguage) {
+            window.setLanguage(lang);
+          }
+        });
+      });
+
+    // 이벤트 위임으로도 처리 (동적 로딩 대응)
+    document.addEventListener("click", (e) => {
+      if (e.target.matches(".footer-lang-buttons .lang-btn")) {
+        e.preventDefault();
+        const lang = e.target.dataset.lang;
+        console.log("Footer language button clicked (delegation):", lang);
         if (lang && typeof setLanguage === "function") {
           setLanguage(lang);
+        } else if (lang && window.setLanguage) {
+          window.setLanguage(lang);
         }
-      });
+      }
     });
   }
 
@@ -234,17 +252,13 @@ class ComponentLoader {
       });
 
       // 언어 초기화
-      if (typeof initializeLanguage === "function") {
-        initializeLanguage();
-      } else {
-        // 기본 언어 설정
-        setTimeout(() => {
-          if (typeof setLanguage === "function") {
-            const savedLang = localStorage.getItem("userLanguage") || "ko";
-            setLanguage(savedLang);
-          }
-        }, 100);
-      }
+      setTimeout(() => {
+        if (typeof initializeLanguage === "function") {
+          initializeLanguage();
+        } else if (window.initializeLanguage) {
+          window.initializeLanguage();
+        }
+      }, 200);
 
       console.log("Component initialization complete");
       return true;
