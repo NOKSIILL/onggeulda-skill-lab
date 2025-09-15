@@ -174,11 +174,11 @@ function selectGame(gameId) {
 function selectTool(toolId) {
   console.log("Selecting tool:", toolId);
 
-  document.querySelectorAll("#toolsPage .game-item").forEach((item) => {
+  document.querySelectorAll("#toolsPage .tool-item").forEach((item) => {
     item.classList.remove("active");
   });
 
-  const toolItems = document.querySelectorAll("#toolsPage .game-item");
+  const toolItems = document.querySelectorAll("#toolsPage .tool-item");
   toolItems.forEach((item) => {
     const itemText = item.textContent.toLowerCase();
     if (

@@ -177,7 +177,7 @@ class ComponentLoader {
 
   static setActiveToolSidebar(toolId) {
     setTimeout(() => {
-      document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
+      document.querySelectorAll("#tool-sidebar .tool-item").forEach((item) => {
         item.classList.remove("active");
         if (item.dataset.tool === toolId) {
           item.classList.add("active");
