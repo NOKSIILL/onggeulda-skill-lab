@@ -81,6 +81,7 @@ class ComponentLoader {
   }
 
   static initFooterEvents() {
+    // 푸터 메뉴 이벤트
     document.querySelectorAll(".footer-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
@@ -91,35 +92,33 @@ class ComponentLoader {
       });
     });
 
-    // 푸터 언어 버튼 이벤트 (즉시 실행과 이벤트 위임 둘 다 적용)
-    document
-      .querySelectorAll(".footer-lang-buttons .lang-btn")
-      .forEach((btn) => {
+    // 푸터 언어 버튼 이벤트 - 즉시 실행 함수로 이벤트 바인딩
+    setTimeout(() => {
+      const langButtons = document.querySelectorAll(
+        ".footer-lang-buttons .lang-btn"
+      );
+      console.log("Found language buttons:", langButtons.length);
+
+      langButtons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           const lang = btn.dataset.lang;
-          console.log("Footer language button clicked:", lang);
-          if (lang && typeof setLanguage === "function") {
-            setLanguage(lang);
-          } else if (lang && window.setLanguage) {
-            window.setLanguage(lang);
+          console.log("Language button clicked:", lang);
+
+          if (lang) {
+            // 전역 함수 체크
+            if (typeof window.setLanguage === "function") {
+              window.setLanguage(lang);
+            } else if (typeof setLanguage === "function") {
+              setLanguage(lang);
+            } else {
+              console.error("setLanguage function not found");
+            }
           }
         });
       });
-
-    // 이벤트 위임으로도 처리 (동적 로딩 대응)
-    document.addEventListener("click", (e) => {
-      if (e.target.matches(".footer-lang-buttons .lang-btn")) {
-        e.preventDefault();
-        const lang = e.target.dataset.lang;
-        console.log("Footer language button clicked (delegation):", lang);
-        if (lang && typeof setLanguage === "function") {
-          setLanguage(lang);
-        } else if (lang && window.setLanguage) {
-          window.setLanguage(lang);
-        }
-      }
-    });
+    }, 500); // 0.5초 후 실행
   }
 
   static initGameSidebarEvents() {
@@ -135,7 +134,8 @@ class ComponentLoader {
   }
 
   static initToolSidebarEvents() {
-    document.querySelectorAll(".tool-item").forEach((item) => {
+    // 도구 사이드바도 game-item 클래스를 사용하므로 동일한 이벤트 처리
+    document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const tool = item.dataset.tool;
@@ -166,7 +166,7 @@ class ComponentLoader {
 
   static setActiveGameSidebar(gameId) {
     setTimeout(() => {
-      document.querySelectorAll(".game-item").forEach((item) => {
+      document.querySelectorAll("#game-sidebar .game-item").forEach((item) => {
         item.classList.remove("active");
         if (item.dataset.game === gameId) {
           item.classList.add("active");
@@ -177,7 +177,7 @@ class ComponentLoader {
 
   static setActiveToolSidebar(toolId) {
     setTimeout(() => {
-      document.querySelectorAll(".tool-item").forEach((item) => {
+      document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
         item.classList.remove("active");
         if (item.dataset.tool === toolId) {
           item.classList.add("active");
