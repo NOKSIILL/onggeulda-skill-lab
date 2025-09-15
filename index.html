@@ -241,5 +241,27 @@
         console.log("Home page loaded successfully");
       });
     </script>
+    <script>
+      // GitHub Pages 환경에서 자동으로 절대 경로 수정
+      if (location.hostname.includes("github.io")) {
+        document.addEventListener("DOMContentLoaded", function () {
+          const basePath = "/onggeulda-skill-lab";
+
+          // 모든 절대 경로를 찾아서 repository 이름 추가
+          document
+            .querySelectorAll(
+              'link[href^="/"], script[src^="/"], img[src^="/"]'
+            )
+            .forEach((el) => {
+              const attr = el.tagName === "LINK" ? "href" : "src";
+              const path = el.getAttribute(attr);
+
+              if (!path.startsWith(basePath)) {
+                el.setAttribute(attr, basePath + path);
+              }
+            });
+        });
+      }
+    </script>
   </body>
 </html>
