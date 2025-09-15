@@ -1,3 +1,38 @@
+<script>
+  // GitHub Pages 환경 감지 및 자동 경로 수정
+  (function () {
+    if (location.hostname.includes("github.io")) {
+      const basePath = "/onggeulda-skill-lab";
+
+      // DOM 로드 완료 후 실행
+      document.addEventListener("DOMContentLoaded", function () {
+        // 모든 절대 경로를 찾아서 자동 수정
+        document
+          .querySelectorAll(
+            'link[href^="/"], script[src^="/"], img[src^="/"], a[href^="/"]'
+          )
+          .forEach((el) => {
+            const attr =
+              el.tagName === "LINK"
+                ? "href"
+                : el.tagName === "A"
+                ? "href"
+                : "src";
+            const path = el.getAttribute(attr);
+
+            if (
+              path &&
+              !path.startsWith(basePath) &&
+              !path.startsWith("http")
+            ) {
+              el.setAttribute(attr, basePath + path);
+            }
+          });
+      });
+    }
+  })();
+</script>
+
 <div class="header-container">
   <a href="/" class="logo" data-i18n="siteLogo">Onggeulda Skill Lab</a>
   <nav class="nav-menu">
