@@ -84,6 +84,18 @@ body {
   width: 200px;
 }
 
+.ad-slot {
+  border: 1px dashed rgba(0, 255, 136, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .mobile-ads {
   display: none;
   width: 100%;
@@ -122,18 +134,6 @@ body {
     height: 40px;
     font-size: 12px; /* 작은 높이에 맞는 폰트 크기 */
   }
-}
-
-.ad-slot {
-  border: 1px dashed rgba(0, 255, 136, 0.3);
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ===== 푸터 그리드 레이아웃 ===== */
