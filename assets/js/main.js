@@ -4,7 +4,7 @@ let currentLanguage = "ko";
 // 레이아웃 강제 재설정 함수 (이벤트 보존)
 function forceLayoutReset() {
   const containers = document.querySelectorAll(
-    ".games-container, .tools-container, .about-container"
+    ".games-container, .tools-container"
   );
 
   containers.forEach((container) => {
@@ -26,9 +26,7 @@ function forceLayoutReset() {
   });
 
   const sidebars = document.querySelectorAll(".sidebar");
-  const gameContents = document.querySelectorAll(
-    ".game-content, .about-content"
-  );
+  const gameContents = document.querySelectorAll(".game-content");
   const adSidebars = document.querySelectorAll(".ad-sidebar");
 
   sidebars.forEach((sidebar) => {
@@ -73,10 +71,12 @@ function showPage(page) {
     navItem.classList.add("active");
   }
 
-  // 레이아웃 재설정
-  requestAnimationFrame(() => {
-    forceLayoutReset();
-  });
+  // 레이아웃 재설정 (게임/도구 페이지만)
+  if (page === "games" || page === "tools") {
+    requestAnimationFrame(() => {
+      forceLayoutReset();
+    });
+  }
 
   // 페이지별 초기화
   if (page === "tools") {
@@ -344,14 +344,16 @@ function setupEventDelegation() {
       showPage("home");
     }
 
-    // 언어 버튼 클릭 처리
+    // 언어 버튼 클릭 처리 (강화된 이벤트 처리)
     if (target.classList.contains("lang-btn")) {
       event.preventDefault();
-      const lang =
-        target.dataset.lang ||
-        target.getAttribute("onclick")?.match(/'([^']+)'/)?.[1];
-      if (lang) {
+      event.stopPropagation();
+      const lang = target.dataset.lang;
+      console.log("Language button clicked:", lang, target);
+      if (lang && typeof setLanguage === "function") {
         setLanguage(lang);
+      } else {
+        console.error("setLanguage function not found or lang is missing");
       }
     }
   });
@@ -472,6 +474,8 @@ function showCopyNotification(message = null, duration = 2000) {
 
 // 다국어 지원 함수들
 function setLanguage(lang) {
+  console.log("setLanguage called with:", lang);
+
   if (!translations[lang]) {
     console.warn(`Language ${lang} not supported`);
     return;
@@ -602,6 +606,8 @@ function detectBrowserLanguage() {
 }
 
 function initializeLanguage() {
+  console.log("Initializing language...");
+
   // 저장된 언어가 있으면 사용
   if (loadSavedLanguage()) {
     return;
