@@ -15,9 +15,6 @@
     <meta name="author" content="Onggeulda Studio" />
     <meta name="robots" content="index, follow" />
 
-    <!-- netlify 연동 시 제거 -->
-    <base href="/onggeulda-skill-lab" />
-
     <!-- Open Graph -->
     <meta
       property="og:title"
@@ -212,6 +209,29 @@
     <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
 
     <!-- JavaScript -->
+    <script>
+      // GitHub Pages 환경 감지
+      const isGitHubPages = location.hostname.includes("github.io");
+      const basePath = isGitHubPages ? "/onggeulda-skill-lab" : "";
+
+      // 동적으로 경로 수정
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(
+          'link[href^="/"], script[src^="/"], img[src^="/"]'
+        );
+        links.forEach((element) => {
+          const attr =
+            element.tagName.toLowerCase() === "link" ? "href" : "src";
+          const originalPath = element.getAttribute(attr);
+          if (
+            originalPath.startsWith("/") &&
+            !originalPath.startsWith(basePath)
+          ) {
+            element.setAttribute(attr, basePath + originalPath);
+          }
+        });
+      });
+    </script>
     <script src="/assets/js/i18n/translations.js"></script>
     <script src="/assets/js/utils/helpers.js"></script>
     <script src="/shared/components.js"></script>
