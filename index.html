@@ -47,9 +47,7 @@
       content="https://domain.com/assets/images/twitter-card.jpg"
     />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="/assets/css/responsive.css" />
+    <!-- CSS는 JavaScript에서 동적으로 로드 -->
   </head>
   <body>
     <!-- 헤더 -->
@@ -86,28 +84,16 @@
             <div class="sitemap-section">
               <div class="sitemap-title">🎮 게임</div>
               <ul class="sitemap-list">
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/games/fps-aim.html'"
-                >
+                <li class="sitemap-item" data-url="/games/fps-aim.html">
                   🎯 FPS 에임 훈련
                 </li>
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/games/reaction-test.html'"
-                >
+                <li class="sitemap-item" data-url="/games/reaction-test.html">
                   🎲 반응속도 테스트
                 </li>
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/games/memory-game.html'"
-                >
+                <li class="sitemap-item" data-url="/games/memory-game.html">
                   🎪 메모리 게임
                 </li>
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/games/color-match.html'"
-                >
+                <li class="sitemap-item" data-url="/games/color-match.html">
                   🎨 색깔 맞추기
                 </li>
               </ul>
@@ -116,27 +102,18 @@
             <div class="sitemap-section">
               <div class="sitemap-title">🛠️ 창작 도구</div>
               <ul class="sitemap-list">
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/tools/color-palette.html'"
-                >
+                <li class="sitemap-item" data-url="/tools/color-palette.html">
                   🎨 색상 팔레트 생성기
                 </li>
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/tools/keywords.html'"
-                >
+                <li class="sitemap-item" data-url="/tools/keywords.html">
                   💡 오늘의 키워드
                 </li>
-                <li
-                  class="sitemap-item"
-                  onclick="window.location.href='/tools/unit-converter.html'"
-                >
+                <li class="sitemap-item" data-url="/tools/unit-converter.html">
                   📏 단위 변환기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/text-transformer.html'"
+                  data-url="/tools/text-transformer.html"
                 >
                   🔤 텍스트 변환기
                 </li>
@@ -205,36 +182,87 @@
     <!-- 알림 -->
     <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
 
-    <!-- JavaScript - 간단한 버전 -->
-    <script src="assets/js/utils/path-resolver.js"></script>
-    <script src="/assets/js/i18n/translations.js"></script>
-    <script src="/assets/js/utils/helpers.js"></script>
-    <script src="/shared/components.js"></script>
+    <!-- path-resolver 자동화 시스템 -->
     <script>
-      // 배너 슬라이드 기능
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".banner-slide");
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
 
-      function nextSlide() {
-        if (slides.length > 0) {
-          slides[currentSlide].classList.remove("active");
-          currentSlide = (currentSlide + 1) % slides.length;
-          slides[currentSlide].classList.add("active");
+      function loadCSS(href) {
+        return new Promise((resolve, reject) => {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = href;
+          link.onload = resolve;
+          link.onerror = reject;
+          document.head.appendChild(link);
+        });
+      }
+
+      async function initializeApp() {
+        try {
+          // 1. PathResolver 먼저 로드
+          await loadScript("assets/js/utils/path-resolver.js");
+
+          // 2. CSS 로드 (path-resolver 사용)
+          await Promise.all([
+            loadCSS(window.pathResolver.resolve("/assets/css/main.css")),
+            loadCSS(window.pathResolver.resolve("/assets/css/responsive.css")),
+          ]);
+
+          // 3. JavaScript 로드 (path-resolver 사용)
+          await Promise.all([
+            loadScript(
+              window.pathResolver.resolve("/assets/js/i18n/translations.js")
+            ),
+            loadScript(
+              window.pathResolver.resolve("/assets/js/utils/helpers.js")
+            ),
+            loadScript(window.pathResolver.resolve("/shared/components.js")),
+          ]);
+
+          // 4. 사이트맵 클릭 이벤트
+          document.querySelectorAll(".sitemap-item").forEach((item) => {
+            item.addEventListener("click", () => {
+              const url = item.dataset.url;
+              if (url) {
+                window.location.href = window.pathResolver.resolve(url);
+              }
+            });
+          });
+
+          // 5. 컴포넌트 초기화
+          await ComponentLoader.init("home");
+
+          // 6. 배너 슬라이드
+          let currentSlide = 0;
+          const slides = document.querySelectorAll(".banner-slide");
+
+          function nextSlide() {
+            if (slides.length > 0) {
+              slides[currentSlide].classList.remove("active");
+              currentSlide = (currentSlide + 1) % slides.length;
+              slides[currentSlide].classList.add("active");
+            }
+          }
+
+          if (slides.length > 0) {
+            setInterval(nextSlide, 4000);
+          }
+
+          console.log("Home page loaded successfully with path-resolver!");
+        } catch (error) {
+          console.error("Failed to initialize app:", error);
         }
       }
 
-      // 페이지 로드 시 초기화
-      document.addEventListener("DOMContentLoaded", async function () {
-        // 컴포넌트 로드
-        await ComponentLoader.init("home");
-
-        // 배너 슬라이드 시작
-        if (slides.length > 0) {
-          setInterval(nextSlide, 4000);
-        }
-
-        console.log("Home page loaded successfully");
-      });
+      document.addEventListener("DOMContentLoaded", initializeApp);
     </script>
   </body>
 </html>
