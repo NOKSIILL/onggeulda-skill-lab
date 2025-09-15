@@ -1,8 +1,15 @@
+// shared/components.js - 스마트 경로 처리 지원 버전
 // 공통 컴포넌트 로더 시스템
+
 class ComponentLoader {
   static async loadComponent(selector, componentPath) {
     try {
-      const response = await fetch(componentPath);
+      // PathResolver를 사용해 경로 해결
+      const resolvedPath = window.pathResolver
+        ? window.pathResolver.resolve(componentPath)
+        : componentPath;
+
+      const response = await fetch(resolvedPath);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -64,7 +71,9 @@ class ComponentLoader {
     if (logo) {
       logo.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "/";
+        window.location.href = window.pathResolver
+          ? window.pathResolver.getPageUrl("/")
+          : "/";
       });
     }
 
@@ -73,9 +82,11 @@ class ComponentLoader {
       item.addEventListener("click", (e) => {
         const href = item.getAttribute("href");
         if (href && !href.startsWith("#")) {
-          return;
+          e.preventDefault();
+          window.location.href = window.pathResolver
+            ? window.pathResolver.getPageUrl(href)
+            : href;
         }
-        e.preventDefault();
       });
     });
   }
@@ -87,12 +98,15 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/footer/${page}.html`;
+          const url = `/footer/${page}.html`;
+          window.location.href = window.pathResolver
+            ? window.pathResolver.getPageUrl(url)
+            : url;
         }
       });
     });
 
-    // 푸터 언어 버튼 이벤트 - 즉시 실행 함수로 이벤트 바인딩
+    // 푸터 언어 버튼 이벤트
     setTimeout(() => {
       const langButtons = document.querySelectorAll(
         ".footer-lang-buttons .lang-btn"
@@ -107,7 +121,6 @@ class ComponentLoader {
           console.log("Language button clicked:", lang);
 
           if (lang) {
-            // 전역 함수 체크
             if (typeof window.setLanguage === "function") {
               window.setLanguage(lang);
             } else if (typeof setLanguage === "function") {
@@ -118,7 +131,7 @@ class ComponentLoader {
           }
         });
       });
-    }, 500); // 0.5초 후 실행
+    }, 500);
   }
 
   static initGameSidebarEvents() {
@@ -127,20 +140,25 @@ class ComponentLoader {
         e.preventDefault();
         const game = item.dataset.game;
         if (game) {
-          window.location.href = `/games/${game}.html`;
+          const url = `/games/${game}.html`;
+          window.location.href = window.pathResolver
+            ? window.pathResolver.getPageUrl(url)
+            : url;
         }
       });
     });
   }
 
   static initToolSidebarEvents() {
-    // 도구 사이드바도 game-item 클래스를 사용하므로 동일한 이벤트 처리
     document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const tool = item.dataset.tool;
         if (tool) {
-          window.location.href = `/tools/${tool}.html`;
+          const url = `/tools/${tool}.html`;
+          window.location.href = window.pathResolver
+            ? window.pathResolver.getPageUrl(url)
+            : url;
         }
       });
     });
@@ -152,12 +170,17 @@ class ComponentLoader {
       item.classList.remove("active");
       const href = item.getAttribute("href");
 
+      // PathResolver를 사용해 비교
+      const resolvedHref = window.pathResolver
+        ? window.pathResolver.resolve(href)
+        : href;
+
       if (
-        href === currentPath ||
-        (currentPath === "/" && href === "/") ||
-        (currentPath.startsWith("/games") && href === "/games/") ||
-        (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about.html")
+        resolvedHref === currentPath ||
+        (currentPath === "/" && resolvedHref === "/") ||
+        (currentPath.includes("/games") && resolvedHref.includes("/games")) ||
+        (currentPath.includes("/tools") && resolvedHref.includes("/tools")) ||
+        (currentPath.includes("/about") && resolvedHref.includes("/about"))
       ) {
         item.classList.add("active");
       }
