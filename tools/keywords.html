@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>키워드 생성기 - Onggeulda Skill Lab</title>
+    <meta name="description" content="창작 영감을 위한 랜덤 키워드 생성 도구" />
+    <meta
+      name="keywords"
+      content="키워드 생성기, 창작 영감, 랜덤 키워드, 아이디어, 브레인스토밍"
+    />
+
+    <meta property="og:title" content="키워드 생성기 - Onggeulda Skill Lab" />
+    <meta
+      property="og:description"
+      content="창작 영감을 위한 랜덤 키워드 생성 도구"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://domain.com/tools/keywords.html" />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/tools.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header"></header>
+
+    <div class="main-container">
+      <div class="tools-container">
+        <aside class="sidebar" id="tool-sidebar"></aside>
+
+        <main class="game-content">
+          <div class="game-header">
+            <div class="game-title">💡 오늘의 키워드</div>
+          </div>
+
+          <div class="game-area tool-area">
+            <div class="tool-instructions">
+              <h2>창작 영감을 위한 키워드</h2>
+              <p>
+                랜덤하게 생성되는 키워드로 새로운 아이디어를 얻어보세요. 글쓰기,
+                그림, 음악 등 모든 창작 활동에 활용할 수 있습니다.
+              </p>
+            </div>
+            <div class="keyword-grid" id="keywordGrid"></div>
+            <div class="tool-controls">
+              <button class="tool-button" onclick="generateKeywords()">
+                새 키워드 생성
+              </button>
+              <button class="tool-button" onclick="copyKeywords()">
+                키워드 복사
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <aside class="ad-sidebar desktop-only">
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />(애드센스/쿠팡파트너스)<br />200x250
+            </div>
+          </div>
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />(애드센스/쿠팡파트너스)<br />200x250
+            </div>
+          </div>
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />(애드센스/쿠팡파트너스)<br />200x250
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="mobile-ads">
+      <div class="ad-container">
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역<br />(애드센스/쿠팡파트너스)<br />728x40
+          </div>
+        </div>
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역<br />(애드센스/쿠팡파트너스)<br />728x40
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-info"></footer>
+
+    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
+    <script src="/assets/js/tools/keywords.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        await ComponentLoader.init("tools", "keywords");
+        generateKeywords();
+      });
+    </script>
+  </body>
+</html>

@@ -3,38 +3,28 @@ let currentLanguage = "ko";
 
 // 레이아웃 강제 재설정 함수 (이벤트 보존)
 function forceLayoutReset() {
-  // 모든 컨테이너의 레이아웃 강제 재설정
   const containers = document.querySelectorAll(
     ".games-container, .tools-container, .about-container"
   );
 
   containers.forEach((container) => {
-    // 기존 스타일 속성 제거하되 이벤트는 보존
-    const currentDisplay = container.style.display;
-    const currentFlexDirection = container.style.flexDirection;
-
-    // 화면 크기에 따른 강제 레이아웃 설정
     const width = window.innerWidth;
 
     if (width >= 1200) {
-      // PC: 가로 배치
       container.style.display = "flex";
       container.style.flexDirection = "row";
       container.style.gap = "30px";
     } else if (width >= 768) {
-      // 태블릿: 가로 배치
       container.style.display = "flex";
       container.style.flexDirection = "row";
       container.style.gap = "20px";
     } else {
-      // 모바일: 세로 배치
       container.style.display = "flex";
       container.style.flexDirection = "column";
       container.style.gap = "0";
     }
   });
 
-  // 사이드바와 콘텐츠 순서 강제 재설정 (이벤트 보존)
   const sidebars = document.querySelectorAll(".sidebar");
   const gameContents = document.querySelectorAll(
     ".game-content, .about-content"
@@ -54,9 +44,9 @@ function forceLayoutReset() {
   });
 }
 
-// 페이지 전환 함수 (이벤트 보존 개선 버전)
+// 페이지 전환 함수 (모든 페이지 지원)
 function showPage(page) {
-  console.log("Showing page:", page); // 디버깅용
+  console.log("Showing page:", page);
 
   // 모든 페이지 숨기기
   document.querySelectorAll(".page").forEach((p) => {
@@ -72,9 +62,10 @@ function showPage(page) {
   const targetPage = document.getElementById(page + "Page");
   if (targetPage) {
     targetPage.classList.add("active");
-    console.log("Page activated:", targetPage); // 디버깅용
+    console.log("Page activated:", targetPage);
   }
 
+  // 해당하는 네비게이션 아이템 활성화
   const navItem = document.getElementById(
     "nav" + page.charAt(0).toUpperCase() + page.slice(1)
   );
@@ -82,7 +73,7 @@ function showPage(page) {
     navItem.classList.add("active");
   }
 
-  // 레이아웃 재설정 (이벤트 손실 방지)
+  // 레이아웃 재설정
   requestAnimationFrame(() => {
     forceLayoutReset();
   });
@@ -90,8 +81,8 @@ function showPage(page) {
   // 페이지별 초기화
   if (page === "tools") {
     setTimeout(() => {
-      generateColorPalette();
-      generateKeywords();
+      if (typeof generateColorPalette === "function") generateColorPalette();
+      if (typeof generateKeywords === "function") generateKeywords();
     }, 100);
   }
 }
@@ -116,19 +107,16 @@ function nextSlide() {
   }
 }
 
-// 게임 선택 (이벤트 보존 개선 버전)
+// 게임 선택
 function selectGame(gameId) {
-  console.log("Selecting game:", gameId); // 디버깅용
+  console.log("Selecting game:", gameId);
 
-  // 사이드바 활성화 상태 변경
   document.querySelectorAll("#gamesPage .game-item").forEach((item) => {
     item.classList.remove("active");
   });
 
-  // 클릭된 게임 항목 찾기 및 활성화
   const gameItems = document.querySelectorAll("#gamesPage .game-item");
-  gameItems.forEach((item, index) => {
-    // 데이터 속성 또는 인덱스로 매칭
+  gameItems.forEach((item) => {
     const itemText = item.textContent.toLowerCase();
     if (
       (gameId === "fps-aim" && itemText.includes("fps")) ||
@@ -140,7 +128,6 @@ function selectGame(gameId) {
     }
   });
 
-  // 모든 게임 숨기기
   document
     .querySelectorAll(
       "#fpsAimGame, #reactionTestGame, #memoryGame, #colorMatchGame"
@@ -149,7 +136,6 @@ function selectGame(gameId) {
       game.style.display = "none";
     });
 
-  // 선택된 게임 보이기
   let targetGame = null;
   if (gameId === "fps-aim") {
     targetGame = document.getElementById("fpsAimGame");
@@ -163,9 +149,7 @@ function selectGame(gameId) {
 
   if (targetGame) {
     targetGame.style.display = "block";
-    console.log("Game displayed:", targetGame); // 디버깅용
 
-    // 게임별 초기화
     if (gameId === "reaction-test" && typeof resetReactionTest === "function") {
       resetReactionTest();
     } else if (
@@ -181,22 +165,19 @@ function selectGame(gameId) {
     }
   }
 
-  // 레이아웃 재설정
   requestAnimationFrame(() => {
     forceLayoutReset();
   });
 }
 
-// 도구 선택 (이벤트 보존 개선 버전)
+// 도구 선택
 function selectTool(toolId) {
-  console.log("Selecting tool:", toolId); // 디버깅용
+  console.log("Selecting tool:", toolId);
 
-  // 사이드바 활성화 상태 변경
   document.querySelectorAll("#toolsPage .game-item").forEach((item) => {
     item.classList.remove("active");
   });
 
-  // 클릭된 도구 항목 찾기 및 활성화
   const toolItems = document.querySelectorAll("#toolsPage .game-item");
   toolItems.forEach((item) => {
     const itemText = item.textContent.toLowerCase();
@@ -210,7 +191,6 @@ function selectTool(toolId) {
     }
   });
 
-  // 모든 도구 숨기기
   document
     .querySelectorAll(
       "#colorPaletteTool, #keywordsTool, #unitConverterTool, #textTransformerTool"
@@ -219,7 +199,6 @@ function selectTool(toolId) {
       tool.style.display = "none";
     });
 
-  // 선택된 도구 보이기
   let targetTool = null;
   if (toolId === "color-palette") {
     targetTool = document.getElementById("colorPaletteTool");
@@ -233,9 +212,7 @@ function selectTool(toolId) {
 
   if (targetTool) {
     targetTool.style.display = "block";
-    console.log("Tool displayed:", targetTool); // 디버깅용
 
-    // 도구별 초기화
     if (
       toolId === "color-palette" &&
       typeof generateColorPalette === "function"
@@ -249,54 +226,19 @@ function selectTool(toolId) {
     }
   }
 
-  // 레이아웃 재설정
   requestAnimationFrame(() => {
     forceLayoutReset();
   });
 }
 
-// 이벤트 위임을 통한 안전한 클릭 이벤트 처리
+// 통합 이벤트 위임 시스템
 function setupEventDelegation() {
-  // 사이드바 게임 아이템 클릭 이벤트
   document.addEventListener("click", function (event) {
     const target = event.target;
 
-    // 게임 아이템 클릭 처리
-    if (
-      target.classList.contains("game-item") &&
-      target.closest("#gamesPage")
-    ) {
-      const itemText = target.textContent.toLowerCase();
-      if (itemText.includes("fps")) {
-        selectGame("fps-aim");
-      } else if (itemText.includes("반응속도")) {
-        selectGame("reaction-test");
-      } else if (itemText.includes("메모리")) {
-        selectGame("memory-game");
-      } else if (itemText.includes("색깔")) {
-        selectGame("color-match");
-      }
-    }
-
-    // 도구 아이템 클릭 처리
-    if (
-      target.classList.contains("game-item") &&
-      target.closest("#toolsPage")
-    ) {
-      const itemText = target.textContent.toLowerCase();
-      if (itemText.includes("색상")) {
-        selectTool("color-palette");
-      } else if (itemText.includes("키워드")) {
-        selectTool("keywords");
-      } else if (itemText.includes("단위")) {
-        selectTool("unit-converter");
-      } else if (itemText.includes("텍스트")) {
-        selectTool("text-transformer");
-      }
-    }
-
-    // 네비게이션 아이템 클릭 처리
+    // 메인 네비게이션 클릭 처리
     if (target.classList.contains("nav-item")) {
+      event.preventDefault();
       const itemText = target.textContent.toLowerCase();
       if (itemText.includes("홈") || itemText.includes("home")) {
         showPage("home");
@@ -309,8 +251,29 @@ function setupEventDelegation() {
       }
     }
 
+    // 푸터 아이템 클릭 처리
+    if (target.classList.contains("footer-item")) {
+      event.preventDefault();
+      const itemText = target.textContent.toLowerCase();
+      console.log("Footer item clicked:", itemText);
+
+      if (itemText.includes("소개") || itemText.includes("about")) {
+        showPage("about");
+      } else if (itemText.includes("문의") || itemText.includes("contact")) {
+        showPage("contact");
+      } else if (
+        itemText.includes("개인정보") ||
+        itemText.includes("privacy")
+      ) {
+        showPage("privacy");
+      } else if (itemText.includes("이용약관") || itemText.includes("terms")) {
+        showPage("terms");
+      }
+    }
+
     // 사이트맵 아이템 클릭 처리
     if (target.classList.contains("sitemap-item")) {
+      event.preventDefault();
       const itemText = target.textContent.toLowerCase();
       if (itemText.includes("fps")) {
         showPage("games");
@@ -339,28 +302,53 @@ function setupEventDelegation() {
       }
     }
 
-    // 푸터 아이템 클릭 처리
-    if (target.classList.contains("footer-item")) {
+    // 게임 사이드바 클릭 처리
+    if (
+      target.classList.contains("game-item") &&
+      target.closest("#gamesPage")
+    ) {
+      event.preventDefault();
       const itemText = target.textContent.toLowerCase();
-      if (itemText.includes("소개") || itemText.includes("about")) {
-        showPage("about");
-      } else if (itemText.includes("문의") || itemText.includes("contact")) {
-        showPage("contact");
-      } else if (
-        itemText.includes("개인정보") ||
-        itemText.includes("privacy")
-      ) {
-        showPage("privacy");
-      } else if (itemText.includes("이용약관") || itemText.includes("terms")) {
-        showPage("terms");
+      if (itemText.includes("fps")) {
+        selectGame("fps-aim");
+      } else if (itemText.includes("반응속도")) {
+        selectGame("reaction-test");
+      } else if (itemText.includes("메모리")) {
+        selectGame("memory-game");
+      } else if (itemText.includes("색깔")) {
+        selectGame("color-match");
       }
+    }
+
+    // 도구 사이드바 클릭 처리
+    if (
+      target.classList.contains("game-item") &&
+      target.closest("#toolsPage")
+    ) {
+      event.preventDefault();
+      const itemText = target.textContent.toLowerCase();
+      if (itemText.includes("색상")) {
+        selectTool("color-palette");
+      } else if (itemText.includes("키워드")) {
+        selectTool("keywords");
+      } else if (itemText.includes("단위")) {
+        selectTool("unit-converter");
+      } else if (itemText.includes("텍스트")) {
+        selectTool("text-transformer");
+      }
+    }
+
+    // 로고 클릭 처리
+    if (target.classList.contains("logo")) {
+      event.preventDefault();
+      showPage("home");
     }
   });
 }
 
 // DOM 로드 완료 후 초기 설정
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM loaded, initializing..."); // 디버깅용
+  console.log("DOM loaded, initializing...");
 
   // 배너 슬라이드 초기화
   const slides = initializeBannerSlides();
@@ -418,12 +406,10 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeLanguage();
   }
 
-  console.log("Initialization complete"); // 디버깅용
+  console.log("Initialization complete");
 });
 
-// ===== 반응형 기능들 (기존 코드 유지) =====
-
-// 디바이스 감지 및 반응형 유틸리티
+// 반응형 기능들
 const DeviceUtils = {
   isMobile: () => window.innerWidth <= 767,
   isTablet: () => window.innerWidth >= 768 && window.innerWidth <= 1199,
@@ -443,40 +429,6 @@ const DeviceUtils = {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   },
 };
-
-// 터치 이벤트 개선
-class TouchManager {
-  constructor() {
-    this.init();
-  }
-
-  init() {
-    document.addEventListener("touchstart", this.handleTouchStart.bind(this), {
-      passive: true,
-    });
-    document.addEventListener("touchend", this.handleTouchEnd.bind(this), {
-      passive: true,
-    });
-  }
-
-  handleTouchStart(e) {
-    const target = e.target.closest(
-      "button, .nav-item, .game-item, .tool-button, .sitemap-item"
-    );
-    if (target) {
-      target.classList.add("touching");
-    }
-  }
-
-  handleTouchEnd(e) {
-    const target = e.target.closest(
-      "button, .nav-item, .game-item, .tool-button, .sitemap-item"
-    );
-    if (target) {
-      setTimeout(() => target.classList.remove("touching"), 150);
-    }
-  }
-}
 
 // 향상된 알림 시스템
 function showCopyNotification(message = "복사되었습니다!", duration = 2000) {
@@ -502,31 +454,6 @@ function showCopyNotification(message = "복사되었습니다!", duration = 200
   setTimeout(() => {
     notification.remove();
   }, duration);
-}
-
-// 초기화 함수들
-function initResponsiveFeatures() {
-  DeviceUtils.setVH();
-
-  if (DeviceUtils.isTouchDevice()) {
-    new TouchManager();
-  }
-
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      DeviceUtils.setVH();
-      forceLayoutReset();
-    }, 100);
-  });
-
-  window.addEventListener("orientationchange", () => {
-    setTimeout(() => {
-      DeviceUtils.setVH();
-      forceLayoutReset();
-    }, 500);
-  });
 }
 
 // 언어 관련 함수들
