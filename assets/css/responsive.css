@@ -106,13 +106,22 @@ body {
 .mobile-ads .ad-slot {
   width: 100%;
   max-width: 728px;
-  height: 40px; /* 모바일/태블릿에서 728x40px */
+  height: 40px; /* 정확히 40px 고정 높이 */
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 5px; /* 40px 높이에 맞는 작은 패딩 */
+}
+
+/* 모바일 크기에서도 40px 유지 */
+@media (max-width: 767px) {
+  .mobile-ads .ad-slot {
+    height: 40px;
+    font-size: 12px; /* 작은 높이에 맞는 폰트 크기 */
+  }
 }
 
 .ad-slot {
@@ -283,7 +292,7 @@ body {
 
   /* 헤더에서 언어 선택기 숨김 */
   .header-container .language-selector {
-    display: none;
+    display: none !important;
   }
 }
 

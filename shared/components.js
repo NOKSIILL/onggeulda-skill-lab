@@ -73,12 +73,13 @@ class ComponentLoader {
       item.addEventListener("click", (e) => {
         const href = item.getAttribute("href");
         if (href && !href.startsWith("#")) {
-          // 일반 링크는 기본 동작 허용
           return;
         }
         e.preventDefault();
       });
     });
+
+    // 헤더 언어 버튼 이벤트 제거 (푸터에서만 처리)
   }
 
   static initFooterEvents() {
@@ -235,6 +236,14 @@ class ComponentLoader {
       // 언어 초기화
       if (typeof initializeLanguage === "function") {
         initializeLanguage();
+      } else {
+        // 기본 언어 설정
+        setTimeout(() => {
+          if (typeof setLanguage === "function") {
+            const savedLang = localStorage.getItem("userLanguage") || "ko";
+            setLanguage(savedLang);
+          }
+        }, 100);
       }
 
       console.log("Component initialization complete");
