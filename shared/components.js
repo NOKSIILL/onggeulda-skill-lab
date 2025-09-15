@@ -2,12 +2,7 @@
 class ComponentLoader {
   static async loadComponent(selector, componentPath) {
     try {
-      // PathResolver가 있으면 사용, 없으면 그대로 사용
-      const resolvedPath = window.pathResolver
-        ? window.pathResolver.resolve(componentPath)
-        : componentPath;
-
-      const response = await fetch(resolvedPath);
+      const response = await fetch(componentPath);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -69,10 +64,7 @@ class ComponentLoader {
     if (logo) {
       logo.addEventListener("click", (e) => {
         e.preventDefault();
-        const url = window.pathResolver
-          ? window.pathResolver.resolve("/")
-          : "/";
-        window.location.href = url;
+        window.location.href = "/";
       });
     }
 
@@ -81,12 +73,9 @@ class ComponentLoader {
       item.addEventListener("click", (e) => {
         const href = item.getAttribute("href");
         if (href && !href.startsWith("#")) {
-          e.preventDefault();
-          const url = window.pathResolver
-            ? window.pathResolver.resolve(href)
-            : href;
-          window.location.href = url;
+          return;
         }
+        e.preventDefault();
       });
     });
   }
@@ -98,16 +87,12 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          const url = `/footer/${page}.html`;
-          const resolvedUrl = window.pathResolver
-            ? window.pathResolver.resolve(url)
-            : url;
-          window.location.href = resolvedUrl;
+          window.location.href = `/footer/${page}.html`;
         }
       });
     });
 
-    // 푸터 언어 버튼 이벤트
+    // 푸터 언어 버튼 이벤트 - 즉시 실행 함수로 이벤트 바인딩
     setTimeout(() => {
       const langButtons = document.querySelectorAll(
         ".footer-lang-buttons .lang-btn"
@@ -122,6 +107,7 @@ class ComponentLoader {
           console.log("Language button clicked:", lang);
 
           if (lang) {
+            // 전역 함수 체크
             if (typeof window.setLanguage === "function") {
               window.setLanguage(lang);
             } else if (typeof setLanguage === "function") {
@@ -132,7 +118,7 @@ class ComponentLoader {
           }
         });
       });
-    }, 500);
+    }, 500); // 0.5초 후 실행
   }
 
   static initGameSidebarEvents() {
@@ -141,27 +127,20 @@ class ComponentLoader {
         e.preventDefault();
         const game = item.dataset.game;
         if (game) {
-          const url = `/games/${game}.html`;
-          const resolvedUrl = window.pathResolver
-            ? window.pathResolver.resolve(url)
-            : url;
-          window.location.href = resolvedUrl;
+          window.location.href = `/games/${game}.html`;
         }
       });
     });
   }
 
   static initToolSidebarEvents() {
+    // 도구 사이드바도 game-item 클래스를 사용하므로 동일한 이벤트 처리
     document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const tool = item.dataset.tool;
         if (tool) {
-          const url = `/tools/${tool}.html`;
-          const resolvedUrl = window.pathResolver
-            ? window.pathResolver.resolve(url)
-            : url;
-          window.location.href = resolvedUrl;
+          window.location.href = `/tools/${tool}.html`;
         }
       });
     });
