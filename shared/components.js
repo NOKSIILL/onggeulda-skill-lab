@@ -20,7 +20,10 @@ class ComponentLoader {
   }
 
   static async loadHeader() {
-    const success = await this.loadComponent("header", "/shared/header.html");
+    const success = await this.loadComponent(
+      "header",
+      "/onggeulda-skill-lab/shared/header.html"
+    );
     if (success) {
       this.initHeaderEvents();
       this.setActiveNavigation();
@@ -29,7 +32,10 @@ class ComponentLoader {
   }
 
   static async loadFooter() {
-    const success = await this.loadComponent("footer", "/shared/footer.html");
+    const success = await this.loadComponent(
+      "footer",
+      "/onggeulda-skill-lab/shared/footer.html"
+    );
     if (success) {
       this.initFooterEvents();
     }
@@ -87,7 +93,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/footer/${page}.html`;
+          window.location.href = `/onggeulda-skill-lab/footer/${page}.html`;
         }
       });
     });
@@ -127,7 +133,7 @@ class ComponentLoader {
         e.preventDefault();
         const game = item.dataset.game;
         if (game) {
-          window.location.href = `/games/${game}.html`;
+          window.location.href = `/onggeulda-skill-lab/games/${game}.html`;
         }
       });
     });
@@ -140,7 +146,7 @@ class ComponentLoader {
         e.preventDefault();
         const tool = item.dataset.tool;
         if (tool) {
-          window.location.href = `/tools/${tool}.html`;
+          window.location.href = `/onggeulda-skill-lab/tools/${tool}.html`;
         }
       });
     });
@@ -155,9 +161,12 @@ class ComponentLoader {
       if (
         href === currentPath ||
         (currentPath === "/" && href === "/") ||
-        (currentPath.startsWith("/games") && href === "/games/") ||
-        (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about.html")
+        (currentPath.startsWith("/onggeulda-skill-lab/games") &&
+          href === "/onggeulda-skill-lab/games/") ||
+        (currentPath.startsWith("/onggeulda-skill-lab/tools") &&
+          href === "/onggeulda-skill-lab/tools/") ||
+        (currentPath.includes("/onggeulda-skill-lab/about") &&
+          href === "/onggeulda-skill-lab/about.html")
       ) {
         item.classList.add("active");
       }

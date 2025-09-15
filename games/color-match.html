@@ -24,12 +24,11 @@
       content="https://domain.com/games/color-match.html"
     />
 
-    <link rel="stylesheet" href="/onggeulda-skill-lab/assets/css/main.css" />
-    <link rel="stylesheet" href="/onggeulda-skill-lab/assets/css/games.css" />
-    <link
-      rel="stylesheet"
-      href="/onggeulda-skill-lab/assets/css/responsive.css"
-    />
+    <!--github 경로 최적화-->
+    <script src="assets/js/utils/path-fix.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/games.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
   </head>
   <body>
     <header class="site-header"></header>
@@ -108,10 +107,10 @@
 
     <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
 
-    <script src="/onggeulda-skill-lab/assets/js/i18n/translations.js"></script>
-    <script src="/onggeulda-skill-lab/assets/js/utils/helpers.js"></script>
-    <script src="/onggeulda-skill-lab/shared/components.js"></script>
-    <script src="/onggeulda-skill-lab/assets/js/games/color-match.js"></script>
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
+    <script src="/assets/js/games/color-match.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
         await ComponentLoader.init("games", "color-match");
