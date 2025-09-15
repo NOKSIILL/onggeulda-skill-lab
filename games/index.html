@@ -3,54 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>게임 - Onggeulda Skill Lab</title>
+    <title>Onggeulda Skill Lab — Daily Skill Practice & Tools</title>
     <meta
       name="description"
-      content="FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 등 다양한 온라인 게임을 즐기세요."
+      content="Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공."
     />
     <meta
       name="keywords"
-      content="온라인 게임, FPS 게임, 반응속도 게임, 메모리 게임, 브라우저 게임"
+      content="FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트"
+    />
+    <meta name="author" content="Onggeulda Studio" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Onggeulda Skill Lab — Daily Skill Practice & Tools"
+    />
+    <meta
+      property="og:description"
+      content="Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://domain.com/" />
+    <meta
+      property="og:image"
+      content="https://domain.com/assets/images/og-image.jpg"
+    />
+    <meta property="og:locale" content="ko_KR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Onggeulda Skill Lab — Daily Skill Practice & Tools"
+    />
+    <meta
+      name="twitter:description"
+      content="Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구."
+    />
+    <meta
+      name="twitter:image"
+      content="https://domain.com/assets/images/twitter-card.jpg"
     />
 
-    <link rel="stylesheet" href="/onggeulda-skill-lab/assets/css/main.css" />
-    <link rel="stylesheet" href="/onggeulda-skill-lab/assets/css/games.css" />
-    <link
-      rel="stylesheet"
-      href="/onggeulda-skill-lab/assets/css/responsive.css"
-    />
+    <base href="/onggeulda-skill-lab/" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://domain.com/" />
+    <script src="/onggeulda-skill-lab/assets/js/utils/path-fix.js"></script>
   </head>
   <body>
+    <!-- 헤더 -->
     <header class="site-header"></header>
 
+    <!-- 메인 콘텐츠 -->
     <div class="main-container">
       <div class="home-layout">
         <div class="home-content">
+          <!-- 히어로 배너 -->
+          <div class="hero-banner">
+            <div class="banner-slide active">
+              <div class="banner-title">🎯 게임과 도구의 허브</div>
+              <div class="banner-subtitle">
+                FPS 에임 훈련부터 창작 도구까지, 모든 것이 한 곳에
+              </div>
+            </div>
+            <div class="banner-slide">
+              <div class="banner-title">🚀 반응속도 향상</div>
+              <div class="banner-subtitle">
+                다양한 게임으로 집중력과 반응속도를 키워보세요
+              </div>
+            </div>
+            <div class="banner-slide">
+              <div class="banner-title">🎨 창작자 도구</div>
+              <div class="banner-subtitle">
+                색상 팔레트, 키워드 생성기 등 창작에 필요한 모든 도구
+              </div>
+            </div>
+          </div>
+
+          <!-- 사이트맵 -->
           <div class="sitemap-container">
             <div class="sitemap-section">
               <div class="sitemap-title">🎮 게임</div>
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/onggeulda-skill-lab/games/fps-aim.html'"
+                  onclick="window.location.href='/games/fps-aim.html'"
                 >
                   🎯 FPS 에임 훈련
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/onggeulda-skill-lab/games/reaction-test.html'"
+                  onclick="window.location.href='/games/reaction-test.html'"
                 >
                   🎲 반응속도 테스트
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/onggeulda-skill-lab/games/memory-game.html'"
+                  onclick="window.location.href='/games/memory-game.html'"
                 >
                   🎪 메모리 게임
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/onggeulda-skill-lab/games/color-match.html'"
+                  onclick="window.location.href='/games/color-match.html'"
                 >
                   🎨 색깔 맞추기
                 </li>
@@ -58,29 +120,33 @@
             </div>
 
             <div class="sitemap-section">
-              <div class="sitemap-title">📊 게임 정보</div>
-              <div style="padding: 20px; line-height: 1.6; color: #aaa">
-                <p>
-                  <strong style="color: #00ff88">🎯 FPS 에임 훈련</strong><br />
-                  반응속도와 정확도를 향상시키는 타겟 클릭 게임입니다.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎲 반응속도 테스트</strong
-                  ><br />
-                  순간 반응 능력을 측정하고 개선할 수 있는 게임입니다.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎪 메모리 게임</strong><br />
-                  기억력과 집중력 훈련을 위한 카드 매칭 게임입니다.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎨 색깔 맞추기</strong><br />
-                  색감과 관찰력 향상을 위한 색상 매칭 게임입니다.
-                </p>
-              </div>
+              <div class="sitemap-title">🛠️ 창작 도구</div>
+              <ul class="sitemap-list">
+                <li
+                  class="sitemap-item"
+                  onclick="window.location.href='/tools/color-palette.html'"
+                >
+                  🎨 색상 팔레트 생성기
+                </li>
+                <li
+                  class="sitemap-item"
+                  onclick="window.location.href='/tools/keywords.html'"
+                >
+                  💡 오늘의 키워드
+                </li>
+                <li
+                  class="sitemap-item"
+                  onclick="window.location.href='/tools/unit-converter.html'"
+                >
+                  📏 단위 변환기
+                </li>
+                <li
+                  class="sitemap-item"
+                  onclick="window.location.href='/tools/text-transformer.html'"
+                >
+                  🔤 텍스트 변환기
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -129,18 +195,50 @@
             728x40
           </div>
         </div>
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역<br />
+            (애드센스/쿠팡파트너스)<br />
+            728x40
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- 푸터 -->
     <footer class="footer-info"></footer>
 
-    <script src="/onggeulda-skill-lab/assets/js/i18n/translations.js"></script>
-    <script src="/onggeulda-skill-lab/assets/js/utils/helpers.js"></script>
-    <script src="/onggeulda-skill-lab/shared/components.js"></script>
+    <!-- 알림 -->
+    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
     <script>
+      // 배너 슬라이드 기능
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".banner-slide");
+
+      function nextSlide() {
+        if (slides.length > 0) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+      }
+
+      // 페이지 로드 시 초기화
       document.addEventListener("DOMContentLoaded", async function () {
-        await ComponentLoader.init("games");
-        console.log("Games index page loaded");
+        // 컴포넌트 로드
+        await ComponentLoader.init("home");
+
+        // 배너 슬라이드 시작
+        if (slides.length > 0) {
+          setInterval(nextSlide, 4000);
+        }
+
+        console.log("Home page loaded successfully");
       });
     </script>
   </body>
