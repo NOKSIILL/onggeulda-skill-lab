@@ -22,17 +22,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ===== 헤더 고정 및 겹침 방지 ===== */
+/* ===== 헤더 고정 및 겹침 방지 (모든 화면 크기) ===== */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(0, 255, 136, 0.3);
   padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .header-container {
@@ -44,51 +45,52 @@ body {
   padding: 0 20px;
 }
 
+/* ===== 메인 컨테이너 - 헤더 높이에 따른 적응형 마진 ===== */
 .main-container {
-  margin-top: 85px; /* 헤더 높이 + 여유 공간 */
-  min-height: calc(100vh - 85px);
   position: relative;
   z-index: 1;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* ===== 홈페이지 레이아웃 ===== */
 .home-layout {
   display: flex;
   gap: 20px;
-  min-height: calc(100vh - 85px);
+  width: 100%;
 }
 
 .home-content {
   flex: 1;
+  min-width: 0;
 }
 
-/* ===== 사이드바 고정 설정 (모든 화면 크기) ===== */
+/* ===== 사이드바 - 모든 화면 크기에서 일관된 동작 ===== */
 .sidebar {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-right: 1px solid rgba(0, 255, 136, 0.3);
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 255, 136, 0.3);
   position: relative;
-  z-index: 100;
+  z-index: 200;
+  flex-shrink: 0;
 }
 
 /* ===== 광고 영역 기본 설정 (배경색 제거) ===== */
 .ad-sidebar {
-  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
   position: relative;
+  width: 200px;
 }
 
 .mobile-ads {
   display: none;
   width: 100%;
-  padding: 30px 20px;
-  margin-top: 30px; /* 콘텐츠와 확실한 간격 확보 */
   position: relative;
   z-index: 5;
-  clear: both; /* 다른 요소와 겹침 방지 */
+  clear: both;
+  margin: 40px 0;
 }
 
 .mobile-ads .ad-container {
@@ -98,19 +100,19 @@ body {
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  padding: 0 20px;
 }
 
 .mobile-ads .ad-slot {
   width: 100%;
   max-width: 728px;
-  height: 90px;
+  height: 40px; /* 모바일/태블릿에서 728x40px */
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* 배경색 제거하여 페이지 배경 유지 */
 }
 
 .ad-slot {
@@ -123,7 +125,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* 배경색 제거하여 페이지 배경 유지 */
 }
 
 /* ===== 푸터 그리드 레이아웃 ===== */
@@ -134,7 +135,7 @@ body {
   position: relative;
   z-index: 10;
   clear: both;
-  margin-top: 40px; /* 광고와 확실한 간격 확보 */
+  margin-top: 40px;
 }
 
 .footer-section {
@@ -149,12 +150,11 @@ body {
   margin-bottom: 20px;
 }
 
-/* PC에서는 4x1 그리드, 모바일/태블릿에서는 2x2 그리드 */
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* PC 기본값: 4x1 */
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  max-width: 800px; /* PC에서 더 넓게 */
+  max-width: 800px;
   margin: 0 auto 30px auto;
 }
 
@@ -169,7 +169,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* 배경색 제거하여 페이지 배경 유지 */
   border: 1px solid rgba(0, 255, 136, 0.2);
 }
 
@@ -178,7 +177,7 @@ body {
   border-color: rgba(0, 255, 136, 0.5);
 }
 
-/* ===== 언어 선택기 (모든 화면에서 푸터에 표시) ===== */
+/* ===== 언어 선택기 ===== */
 .footer-language {
   display: block;
   margin-top: 30px;
@@ -225,62 +224,85 @@ body {
 /* ===== PC 전용 (1200px 이상) ===== */
 @media (min-width: 1200px) {
   .desktop-only {
-    display: block;
+    display: block !important;
   }
   .tablet-only,
   .mobile-only {
-    display: none;
+    display: none !important;
   }
   .mobile-ads {
     display: none !important;
   }
 
-  .ad-sidebar {
+  /* 헤더 아래 마진 */
+  .main-container {
+    margin-top: 85px;
+    padding: 0 40px;
+  }
+
+  /* 홈 레이아웃 */
+  .home-layout {
     display: flex;
-    width: 200px;
-    position: relative;
-    z-index: 10;
+    gap: 20px;
+  }
+
+  /* 게임/도구 컨테이너 */
+  .games-container,
+  .tools-container,
+  .about-container {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
   }
 
   .sidebar {
     width: 250px;
-    position: relative;
+    padding: 20px;
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    border-bottom: none;
+    order: 1 !important;
   }
 
-  /* PC에서 푸터 그리드는 4x1 유지 */
+  .game-content,
+  .about-content {
+    flex: 1;
+    min-width: 0;
+    order: 2 !important;
+  }
+
+  .ad-sidebar {
+    display: flex !important;
+    order: 3 !important;
+  }
+
+  /* 푸터 그리드는 4x1 유지 */
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
     max-width: 800px;
   }
 
-  /* PC에서도 언어 선택기는 푸터에만 */
+  /* 헤더에서 언어 선택기 숨김 */
   .header-container .language-selector {
     display: none;
-  }
-
-  /* 최소 간격 확보 */
-  .main-container {
-    padding: 0 40px;
-  }
-
-  .games-container,
-  .tools-container,
-  .about-container {
-    gap: 30px;
-    padding: 0;
   }
 }
 
 /* ===== 태블릿 (768px ~ 1199px) ===== */
 @media (max-width: 1199px) and (min-width: 768px) {
   .desktop-only {
-    display: none;
+    display: none !important;
   }
   .tablet-only {
-    display: block;
+    display: block !important;
   }
   .mobile-only {
-    display: none;
+    display: none !important;
+  }
+
+  /* 헤더 아래 마진 */
+  .main-container {
+    margin-top: 90px;
+    padding: 0 20px;
   }
 
   /* 광고 사이드바 숨김, 모바일 광고 표시 */
@@ -289,42 +311,37 @@ body {
   }
 
   .mobile-ads {
-    display: block;
-    margin-top: 40px; /* 콘텐츠와 충분한 간격 */
-    z-index: 5;
+    display: block !important;
   }
 
-  /* 홈 레이아웃 조정 */
+  /* 홈 레이아웃 */
   .home-layout {
     display: block;
-    padding: 0 20px; /* 최소 간격 확보 */
   }
 
-  /* 게임/도구 컨테이너 */
-  .main-container {
-    padding: 0 20px;
-  }
-
+  /* 게임/도구 컨테이너 - 고정된 레이아웃 */
   .games-container,
   .tools-container,
   .about-container {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     gap: 20px;
-    padding: 0;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    border-bottom: none;
+    order: 1 !important;
   }
 
   .game-content,
   .about-content {
     flex: 1;
-    width: 100%;
     min-width: 0;
-  }
-
-  /* 사이드바 고정 */
-  .sidebar {
-    width: 200px;
-    position: relative;
-    flex-shrink: 0; /* 사이드바 크기 고정 */
+    order: 2 !important;
   }
 
   /* 헤더 조정 */
@@ -351,7 +368,7 @@ body {
   /* 배너 조정 */
   .hero-banner {
     height: 280px;
-    margin: 0 -20px; /* 패딩 상쇄하여 전체 너비 사용 */
+    margin: 0 -20px;
   }
 
   .banner-title {
@@ -365,7 +382,7 @@ body {
 
   /* 사이트맵 조정 */
   .sitemap-container {
-    padding: 30px 0; /* 좌우 패딩은 상위 요소에서 처리 */
+    padding: 30px 0;
     gap: 25px;
   }
 
@@ -373,7 +390,7 @@ body {
     padding: 25px;
   }
 
-  /* 게임 스타일 - PC 비율 유지 */
+  /* 게임 스타일 */
   .game-header {
     padding: 15px 25px;
   }
@@ -391,7 +408,6 @@ body {
     font-size: 18px;
   }
 
-  /* 게임 영역 - PC 비율 유지 */
   .game-area {
     min-height: 500px;
   }
@@ -421,7 +437,7 @@ body {
     height: 80px;
   }
 
-  /* 도구 영역 - PC 비율 유지 */
+  /* 도구 영역 */
   .tool-area {
     padding: 35px;
   }
@@ -440,16 +456,6 @@ body {
     gap: 15px;
   }
 
-  /* 태블릿용 모바일 광고 */
-  .mobile-ads .ad-container {
-    padding: 0 20px;
-  }
-
-  .mobile-ads .ad-slot {
-    max-width: 600px;
-    height: 100px;
-  }
-
   /* 푸터 그리드 태블릿에서 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -461,21 +467,10 @@ body {
 @media (max-width: 767px) {
   .desktop-only,
   .tablet-only {
-    display: none;
-  }
-  .mobile-only {
-    display: block;
-  }
-
-  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
-  .ad-sidebar {
     display: none !important;
   }
-
-  .mobile-ads {
-    display: block;
-    margin-top: 40px; /* 콘텐츠와 충분한 간격 */
-    z-index: 5;
+  .mobile-only {
+    display: block !important;
   }
 
   /* 헤더 높이 조정 */
@@ -484,47 +479,55 @@ body {
   }
 
   .main-container {
-    margin-top: 120px; /* 모바일 헤더는 더 높음 */
-    min-height: calc(100vh - 120px);
-    padding: 0 15px; /* 최소 좌우 간격 확보 */
+    margin-top: 130px; /* 모바일 헤더는 더 높음 */
+    padding: 0 15px;
+  }
+
+  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
+  .ad-sidebar {
+    display: none !important;
+  }
+
+  .mobile-ads {
+    display: block !important;
   }
 
   /* 홈 레이아웃 모바일 버전 */
   .home-layout {
     display: block;
-    padding: 0; /* 상위에서 패딩 처리 */
+    padding: 0;
   }
 
   .home-content {
     width: 100%;
   }
 
-  /* 전체 레이아웃을 순서대로 배치 */
+  /* 게임/도구 컨테이너 - 세로 배치로 고정 */
   .games-container,
   .tools-container,
   .about-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* 사이드바와 콘텐츠 간격 */
-    padding: 0; /* 상위에서 패딩 처리 */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0;
   }
 
-  /* 순서 재정의: 사이드바 -> 콘텐츠 */
+  /* 사이드바 - 항상 맨 위에 배치 */
   .sidebar {
-    order: 1;
+    order: 1 !important;
     width: 100%;
     border-right: none;
     border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     padding: 20px;
+    margin: 0 -15px 20px -15px;
     position: relative;
-    z-index: 2;
-    margin: 0 -15px; /* 상위 패딩 상쇄하여 전체 너비 사용 */
+    z-index: 200;
   }
 
+  /* 콘텐츠 - 사이드바 다음에 배치 */
   .game-content,
   .about-content {
-    order: 2;
+    order: 2 !important;
     width: 100%;
     flex: 1;
     position: relative;
@@ -559,10 +562,10 @@ body {
     flex: 0 0 auto;
   }
 
-  /* 배너 - PC 비율 유지하며 크기 조정 */
+  /* 배너 */
   .hero-banner {
     height: 220px;
-    margin: 0 -15px; /* 상위 패딩 상쇄하여 전체 너비 사용 */
+    margin: 0 -15px;
     position: relative;
     z-index: 1;
   }
@@ -604,7 +607,7 @@ body {
     border-color: #00ff88;
   }
 
-  /* 게임 헤더 - PC 비율 유지 */
+  /* 게임 헤더 */
   .game-header {
     padding: 15px 20px;
     position: relative;
@@ -633,7 +636,7 @@ body {
     font-size: 11px;
   }
 
-  /* 게임 영역 - PC 비율 유지하며 터치 최적화 */
+  /* 게임 영역 */
   .game-area {
     min-height: 450px;
     cursor: default;
@@ -658,7 +661,7 @@ body {
     border-radius: 25px;
   }
 
-  /* FPS 게임 - PC 비율 유지하며 터치 최적화 */
+  /* FPS 게임 */
   .target {
     width: 65px;
     height: 65px;
@@ -672,7 +675,7 @@ body {
     border-radius: 15px;
   }
 
-  /* 메모리 게임 - PC 비율 유지 */
+  /* 메모리 게임 */
   .memory-grid {
     grid-template-columns: repeat(4, 1fr);
     max-width: 320px;
@@ -686,7 +689,7 @@ body {
     border-radius: 10px;
   }
 
-  /* 색상 게임 - PC 비율 유지 */
+  /* 색상 게임 */
   .color-game-area {
     gap: 25px;
     padding: 20px;
@@ -708,7 +711,7 @@ body {
     border-radius: 12px;
   }
 
-  /* 도구 영역 - PC 비율 유지 */
+  /* 도구 영역 */
   .tool-area {
     padding: 25px 20px;
     position: relative;
@@ -738,7 +741,7 @@ body {
     font-size: 14px;
   }
 
-  /* 색상 팔레트 - PC 비율 유지 */
+  /* 색상 팔레트 */
   .color-palette {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
@@ -820,7 +823,7 @@ body {
   /* 소개/정보 페이지 */
   .about-content {
     padding: 25px 20px;
-    order: 1;
+    order: 2 !important;
   }
 
   .about-card {
@@ -839,7 +842,7 @@ body {
   /* 사이트맵 */
   .sitemap-container {
     grid-template-columns: 1fr;
-    padding: 20px 0; /* 좌우 패딩은 상위에서 처리 */
+    padding: 20px 0;
     gap: 20px;
   }
 
@@ -862,20 +865,20 @@ body {
   /* 모바일 광고 최적화 */
   .mobile-ads {
     padding: 25px 15px;
-    margin-top: 40px;
-    order: 10; /* 가장 마지막에 표시 */
+    margin: 40px 0;
+    order: 10 !important;
   }
 
   .mobile-ads .ad-slot {
     max-width: 100%;
-    height: 80px;
+    height: 40px; /* 728x40px */
   }
 
   /* 푸터 모바일 최적화 */
   .footer-info {
     padding: 20px 15px;
-    order: 20; /* 광고 다음에 표시 */
-    margin-top: 40px; /* 광고와 확실한 간격 */
+    order: 20 !important;
+    margin-top: 40px;
   }
 
   /* 모바일에서 푸터 그리드 2x2 */
@@ -892,7 +895,7 @@ body {
 
   .footer-language {
     margin-top: 20px;
-    order: 30; /* 가장 마지막에 표시 */
+    order: 30 !important;
   }
 
   .footer-lang-buttons {
@@ -908,8 +911,8 @@ body {
 /* ===== 소형 모바일 (479px 이하) ===== */
 @media (max-width: 479px) {
   .main-container {
-    margin-top: 140px; /* 소형 모바일에서 헤더가 더 높음 */
-    padding: 0 10px; /* 더 작은 좌우 간격 */
+    margin-top: 150px;
+    padding: 0 10px;
   }
 
   .header-container {
@@ -925,10 +928,9 @@ body {
     font-size: 13px;
   }
 
-  /* 배너 */
   .hero-banner {
     height: 180px;
-    margin: 0 -10px; /* 상위 패딩 상쇄 */
+    margin: 0 -10px;
   }
 
   .banner-title {
@@ -940,12 +942,10 @@ body {
     padding: 0 15px;
   }
 
-  /* 사이드바 */
   .sidebar {
-    margin: 0 -10px; /* 상위 패딩 상쇄 */
+    margin: 0 -10px 20px -10px;
   }
 
-  /* 게임 영역 */
   .game-area {
     min-height: 380px;
   }
@@ -955,7 +955,6 @@ body {
     height: 60px;
   }
 
-  /* 메모리 게임 */
   .memory-grid {
     max-width: 280px;
     gap: 8px;
@@ -967,7 +966,6 @@ body {
     font-size: 16px;
   }
 
-  /* 색상 게임 */
   .color-options {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -978,7 +976,6 @@ body {
     height: 70px;
   }
 
-  /* 도구 */
   .color-palette {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -999,7 +996,6 @@ body {
     gap: 12px;
   }
 
-  /* 모바일 광고 및 푸터 */
   .mobile-ads {
     padding: 20px 10px;
   }
@@ -1012,42 +1008,6 @@ body {
     grid-template-columns: 1fr;
     gap: 8px;
     max-width: 280px;
-  }
-}
-
-/* ===== 가로 모드 최적화 ===== */
-@media (max-width: 767px) and (orientation: landscape) {
-  .main-container {
-    margin-top: 100px;
-  }
-
-  .hero-banner {
-    height: 150px;
-  }
-
-  .banner-title {
-    font-size: 20px;
-  }
-
-  .banner-subtitle {
-    font-size: 12px;
-  }
-
-  .game-area {
-    min-height: 280px;
-  }
-
-  .sidebar {
-    padding: 15px 20px;
-  }
-
-  .game-list {
-    gap: 8px;
-  }
-
-  .game-item {
-    padding: 8px 15px;
-    font-size: 12px;
   }
 }
 
@@ -1078,40 +1038,45 @@ body {
   }
 }
 
-/* ===== 간격 확보를 위한 추가 규칙 ===== */
+/* ===== 레이아웃 강제 고정 규칙 ===== */
 
-/* 모든 주요 섹션 간 최소 간격 보장 */
-.hero-banner,
-.sitemap-container,
-.game-header,
-.game-area,
-.tool-area,
-.about-card,
-.mobile-ads,
-.footer-info {
-  margin-bottom: 20px;
+/* 모든 페이지에서 order 속성 강제 적용 */
+.games-container .sidebar,
+.tools-container .sidebar {
+  order: 1 !important;
+}
+
+.games-container .game-content,
+.tools-container .game-content {
+  order: 2 !important;
+}
+
+.games-container .ad-sidebar,
+.tools-container .ad-sidebar {
+  order: 3 !important;
+}
+
+.about-container .about-content {
+  order: 2 !important;
+}
+
+.about-container .ad-sidebar {
+  order: 3 !important;
 }
 
 /* 광고 영역과 다른 요소 간 겹침 완전 방지 */
 .mobile-ads {
   position: relative;
-  z-index: 1;
+  z-index: 5;
   clear: both;
-  overflow: hidden;
+  isolation: isolate;
 }
 
-.mobile-ads::before,
-.mobile-ads::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* 푸터가 항상 광고 아래 나타나도록 보장 */
 .footer-info {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   clear: both;
+  isolation: isolate;
 }
 
 /* 컨테이너 간 확실한 분리 */
@@ -1124,37 +1089,24 @@ body {
   content: "";
   display: block;
   clear: both;
+  height: 0;
 }
 
-/* 사이드바와 콘텐츠 간 확실한 분리 (모든 화면 크기) */
-@media (min-width: 768px) {
-  .games-container,
-  .tools-container,
-  .about-container {
-    display: flex;
-    gap: 20px;
-  }
-
-  .sidebar {
-    flex-shrink: 0;
-    position: relative;
-    z-index: 100;
-  }
-
-  .game-content,
-  .about-content {
-    flex: 1;
-    min-width: 0; /* Flexbox에서 축소 방지 */
-    position: relative;
-    z-index: 1;
-  }
+/* 간격 확보를 위한 추가 규칙 */
+.hero-banner,
+.sitemap-container,
+.game-header,
+.game-area,
+.tool-area,
+.about-card {
+  margin-bottom: 20px;
 }
 
-/* 광고 영역 고유 스타일링 (겹침 방지) */
+/* 광고 영역 고유 스타일링 */
 .ad-slot {
   position: relative;
   z-index: 1;
-  isolation: isolate; /* 새로운 스택 컨텍스트 생성 */
+  isolation: isolate;
 }
 
 .mobile-ads .ad-slot {
@@ -1163,11 +1115,68 @@ body {
   isolation: isolate;
 }
 
-/* 반응형 간격 조정 */
+/* 동적 페이지 전환 시에도 레이아웃 유지 */
+.page.active .games-container,
+.page.active .tools-container,
+.page.active .about-container {
+  display: flex !important;
+}
+
+/* PC에서 가로 배치 강제 */
 @media (min-width: 1200px) {
-  .games-container,
-  .tools-container,
-  .about-container {
-    gap: 30px;
+  .page.active .games-container,
+  .page.active .tools-container,
+  .page.active .about-container {
+    flex-direction: row !important;
   }
+}
+
+/* 태블릿에서 가로 배치 강제 */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .page.active .games-container,
+  .page.active .tools-container,
+  .page.active .about-container {
+    flex-direction: row !important;
+  }
+}
+
+/* 모바일에서 세로 배치 강제 */
+@media (max-width: 767px) {
+  .page.active .games-container,
+  .page.active .tools-container,
+  .page.active .about-container {
+    flex-direction: column !important;
+  }
+
+  .page.active .sidebar {
+    order: 1 !important;
+    width: 100% !important;
+    margin: 0 -15px 20px -15px !important;
+  }
+
+  .page.active .game-content,
+  .page.active .about-content {
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  .page.active .ad-sidebar {
+    display: none !important;
+  }
+}
+
+/* 홈에서 다른 페이지로 이동 시 레이아웃 재설정 */
+.page:not(.active) {
+  display: none !important;
+}
+
+.page.active {
+  display: block !important;
+}
+
+/* 사이드바 고정 높이 방지 (스크롤 허용) */
+.sidebar {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }

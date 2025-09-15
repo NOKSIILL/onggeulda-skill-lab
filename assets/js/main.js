@@ -1,7 +1,56 @@
 // 전역 변수
 let currentLanguage = "ko";
 
-// 페이지 전환 함수
+// 레이아웃 강제 재설정 함수
+function forceLayoutReset() {
+  // 모든 컨테이너의 레이아웃 강제 재설정
+  const containers = document.querySelectorAll(
+    ".games-container, .tools-container, .about-container"
+  );
+
+  containers.forEach((container) => {
+    // 기존 스타일 속성 제거
+    container.removeAttribute("style");
+
+    // 화면 크기에 따른 강제 레이아웃 설정
+    const width = window.innerWidth;
+
+    if (width >= 1200) {
+      // PC: 가로 배치
+      container.style.cssText =
+        "display: flex !important; flex-direction: row !important; gap: 30px !important;";
+    } else if (width >= 768) {
+      // 태블릿: 가로 배치
+      container.style.cssText =
+        "display: flex !important; flex-direction: row !important; gap: 20px !important;";
+    } else {
+      // 모바일: 세로 배치
+      container.style.cssText =
+        "display: flex !important; flex-direction: column !important; gap: 0 !important;";
+    }
+  });
+
+  // 사이드바와 콘텐츠 순서 강제 재설정
+  const sidebars = document.querySelectorAll(".sidebar");
+  const gameContents = document.querySelectorAll(
+    ".game-content, .about-content"
+  );
+  const adSidebars = document.querySelectorAll(".ad-sidebar");
+
+  sidebars.forEach((sidebar) => {
+    sidebar.style.order = "1";
+  });
+
+  gameContents.forEach((content) => {
+    content.style.order = "2";
+  });
+
+  adSidebars.forEach((adSidebar) => {
+    adSidebar.style.order = "3";
+  });
+}
+
+// 페이지 전환 함수 (개선된 버전)
 function showPage(page) {
   // 모든 페이지 숨기기
   document.querySelectorAll(".page").forEach((p) => {
@@ -14,15 +63,29 @@ function showPage(page) {
     .forEach((item) => item.classList.remove("active"));
 
   // 선택된 페이지만 보이기
-  document.getElementById(page + "Page").classList.add("active");
-  document
-    .getElementById("nav" + page.charAt(0).toUpperCase() + page.slice(1))
-    .classList.add("active");
+  const targetPage = document.getElementById(page + "Page");
+  if (targetPage) {
+    targetPage.classList.add("active");
+  }
+
+  const navItem = document.getElementById(
+    "nav" + page.charAt(0).toUpperCase() + page.slice(1)
+  );
+  if (navItem) {
+    navItem.classList.add("active");
+  }
+
+  // 레이아웃 강제 재설정
+  setTimeout(() => {
+    forceLayoutReset();
+  }, 50);
 
   // 페이지별 초기화
   if (page === "tools") {
-    generateColorPalette();
-    generateKeywords();
+    setTimeout(() => {
+      generateColorPalette();
+      generateKeywords();
+    }, 100);
   }
 }
 
@@ -31,14 +94,16 @@ let currentSlide = 0;
 const slides = document.querySelectorAll(".banner-slide");
 
 function nextSlide() {
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
+  if (slides.length > 0) {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
 }
 
 setInterval(nextSlide, 4000);
 
-// 게임 선택
+// 게임 선택 (개선된 버전)
 function selectGame(gameId) {
   // 사이드바 활성화 상태 변경
   document
@@ -75,9 +140,14 @@ function selectGame(gameId) {
     document.getElementById("colorMatchGame").style.display = "block";
     startColorGame();
   }
+
+  // 레이아웃 강제 재설정
+  setTimeout(() => {
+    forceLayoutReset();
+  }, 50);
 }
 
-// 도구 선택
+// 도구 선택 (개선된 버전)
 function selectTool(toolId) {
   // 사이드바 활성화 상태 변경
   document
@@ -113,8 +183,12 @@ function selectTool(toolId) {
   } else if (toolId === "text-transformer") {
     document.getElementById("textTransformerTool").style.display = "block";
   }
-}
 
+  // 레이아웃 강제 재설정
+  setTimeout(() => {
+    forceLayoutReset();
+  }, 50);
+}
 
 // DOM 로드 완료 후 초기 설정
 document.addEventListener("DOMContentLoaded", function () {
@@ -125,6 +199,9 @@ document.addEventListener("DOMContentLoaded", function () {
   generateColorPalette();
   generateKeywords();
 
+  // 초기 레이아웃 설정
+  forceLayoutReset();
+
   // 단위 변환기 이벤트 리스너
   const inputValue = document.getElementById("inputValue");
   const fromUnit = document.getElementById("fromUnit");
@@ -133,6 +210,15 @@ document.addEventListener("DOMContentLoaded", function () {
   if (inputValue) inputValue.addEventListener("input", convertUnits);
   if (fromUnit) fromUnit.addEventListener("change", convertUnits);
   if (toUnit) toUnit.addEventListener("change", convertUnits);
+
+  // 윈도우 리사이즈 시 레이아웃 재설정
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      forceLayoutReset();
+    }, 100);
+  });
 });
 
 // main.js에 추가할 반응형 기능들
@@ -232,6 +318,9 @@ class ResponsiveNavigation {
 
       // 뷰포트 높이 재계산
       DeviceUtils.setVH();
+
+      // 레이아웃 강제 재설정
+      forceLayoutReset();
 
       // 현재 활성화된 게임/도구가 있다면 레이아웃 재조정
       this.adjustActiveContent();
@@ -505,6 +594,7 @@ function initResponsiveFeatures() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       DeviceUtils.setVH();
+      forceLayoutReset();
     }, 100);
   });
 
@@ -512,6 +602,7 @@ function initResponsiveFeatures() {
   window.addEventListener("orientationchange", () => {
     setTimeout(() => {
       DeviceUtils.setVH();
+      forceLayoutReset();
     }, 500);
   });
 }
@@ -524,7 +615,7 @@ window.showCopyNotification = showCopyNotification;
 // 기존 selectGame 함수에 반응형 최적화 추가
 const originalSelectGame = window.selectGame;
 window.selectGame = function (gameId) {
-  originalSelectGame.call(this, gameId);
+  selectGame.call(this, gameId);
 
   // 모바일에서 게임 선택 후 사이드바를 하단으로 이동
   if (DeviceUtils.isMobile()) {
@@ -532,8 +623,8 @@ window.selectGame = function (gameId) {
     const gameContent = document.querySelector(".game-content");
 
     if (sidebar && gameContent) {
-      sidebar.style.order = "2";
-      gameContent.style.order = "1";
+      sidebar.style.order = "1";
+      gameContent.style.order = "2";
     }
   }
 };
@@ -541,7 +632,7 @@ window.selectGame = function (gameId) {
 // 기존 selectTool 함수에 반응형 최적화 추가
 const originalSelectTool = window.selectTool;
 window.selectTool = function (toolId) {
-  originalSelectTool.call(this, toolId);
+  selectTool.call(this, toolId);
 
   // 도구 선택 후 레이아웃 조정
   setTimeout(() => {
@@ -560,6 +651,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 반응형 기능 초기화
   initResponsiveFeatures();
 
+  // 초기 레이아웃 강제 설정
+  setTimeout(() => {
+    forceLayoutReset();
+  }, 100);
+
   // 단위 변환기 이벤트 리스너 (기존 코드)
   const inputValue = document.getElementById("inputValue");
   const fromUnit = document.getElementById("fromUnit");
@@ -570,32 +666,30 @@ document.addEventListener("DOMContentLoaded", function () {
   if (toUnit) toUnit.addEventListener("change", convertUnits);
 });
 
-
-
 // main.js에 추가할 언어 감지 및 개선된 언어 설정 함수
 
 // 기존 setLanguage 함수를 개선된 버전으로 교체
 function setLanguage(lang) {
   currentLanguage = lang;
-  
+
   // 언어 설정을 로컬 스토리지에 저장
-  localStorage.setItem('userLanguage', lang);
+  localStorage.setItem("userLanguage", lang);
 
   // 모든 언어 버튼의 활성화 상태 변경 (헤더 + 푸터)
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
-  
+
   // 클릭된 버튼이 있다면 활성화, 없다면 해당 언어 버튼들 모두 활성화
   if (event && event.target) {
-    event.target.classList.add('active');
+    event.target.classList.add("active");
     // 같은 언어의 다른 버튼도 활성화
     const langButtons = document.querySelectorAll(`[onclick*="'${lang}'"]`);
-    langButtons.forEach(btn => btn.classList.add('active'));
+    langButtons.forEach((btn) => btn.classList.add("active"));
   } else {
     // 자동 감지시에는 해당 언어 버튼들 모두 활성화
     const langButtons = document.querySelectorAll(`[onclick*="'${lang}'"]`);
-    langButtons.forEach(btn => btn.classList.add('active'));
+    langButtons.forEach((btn) => btn.classList.add("active"));
   }
 
   // HTML lang 속성 변경
@@ -621,7 +715,7 @@ function setLanguage(lang) {
     const keywordsMeta = document.getElementById("pageKeywords");
     const ogTitle = document.getElementById("ogTitle");
     const ogDesc = document.getElementById("ogDescription");
-    
+
     if (descMeta) descMeta.content = texts.pageDescription;
     if (keywordsMeta) keywordsMeta.content = texts.pageKeywords;
     if (ogTitle) ogTitle.content = texts.pageTitle;
@@ -631,7 +725,7 @@ function setLanguage(lang) {
 
 // 저장된 언어 설정 불러오기
 function loadSavedLanguage() {
-  const savedLang = localStorage.getItem('userLanguage');
+  const savedLang = localStorage.getItem("userLanguage");
   if (savedLang && translations[savedLang]) {
     setLanguage(savedLang);
     return true;
@@ -642,18 +736,18 @@ function loadSavedLanguage() {
 // 브라우저 언어 자동 감지
 function detectBrowserLanguage() {
   const browserLang = navigator.language || navigator.userLanguage;
-  
+
   // 한국어 감지 (ko, ko-KR 등)
-  if (browserLang.startsWith('ko')) {
-    return 'ko';
-  } 
+  if (browserLang.startsWith("ko")) {
+    return "ko";
+  }
   // 영어 감지 (en, en-US 등)
-  else if (browserLang.startsWith('en')) {
-    return 'en';
+  else if (browserLang.startsWith("en")) {
+    return "en";
   }
   // 기본값은 한국어
   else {
-    return 'ko';
+    return "ko";
   }
 }
 
@@ -663,27 +757,32 @@ function initializeLanguage() {
   if (loadSavedLanguage()) {
     return;
   }
-  
+
   // 2. 저장된 설정이 없으면 브라우저 언어 감지
   const detectedLang = detectBrowserLanguage();
   setLanguage(detectedLang);
 }
 
 // 기존 DOM 로드 완료 이벤트에 언어 초기화 추가
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // 언어 초기화 (가장 먼저 실행)
   initializeLanguage();
-  
+
   // 기존 초기화 코드들
   updateStats();
   generateColorPalette();
   generateKeywords();
-  
-  // 반응형 기능 초기화 (이전에 만든 것이 있다면)
-  if (typeof initResponsiveFeatures === 'function') {
+
+  // 반응형 기능 초기화
+  if (typeof initResponsiveFeatures === "function") {
     initResponsiveFeatures();
   }
-  
+
+  // 초기 레이아웃 강제 설정
+  setTimeout(() => {
+    forceLayoutReset();
+  }, 100);
+
   // 단위 변환기 이벤트 리스너
   const inputValue = document.getElementById("inputValue");
   const fromUnit = document.getElementById("fromUnit");
@@ -697,14 +796,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // 언어 변경 시 푸터 버튼 동기화를 위한 개선된 함수
 function syncLanguageButtons(selectedLang) {
   // 모든 언어 버튼 비활성화
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
-  
+
   // 선택된 언어의 모든 버튼 활성화
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
     if (btn.onclick && btn.onclick.toString().includes(`'${selectedLang}'`)) {
-      btn.classList.add('active');
+      btn.classList.add("active");
     }
   });
 }
