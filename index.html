@@ -15,9 +15,6 @@
     <meta name="author" content="Onggeulda Studio" />
     <meta name="robots" content="index, follow" />
 
-    <!-- netlify 연동 시 제거 -->
-    <base href="/onggeulda-skill-lab/" />
-
     <!-- Open Graph -->
     <meta
       property="og:title"
@@ -51,45 +48,14 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="/assets/css/responsive.css" />
+    <link rel="stylesheet" href="/onggeulda-skill-lab/assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="/onggeulda-skill-lab/assets/css/responsive.css"
+    />
 
     <!-- Canonical URL -->
     <!--<link rel="canonical" href="https://domain.com/" />-->
-    <script>
-      // GitHub Pages 환경 감지 및 자동 경로 수정
-      (function () {
-        if (location.hostname.includes("github.io")) {
-          const basePath = "/onggeulda-skill-lab";
-
-          // DOM 로드 완료 후 실행
-          document.addEventListener("DOMContentLoaded", function () {
-            // 모든 절대 경로를 찾아서 자동 수정
-            document
-              .querySelectorAll(
-                'link[href^="/"], script[src^="/"], img[src^="/"], a[href^="/"]'
-              )
-              .forEach((el) => {
-                const attr =
-                  el.tagName === "LINK"
-                    ? "href"
-                    : el.tagName === "A"
-                    ? "href"
-                    : "src";
-                const path = el.getAttribute(attr);
-
-                if (
-                  path &&
-                  !path.startsWith(basePath) &&
-                  !path.startsWith("http")
-                ) {
-                  el.setAttribute(attr, basePath + path);
-                }
-              });
-          });
-        }
-      })();
-    </script>
   </head>
   <body>
     <!-- 헤더 -->
@@ -128,25 +94,25 @@
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/fps-aim.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/games/fps-aim.html'"
                 >
                   🎯 FPS 에임 훈련
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/reaction-test.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/games/reaction-test.html'"
                 >
                   🎲 반응속도 테스트
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/memory-game.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/games/memory-game.html'"
                 >
                   🎪 메모리 게임
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/color-match.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/games/color-match.html'"
                 >
                   🎨 색깔 맞추기
                 </li>
@@ -158,25 +124,25 @@
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/color-palette.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/tools/color-palette.html'"
                 >
                   🎨 색상 팔레트 생성기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/keywords.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/tools/keywords.html'"
                 >
                   💡 오늘의 키워드
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/unit-converter.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/tools/unit-converter.html'"
                 >
                   📏 단위 변환기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/text-transformer.html'"
+                  onclick="window.location.href='/onggeulda-skill-lab/tools/text-transformer.html'"
                 >
                   🔤 텍스트 변환기
                 </li>
@@ -246,9 +212,9 @@
     <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
 
     <!-- JavaScript -->
-    <script src="/assets/js/i18n/translations.js"></script>
-    <script src="/assets/js/utils/helpers.js"></script>
-    <script src="/shared/components.js"></script>
+    <script src="/onggeulda-skill-lab/assets/js/i18n/translations.js"></script>
+    <script src="/onggeulda-skill-lab/assets/js/utils/helpers.js"></script>
+    <script src="/onggeulda-skill-lab/shared/components.js"></script>
     <script>
       // 배너 슬라이드 기능
       let currentSlide = 0;
