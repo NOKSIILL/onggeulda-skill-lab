@@ -230,7 +230,7 @@ body {
   background: rgba(0, 255, 136, 0.2);
 }
 
-/* ===== PC 전용 (1200px 이상) ===== */
+/* ===== PC 전용 (1200px 이상) - 광고바 위치 수정 ===== */
 @media (min-width: 1200px) {
   .desktop-only {
     display: block !important;
@@ -249,12 +249,17 @@ body {
     padding: 0 40px;
   }
 
-  /* 홈 레이아웃 - 푸터 페이지들 */
+  /* 홈 레이아웃 - 푸터 페이지들도 광고바와 함께 표시 */
   .home-layout {
     display: flex;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .home-content {
+    flex: 1;
+    min-width: 0;
   }
 
   /* 게임/도구 컨테이너 */
@@ -263,13 +268,6 @@ body {
     display: flex !important;
     flex-direction: row !important;
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* about 페이지 등 정보 페이지는 일반 레이아웃 */
-  .about-container {
-    display: block !important;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -289,16 +287,19 @@ body {
   }
 
   .about-content {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     padding: 40px 20px;
   }
 
-  /* 광고 사이드바 - PC에서 오른쪽에 표시 */
+  /* 광고 사이드바 - PC에서 항상 오른쪽에 표시 */
   .ad-sidebar {
     display: flex !important;
     order: 3 !important;
     width: 200px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
   }
 
   /* 푸터 그리드는 4x1 유지 */
