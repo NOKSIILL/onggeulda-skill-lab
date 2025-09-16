@@ -193,46 +193,42 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding: 0px 20px;
   position: relative;
-  width: 200px;
 }
 
 .ad-slot {
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
-  padding: 20px;
   text-align: center;
-  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 140px;
+  height: 450px;
 }
 
 .mobile-ads {
   display: none;
-  width: 100%;
   position: relative;
   z-index: 5;
   clear: both;
   margin: 40px 0;
+  width: 100%;
 }
 
 .mobile-ads .ad-container {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
   padding: 0 20px;
+  max-width: 1200px;
 }
 
 .mobile-ads .ad-slot {
-  width: 100%;
-  max-width: 728px;
-  height: 100px;
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
   display: flex;
@@ -240,6 +236,9 @@ body {
   justify-content: center;
   text-align: center;
   padding: 5px;
+  width: 100%;
+  max-width: 728px;
+  height: 100px;
 }
 
 /* ===== 푸터 그리드 레이아웃 ===== */
@@ -419,8 +418,8 @@ body {
     gap: 20px;
     padding: 20px;
     width: 200px;
-    order: 3 !important;
-    flex-shrink: 0;
+    /*order: 3 !important;
+    flex-shrink: 0;*/
   }
 
   /* 푸터 그리드는 4x1 유지 */
@@ -502,6 +501,15 @@ body {
     display: none !important;
   }
 
+  /* 광고 사이드바 숨김, 모바일 광고 표시 */
+  .ad-sidebar {
+    display: none !important;
+  }
+
+  .mobile-ads {
+    display: block !important;
+  }
+
   /* 토글 버튼 표시 */
   .sidebar-toggle {
     display: block !important;
@@ -521,15 +529,6 @@ body {
   .main-container {
     margin-top: 90px;
     padding: 0 20px;
-  }
-
-  /* 광고 사이드바 숨김, 모바일 광고 표시 */
-  .ad-sidebar {
-    display: none !important;
-  }
-
-  .mobile-ads {
-    display: block !important;
   }
 
   /* 홈 레이아웃 */
@@ -631,6 +630,15 @@ body {
     display: block !important;
   }
 
+  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
+  .ad-sidebar {
+    display: none !important;
+  }
+
+  .mobile-ads {
+    display: block !important;
+  }
+
   /* 토글 버튼 표시 */
   .sidebar-toggle {
     display: block !important;
@@ -654,15 +662,6 @@ body {
   .main-container {
     margin-top: 130px;
     padding: 0 15px;
-  }
-
-  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
-  .ad-sidebar {
-    display: none !important;
-  }
-
-  .mobile-ads {
-    display: block !important;
   }
 
   /* 홈 레이아웃 모바일 버전 */
