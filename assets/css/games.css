@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: 600px;
+  max-height: 650px;
   margin-top: 10px;
 }
 
@@ -366,8 +366,8 @@
 }
 
 .color-option {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;

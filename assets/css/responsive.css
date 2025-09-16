@@ -610,7 +610,7 @@ body {
   }
 
   .game-area {
-    min-height: 500px;
+    max-height: 500px;
   }
 
   .tool-header {
@@ -623,7 +623,7 @@ body {
   }
 
   .tool-area {
-    min-height: 500px;
+    max-height: 500px;
   }
 
   /* 푸터 그리드 태블릿에서 4x1 */
@@ -771,15 +771,15 @@ body {
   }
 
   .game-area {
-    height: 450px;
+    max-height: 450px;
   }
 
   .game-area-aim {
-    height: 500px;
+    max-height: 500px;
   }
 
   .game-area-memory {
-    height: 400px;
+    max-height: 400px;
   }
 
   .start-title {
@@ -844,7 +844,7 @@ body {
   }
 
   .tool-area {
-    height: 450px;
+    max-height: 450px;
   }
 
   /* 푸터 모바일에서 2x2 */
@@ -914,10 +914,6 @@ body {
   .banner-subtitle {
     font-size: 13px;
     padding: 0 15px;
-  }
-
-  .game-area {
-    min-height: 380px;
   }
 
   .mobile-ads {
