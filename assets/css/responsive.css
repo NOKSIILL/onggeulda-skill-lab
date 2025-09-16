@@ -988,9 +988,9 @@ body {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    max-width: 280px;
+    max-width: 230px;
   }
 
   .ads-hide {
