@@ -20,6 +20,10 @@
   backdrop-filter: blur(10px);
 }
 
+.game-header-column {
+  display: column;
+}
+
 .game-title {
   font-size: 24px;
   font-weight: bold;
