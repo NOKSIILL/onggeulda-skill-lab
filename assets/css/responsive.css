@@ -620,6 +620,10 @@ body {
     max-height: 580px;
   }
 
+  .reaction-area {
+    height: 570px;
+  }
+
   .memory-grid {
     gap: 13px;
   }
@@ -796,6 +800,10 @@ body {
     max-height: 510px;
   }
 
+  .reaction-area {
+    height: 500px;
+  }
+
   .start-title {
     font-size: 24px;
   }
@@ -855,6 +863,10 @@ body {
   .target-color {
     width: 120px;
     height: 120px;
+  }
+
+  .color-options {
+    gap: 10px;
   }
 
   .color-option {
