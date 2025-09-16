@@ -621,7 +621,7 @@ body {
   }
 
   .reaction-area {
-    height: 570px;
+    height: 560px;
   }
 
   .memory-grid {
@@ -630,6 +630,15 @@ body {
 
   .memory-controls {
     margin-top: 10px;
+  }
+
+  .color-game-area {
+    gap: 25px;
+    padding: 35px;
+  }
+
+  .color-options {
+    gap: 15px;
   }
 
   .tool-header {
@@ -801,7 +810,7 @@ body {
   }
 
   .reaction-area {
-    height: 500px;
+    height: 490px;
   }
 
   .start-title {
@@ -853,6 +862,11 @@ body {
 
   .memory-controls {
     margin-top: 5px;
+  }
+
+  .color-game-area {
+    gap: 20px;
+    padding: 30px;
   }
 
   .color-instruction {
