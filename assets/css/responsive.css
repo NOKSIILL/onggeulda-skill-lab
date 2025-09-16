@@ -774,19 +774,6 @@ body {
     min-height: 500px;
   }
 
-  .tool-header {
-    padding: 15px 20px;
-    margin-top: 40px;
-  }
-
-  .tool-title {
-    font-size: 18px;
-  }
-
-  .tool-area {
-    min-height: 500px;
-  }
-
   .start-title {
     font-size: 24px;
   }
@@ -798,10 +785,12 @@ body {
 
   .game-over-title {
     font-size: 24px;
+    margin-bottom: 20px;
   }
 
   .final-stats {
     gap: 10px;
+    margin-bottom: 20px;
   }
 
   .final-stat-value {
@@ -809,6 +798,19 @@ body {
   }
   .final-stat-label {
     font-size: 14px;
+  }
+
+  .tool-header {
+    padding: 15px 20px;
+    margin-top: 40px;
+  }
+
+  .tool-title {
+    font-size: 18px;
+  }
+
+  .tool-area {
+    min-height: 500px;
   }
 
   /* 푸터 모바일에서 2x2 */
