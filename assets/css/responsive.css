@@ -418,8 +418,8 @@ body {
     gap: 20px;
     padding: 20px;
     width: 200px;
-    /*order: 3 !important;
-    flex-shrink: 0;*/
+    order: 3 !important;
+    flex-shrink: 0;
   }
 
   /* 푸터 그리드는 4x1 유지 */
