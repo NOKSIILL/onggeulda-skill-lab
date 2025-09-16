@@ -620,9 +620,12 @@ body {
     max-height: 600px;
   }
 
-  .game-area-memory {
-    min-height: 610px;
-    max-height: 620px;
+  .memory-grid {
+    gap: 13px;
+  }
+
+  .memory-controls {
+    margin-top: 10px;
   }
 
   .tool-header {
@@ -775,7 +778,7 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .game-title {
@@ -784,18 +787,13 @@ body {
 
   .game-area-aim,
   .game-area-reaction {
-    min-height: 520px;
-    max-height: 530px;
+    min-height: 500px;
+    max-height: 510px;
   }
 
   .game-area {
     min-height: 540px;
     max-height: 550px;
-  }
-
-  .game-area-memory {
-    min-height: 560px;
-    max-height: 570px;
   }
 
   .start-title {
@@ -833,9 +831,17 @@ body {
   .memory-instructions p {
     font-size: 12px;
   }
+
   .memory-grid {
     gap: 10px;
   }
+
+  .memory-card {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+
   .memory-controls {
     margin-top: 5px;
   }
@@ -857,7 +863,7 @@ body {
 
   .tool-header {
     padding: 15px 20px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .tool-title {
