@@ -621,7 +621,7 @@ body {
   }
 
   .reaction-area {
-    height: 560px;
+    height: 550px;
   }
 
   .memory-grid {
@@ -810,7 +810,7 @@ body {
   }
 
   .reaction-area {
-    height: 490px;
+    height: 470px;
   }
 
   .start-title {
@@ -847,7 +847,8 @@ body {
   }
 
   .memory-instructions p {
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .memory-grid {
