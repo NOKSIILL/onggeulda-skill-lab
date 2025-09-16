@@ -4,11 +4,39 @@
   height: calc(100vh - 70px);
 }
 
+/* 초기 순서 명시적 설정 - JavaScript 로딩 전에도 올바른 순서 유지 */
+.tools-container .sidebar {
+  order: 1;
+  width: 250px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-right: 1px solid rgba(0, 255, 136, 0.3);
+  flex-shrink: 0;
+}
+
 .tool-content {
+  order: 2;
   flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+}
+
+.tools-container .ad-sidebar {
+  order: 3;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.tools-container .sidebar h3 {
+  color: #00ff88;
+  margin-bottom: 20px;
+  font-size: 18px;
 }
 
 /* 도구 헤더 - 게임 헤더와 동일한 디자인 */
@@ -68,20 +96,6 @@
   min-height: 500px;
   padding: 40px;
   gap: 30px;
-}
-
-/* 도구 사이드바 - 게임 사이드바와 동일한 디자인 적용 */
-.tools-container .sidebar {
-  width: 250px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-right: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-.tools-container .sidebar h3 {
-  color: #00ff88;
-  margin-bottom: 20px;
-  font-size: 18px;
 }
 
 .tool-list {
@@ -312,4 +326,43 @@
 .copy-result {
   align-self: center;
   padding: 12px 30px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .tools-container .sidebar {
+    width: 200px;
+    order: 1;
+  }
+
+  .tool-content {
+    order: 2;
+  }
+
+  .tools-container .ad-sidebar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .tools-container {
+    flex-direction: column;
+  }
+
+  .tools-container .sidebar {
+    order: 1;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    margin: 0 -15px 20px -15px;
+  }
+
+  .tool-content {
+    order: 2;
+    width: 100%;
+  }
+
+  .tools-container .ad-sidebar {
+    display: none !important;
+  }
 }
