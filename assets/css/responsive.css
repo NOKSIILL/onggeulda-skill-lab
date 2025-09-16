@@ -599,6 +599,7 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 25px;
+    text-align: center;
   }
 
   .game-title {
@@ -746,6 +747,7 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
+    text-align: center;
   }
 
   .game-title {
