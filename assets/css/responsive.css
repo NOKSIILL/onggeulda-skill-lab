@@ -810,6 +810,11 @@ body {
     margin-bottom: 5px;
   }
 
+  .target-color {
+    width: 100px;
+    height: 100px;
+  }
+
   .tool-header {
     padding: 15px 20px;
     margin-top: 40px;
