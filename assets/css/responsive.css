@@ -203,7 +203,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   text-align: center;
-  height: 300px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -232,7 +232,7 @@ body {
 .mobile-ads .ad-slot {
   width: 100%;
   max-width: 728px;
-  height: 70px;
+  height: 140px;
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
   display: flex;
