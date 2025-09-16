@@ -249,10 +249,12 @@ body {
     padding: 0 40px;
   }
 
-  /* 홈 레이아웃 */
+  /* 홈 레이아웃 - 푸터 페이지들 */
   .home-layout {
     display: flex;
     gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   /* 게임/도구 컨테이너 */
@@ -261,6 +263,8 @@ body {
     display: flex !important;
     flex-direction: row !important;
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   /* about 페이지 등 정보 페이지는 일반 레이아웃 */
@@ -290,9 +294,11 @@ body {
     padding: 40px 20px;
   }
 
+  /* 광고 사이드바 - PC에서 오른쪽에 표시 */
   .ad-sidebar {
     display: flex !important;
     order: 3 !important;
+    width: 200px;
   }
 
   /* 푸터 그리드는 4x1 유지 */
@@ -388,9 +394,7 @@ body {
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
 
   .game-content {
@@ -403,6 +407,21 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
+  }
+
+  /* 태블릿에서 게임 리스트 가로 정렬 */
+  .games-container .game-list,
+  .tools-container .game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* 푸터 페이지들의 사이드바는 기본 스타일 유지 */
+  .home-layout .game-list {
+    display: block;
   }
 
   /* 헤더 조정 */
@@ -523,15 +542,7 @@ body {
     max-width: 400px;
   }
 
-  /* 태블릿 사이드바 가운데 정렬 */
-  .game-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    width: 100%;
-  }
-
+  /* 태블릿 사이드바 아이템 가로 정렬 */
   .game-item,
   .tool-item {
     flex: 0 0 auto;
@@ -607,16 +618,32 @@ body {
     display: block !important;
   }
 
-  /* 사이드바 - 항상 맨 위에 배치 */
-  .sidebar {
-    width: 200px;
-    padding: 20px;
-    border-right: 1px solid rgba(0, 255, 136, 0.3);
-    border-bottom: none;
+  /* 게임/도구 페이지 사이드바 - 가운데 정렬 */
+  .games-container .sidebar,
+  .tools-container .sidebar {
     order: 1 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    margin: 0 -15px 20px -15px;
+    position: relative;
+    z-index: 200;
+    text-align: center;
+  }
+
+  /* 푸터 페이지들의 사이드바는 기본 스타일 (가운데 정렬 안함) */
+  .home-layout .sidebar {
+    order: 1 !important;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    margin: 0 -15px 20px -15px;
+    position: relative;
+    z-index: 200;
   }
 
   /* 콘텐츠 - 사이드바 다음에 배치 */
@@ -680,13 +707,19 @@ body {
     line-height: 1.4;
   }
 
-  /* 모바일 사이드바 가운데 정렬 */
-  .game-list {
+  /* 모바일에서 게임 리스트 가로 정렬 */
+  .games-container .game-list,
+  .tools-container .game-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     width: 100%;
+  }
+
+  /* 푸터 페이지들의 게임 리스트는 기본 스타일 유지 */
+  .home-layout .game-list {
+    display: block;
   }
 
   .game-item,
@@ -1042,14 +1075,7 @@ body {
   }
 
   .sidebar {
-    width: 200px;
-    padding: 20px;
-    border-right: 1px solid rgba(0, 255, 136, 0.3);
-    border-bottom: none;
-    order: 1 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 -10px 20px -10px;
   }
 
   .game-area {
