@@ -221,9 +221,34 @@ class ComponentLoader {
     const contents = document.querySelectorAll(".game-content, .about-content");
     const adSidebars = document.querySelectorAll(".ad-sidebar");
 
-    sidebars.forEach((sidebar) => (sidebar.style.order = "1"));
-    contents.forEach((content) => (content.style.order = "2"));
-    adSidebars.forEach((adSidebar) => (adSidebar.style.order = "3"));
+    sidebars.forEach((sidebar) => {
+      sidebar.style.order = "1";
+      // PC에서 사이드바 크기 고정
+      if (width >= 1200) {
+        sidebar.style.width = "250px";
+        sidebar.style.flexShrink = "0";
+      }
+    });
+
+    contents.forEach((content) => {
+      content.style.order = "2";
+      // PC에서 콘텐츠 flex 설정
+      if (width >= 1200) {
+        content.style.flex = "1";
+        content.style.minWidth = "0";
+      }
+    });
+
+    adSidebars.forEach((adSidebar) => {
+      adSidebar.style.order = "3";
+      // PC에서 광고바 크기 고정 - 이 부분이 핵심!
+      if (width >= 1200) {
+        adSidebar.style.display = "flex";
+        adSidebar.style.flexDirection = "column";
+        adSidebar.style.width = "200px";
+        adSidebar.style.flexShrink = "0";
+      }
+    });
   }
 
   // 초기화 함수
