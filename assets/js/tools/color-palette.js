@@ -7,7 +7,7 @@ function generateColorPalette() {
 
   const baseHue = Math.floor(Math.random() * 360);
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const hue = (baseHue + i * 30) % 360;
     const saturation = 60 + Math.floor(Math.random() * 40);
     const lightness = 40 + Math.floor(Math.random() * 40);
