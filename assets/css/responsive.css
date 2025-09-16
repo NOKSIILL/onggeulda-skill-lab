@@ -81,7 +81,7 @@ body {
   position: fixed;
   top: 100px; /* 헤더 아래쪽으로 이동 */
   left: 20px;
-  z-index: 9999;
+  z-index: 10002; /* 사이드바보다 높게 설정 */
   width: 50px;
   height: 50px;
   background: rgba(0, 255, 136, 0.9);
@@ -92,6 +92,7 @@ body {
   color: #1a1a2e;
   box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
   transition: all 0.3s ease;
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-toggle:hover {
@@ -118,6 +119,7 @@ body {
   transition: left 0.3s ease;
   overflow-y: auto;
   backdrop-filter: blur(15px);
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-mobile.open {
@@ -153,6 +155,7 @@ body {
   min-height: 50px;
   display: flex;
   align-items: center;
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-mobile .game-item:hover,
@@ -174,13 +177,15 @@ body {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 10000; /* 헤더보다 높지만 사이드바보다 낮게 */
+  z-index: 9999; /* 헤더보다 낮게, 사이드바보다 낮게 */
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none; /* 기본적으로 클릭 차단 */
 }
 
 .sidebar-overlay.open {
   opacity: 1;
+  pointer-events: auto; /* 열릴 때만 클릭 허용 */
 }
 
 /* ===== 광고 영역 기본 설정 ===== */
