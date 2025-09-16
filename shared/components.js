@@ -246,9 +246,11 @@ class ComponentLoader {
     mobileSidebar.classList.remove("open");
     overlay.classList.remove("open");
 
-    // 애니메이션 후 오버레이 숨기기
+    // 애니메이션 후 오버레이 숨기기 및 pointer-events 차단
     setTimeout(() => {
-      overlay.style.display = "none";
+      if (!overlay.classList.contains("open")) {
+        overlay.style.display = "none";
+      }
     }, 300);
 
     // 스크롤 복원
@@ -645,15 +647,12 @@ class ComponentLoader {
     // 인덱스 페이지에서는 토글 사이드바 완전 제거
     if (!pageId) {
       if (toggleBtn) {
-        toggleBtn.style.display = "none";
         toggleBtn.remove();
       }
       if (mobileSidebar) {
-        mobileSidebar.style.display = "none";
         mobileSidebar.remove();
       }
       if (overlay) {
-        overlay.style.display = "none";
         overlay.remove();
       }
       return;
@@ -663,9 +662,14 @@ class ComponentLoader {
       // PC에서는 토글 사이드바 숨김
       if (toggleBtn) toggleBtn.style.display = "none";
       if (mobileSidebar) mobileSidebar.style.display = "none";
-      if (overlay) overlay.style.display = "none";
+      if (overlay) {
+        overlay.style.display = "none";
+        overlay.classList.remove("open");
+      }
       // 사이드바가 열려있다면 닫기
       this.closeSidebar();
+      // 스크롤 복원
+      document.body.style.overflow = "";
     } else {
       // 모바일/태블릿에서는 토글 사이드바 표시 (pageId가 있는 경우만)
       if (toggleBtn) toggleBtn.style.display = "block";

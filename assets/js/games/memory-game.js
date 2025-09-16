@@ -81,7 +81,7 @@ function flipCard(event) {
         firstCard.textContent = "";
         secondCard.textContent = "";
         memoryState.flippedCards = [];
-      }, 1000);
+      }, 500);
     }
 
     updateMemoryStats();

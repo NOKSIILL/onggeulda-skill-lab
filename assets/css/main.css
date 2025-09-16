@@ -159,7 +159,7 @@ body {
 .sitemap-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
@@ -242,24 +242,22 @@ body {
 
 /* 광고 영역 */
 .ad-sidebar {
-  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  width: 180px;
 }
 
 .ad-slot {
   background: rgba(255, 255, 255, 0.05);
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
-  padding: 20px;
   text-align: center;
-  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 450px;
 }
 
 .ad-placeholder {

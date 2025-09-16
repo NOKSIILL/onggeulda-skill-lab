@@ -81,7 +81,7 @@ body {
   position: fixed;
   top: 100px; /* 헤더 아래쪽으로 이동 */
   left: 20px;
-  z-index: 9999;
+  z-index: 10002; /* 사이드바보다 높게 설정 */
   width: 50px;
   height: 50px;
   background: rgba(0, 255, 136, 0.9);
@@ -92,6 +92,7 @@ body {
   color: #1a1a2e;
   box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
   transition: all 0.3s ease;
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-toggle:hover {
@@ -118,6 +119,7 @@ body {
   transition: left 0.3s ease;
   overflow-y: auto;
   backdrop-filter: blur(15px);
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-mobile.open {
@@ -153,6 +155,7 @@ body {
   min-height: 50px;
   display: flex;
   align-items: center;
+  pointer-events: auto; /* 클릭 이벤트 보장 */
 }
 
 .sidebar-mobile .game-item:hover,
@@ -174,13 +177,15 @@ body {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 10000; /* 헤더보다 높지만 사이드바보다 낮게 */
+  z-index: 9999; /* 헤더보다 낮게, 사이드바보다 낮게 */
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none; /* 기본적으로 클릭 차단 */
 }
 
 .sidebar-overlay.open {
   opacity: 1;
+  pointer-events: auto; /* 열릴 때만 클릭 허용 */
 }
 
 /* ===== 광고 영역 기본 설정 ===== */
@@ -188,46 +193,42 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding: 0px 20px;
   position: relative;
-  width: 200px;
 }
 
 .ad-slot {
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
-  padding: 20px;
   text-align: center;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 140px;
+  height: 450px;
 }
 
 .mobile-ads {
   display: none;
-  width: 100%;
   position: relative;
   z-index: 5;
   clear: both;
   margin: 40px 0;
+  width: 100%;
 }
 
 .mobile-ads .ad-container {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
   padding: 0 20px;
+  max-width: 1200px;
 }
 
 .mobile-ads .ad-slot {
-  width: 100%;
-  max-width: 728px;
-  height: 40px;
   border: 1px dashed rgba(0, 255, 136, 0.3);
   border-radius: 8px;
   display: flex;
@@ -235,6 +236,17 @@ body {
   justify-content: center;
   text-align: center;
   padding: 5px;
+  width: 100%;
+  max-width: 728px;
+  height: 100px;
+}
+
+.about-container .ad-sidebar {
+  display: none !important;
+}
+
+.ads-hide {
+  display: none !important;
 }
 
 /* ===== 푸터 그리드 레이아웃 ===== */
@@ -331,14 +343,6 @@ body {
   background: rgba(0, 255, 136, 0.2);
 }
 
-.about-container .ad-sidebar {
-  display: none !important;
-}
-
-.about-container .mobile-ads {
-  display: none !important;
-}
-
 /* ===== PC 전용 (1200px 이상) ===== */
 @media (min-width: 1200px) {
   .desktop-only {
@@ -418,12 +422,6 @@ body {
     flex-shrink: 0;
   }
 
-  /* 푸터 그리드는 4x1 유지 */
-  .footer-grid {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 800px;
-  }
-
   /* 게임/도구 사이드바 - 세로 목록 */
   .game-list,
   .tool-list {
@@ -483,6 +481,16 @@ body {
     gap: 20px;
     align-items: flex-start;
   }
+
+  /* 푸터 그리드는 4x1 유지 */
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 800px;
+  }
+
+  .ads-hide {
+    display: none !important;
+  }
 }
 
 /* ===== 태블릿 (768px ~ 1199px) ===== */
@@ -495,6 +503,25 @@ body {
   }
   .mobile-only {
     display: none !important;
+  }
+
+  /* 광고 사이드바 숨김, 모바일 광고 표시 */
+  .ad-sidebar {
+    display: none !important;
+  }
+
+  .mobile-ads {
+    display: block !important;
+  }
+
+  .about-container {
+    display: block !important;
+  }
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
 
   /* 토글 버튼 표시 */
@@ -518,15 +545,6 @@ body {
     padding: 0 20px;
   }
 
-  /* 광고 사이드바 숨김, 모바일 광고 표시 */
-  .ad-sidebar {
-    display: none !important;
-  }
-
-  .mobile-ads {
-    display: block !important;
-  }
-
   /* 홈 레이아웃 */
   .home-layout {
     display: block;
@@ -543,16 +561,6 @@ body {
   .tool-content {
     width: 100%;
     order: 1 !important;
-  }
-
-  .about-container {
-    display: block !important;
-  }
-
-  .about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
   }
 
   /* 헤더 조정 */
@@ -598,20 +606,66 @@ body {
 
   .game-title {
     font-size: 22px;
+    margin-left: 40px;
   }
 
   .game-area {
-    min-height: 500px;
+    min-height: 590px;
+    max-height: 600px;
   }
 
-  .tool-area {
+  .game-area-aim,
+  .game-area-reaction {
+    min-height: 570px;
+    max-height: 580px;
+  }
+
+  .reaction-area {
+    height: 550px;
+  }
+
+  .memory-instructions {
+    margin-bottom: 10px;
+  }
+
+  .memory-grid {
+    gap: 13px;
+  }
+
+  .memory-controls {
+    margin-top: 10px;
+  }
+
+  .color-game-area {
+    gap: 25px;
     padding: 35px;
   }
 
-  /* 푸터 그리드 태블릿에서 2x2 */
+  .color-options {
+    gap: 15px;
+  }
+
+  .tool-header {
+    padding: 15px 20px;
+  }
+
+  .tool-title {
+    font-size: 22px;
+    margin-left: 40px;
+  }
+
+  .tool-area {
+    max-height: 600px;
+  }
+
+  /* 푸터 그리드 태블릿에서 4x1 */
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 400px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 800px;
+  }
+
+  .ads-hide {
+    display: none !important;
   }
 }
 
@@ -623,6 +677,24 @@ body {
   }
   .mobile-only {
     display: block !important;
+  }
+
+  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
+  .ad-sidebar {
+    display: none !important;
+  }
+
+  .mobile-ads {
+    display: block !important;
+  }
+
+  .about-container {
+    display: block !important;
+  }
+
+  .about-content {
+    max-width: 100%;
+    padding: 25px 20px;
   }
 
   /* 토글 버튼 표시 */
@@ -650,15 +722,6 @@ body {
     padding: 0 15px;
   }
 
-  /* 광고 사이드바 완전 제거, 모바일 광고 표시 */
-  .ad-sidebar {
-    display: none !important;
-  }
-
-  .mobile-ads {
-    display: block !important;
-  }
-
   /* 홈 레이아웃 모바일 버전 */
   .home-layout {
     display: block;
@@ -680,15 +743,6 @@ body {
   .tool-content {
     width: 100%;
     order: 1 !important;
-  }
-
-  .about-container {
-    display: block !important;
-  }
-
-  .about-content {
-    max-width: 100%;
-    padding: 25px 20px;
   }
 
   /* 헤더 모바일 최적화 */
@@ -741,6 +795,7 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
+    margin-top: 20px;
   }
 
   .game-title {
@@ -748,11 +803,107 @@ body {
   }
 
   .game-area {
-    min-height: 450px;
+    min-height: 540px;
+    max-height: 550px;
+  }
+
+  .game-area-aim,
+  .game-area-reaction {
+    min-height: 500px;
+    max-height: 510px;
+  }
+
+  .reaction-area {
+    height: 470px;
+  }
+
+  .start-title {
+    font-size: 24px;
+  }
+
+  .start-subtitle {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+
+  .game-over-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .final-stats {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .final-stat-value {
+    font-size: 20px;
+  }
+
+  .final-stat-label {
+    font-size: 14px;
+  }
+
+  .memory-instructions {
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 0 15px;
+  }
+
+  .memory-instructions p {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .memory-grid {
+    gap: 10px;
+  }
+
+  .memory-card {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+  }
+
+  .memory-controls {
+    margin-top: 5px;
+  }
+
+  .color-game-area {
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .color-instruction {
+    font-size: 15px;
+    margin: 0 auto;
+  }
+
+  .target-color {
+    width: 120px;
+    height: 120px;
+  }
+
+  .color-options {
+    gap: 10px;
+  }
+
+  .color-option {
+    width: 100px;
+    height: 100px;
+  }
+
+  .tool-header {
+    padding: 15px 20px;
+    margin-top: 20px;
+  }
+
+  .tool-title {
+    font-size: 18px;
   }
 
   .tool-area {
-    padding: 25px 20px;
+    max-height: 550px;
   }
 
   /* 푸터 모바일에서 2x2 */
@@ -783,6 +934,10 @@ body {
   .lang-btn {
     padding: 12px 20px;
     font-size: 14px;
+  }
+
+  .ads-hide {
+    display: none !important;
   }
 }
 
@@ -820,11 +975,11 @@ body {
     padding: 0 15px;
   }
 
-  .game-area {
-    min-height: 380px;
+  .mobile-ads {
+    padding: 20px 10px;
   }
 
-  .mobile-ads {
+  .about-content {
     padding: 20px 10px;
   }
 
@@ -838,8 +993,8 @@ body {
     max-width: 280px;
   }
 
-  .about-content {
-    padding: 20px 10px;
+  .ads-hide {
+    display: none !important;
   }
 }
 

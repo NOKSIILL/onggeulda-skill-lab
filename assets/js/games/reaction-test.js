@@ -46,7 +46,7 @@ function handleReactionClick() {
       reactionState.bestTime = reactionTime;
     }
 
-    text.textContent = `${reactionTime}ms! 클릭해서 다시 시도`;
+    text.textContent = `${reactionTime}ms!  클릭해서 다시 시도`;
     area.className = "reaction-area";
     reactionState.isWaiting = false;
 
@@ -54,7 +54,7 @@ function handleReactionClick() {
     updateReactionStats();
   } else {
     // 너무 빨리 클릭
-    text.textContent = "너무 빨라요! 클릭해서 다시 시도";
+    text.textContent = "너무 빨라요!  클릭해서 다시 시도";
     area.className = "reaction-area";
     reactionState.isWaiting = false;
   }
