@@ -356,14 +356,6 @@ body {
     display: none !important;
   }
 
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
-  }
-
   /* 토글 버튼 숨김 */
   .sidebar-toggle {
     display: none !important;
@@ -430,12 +422,6 @@ body {
     flex-shrink: 0;
   }
 
-  /* 푸터 그리드는 4x1 유지 */
-  .footer-grid {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 800px;
-  }
-
   /* 게임/도구 사이드바 - 세로 목록 */
   .game-list,
   .tool-list {
@@ -495,6 +481,20 @@ body {
     gap: 20px;
     align-items: flex-start;
   }
+
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
+  }
+
+  /* 푸터 그리드는 4x1 유지 */
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 800px;
+  }
 }
 
 /* ===== 태블릿 (768px ~ 1199px) ===== */
@@ -526,14 +526,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-  }
-
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
   }
 
   /* 토글 버튼 표시 */
@@ -629,10 +621,18 @@ body {
     padding: 35px;
   }
 
-  /* 푸터 그리드 태블릿에서 2x2 */
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
+  }
+
+  /* 푸터 그리드 태블릿에서 4x1 */
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 400px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 800px;
   }
 }
 
@@ -653,14 +653,6 @@ body {
 
   .mobile-ads {
     display: block !important;
-  }
-
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
   }
 
   .about-container {
@@ -784,6 +776,14 @@ body {
     padding: 25px 20px;
   }
 
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
+  }
+
   /* 푸터 모바일에서 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -817,14 +817,6 @@ body {
 
 /* ===== 소형 모바일 (479px 이하) ===== */
 @media (max-width: 479px) {
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
-  }
-
   .main-container {
     margin-top: 150px;
     padding: 0 10px;
@@ -865,6 +857,17 @@ body {
     padding: 20px 10px;
   }
 
+  .about-content {
+    padding: 20px 10px;
+  }
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
+  }
+
   .footer-info {
     padding: 20px 10px;
   }
@@ -873,10 +876,6 @@ body {
     grid-template-columns: 1fr;
     gap: 8px;
     max-width: 280px;
-  }
-
-  .about-content {
-    padding: 20px 10px;
   }
 }
 
