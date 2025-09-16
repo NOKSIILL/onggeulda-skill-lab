@@ -1,4 +1,4 @@
-// 공통 컴포넌트 로더 시스템
+// 공통 컴포넌트 로더 시스템 + 강화된 다국어 지원
 class ComponentLoader {
   static async loadComponent(selector, componentPath) {
     try {
@@ -92,14 +92,16 @@ class ComponentLoader {
       });
     });
 
-    // 푸터 언어 버튼 이벤트 - 강화된 다국어 지원
+    // 강화된 언어 버튼 이벤트
     this.initLanguageButtons();
   }
 
-  // 언어 버튼 초기화 함수 분리
+  // 강화된 언어 버튼 초기화
   static initLanguageButtons() {
+    console.log("Initializing language buttons...");
+
     // 여러 번 시도하여 확실히 바인딩
-    const attempts = [0, 100, 300, 500];
+    const attempts = [0, 100, 300, 500, 1000];
 
     attempts.forEach((delay) => {
       setTimeout(() => {
@@ -110,71 +112,51 @@ class ComponentLoader {
 
         langButtons.forEach((btn) => {
           // 기존 이벤트 리스너 제거 (중복 방지)
-          btn.removeEventListener("click", this.handleLanguageChange);
+          const newBtn = btn.cloneNode(true);
+          btn.parentNode.replaceChild(newBtn, btn);
 
           // 새 이벤트 리스너 추가
-          btn.addEventListener("click", this.handleLanguageChange);
+          newBtn.addEventListener("click", this.handleLanguageChange);
 
-          // 클릭 이벤트 추가 검증
-          btn.addEventListener("click", (e) => {
-            console.log(
-              "Language button clicked (verification):",
-              e.target.dataset.lang
-            );
-          });
+          console.log(`Language button setup: ${newBtn.dataset.lang}`);
         });
       }, delay);
     });
   }
 
-  // 언어 변경 핸들러
+  // 강화된 언어 변경 핸들러
   static handleLanguageChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     const lang = e.target.dataset.lang;
-    console.log("Language change handler triggered:", lang);
+    console.log("Language button clicked:", lang);
 
     if (!lang) {
       console.error("No language data found on button");
       return;
     }
 
-    // 다양한 방법으로 언어 변경 함수 찾기
-    let languageFunction = null;
-
+    // setLanguage 함수 호출
     if (typeof window.setLanguage === "function") {
-      languageFunction = window.setLanguage;
+      console.log("Calling window.setLanguage with:", lang);
+      window.setLanguage(lang);
     } else if (typeof setLanguage === "function") {
-      languageFunction = setLanguage;
-    } else if (
-      window.parent &&
-      typeof window.parent.setLanguage === "function"
-    ) {
-      languageFunction = window.parent.setLanguage;
-    }
-
-    if (languageFunction) {
-      console.log("Calling language function with:", lang);
-      languageFunction(lang);
+      console.log("Calling global setLanguage with:", lang);
+      setLanguage(lang);
     } else {
-      console.error("setLanguage function not found in any scope");
-
-      // 마지막 수단으로 직접 구현
-      this.fallbackSetLanguage(lang);
+      console.error("setLanguage function not found");
+      // 직접 구현 호출
+      ComponentLoader.directLanguageChange(lang);
     }
   };
 
-  // 언어 변경 대체 함수
-  static fallbackSetLanguage(lang) {
-    console.log("Using fallback language setting for:", lang);
+  // 직접 언어 변경 구현
+  static directLanguageChange(lang) {
+    console.log("Using direct language change for:", lang);
 
     // 현재 언어 변수 설정
-    if (window.currentLanguage !== undefined) {
-      window.currentLanguage = lang;
-    }
-
-    // 로컬 스토리지에 저장
+    window.currentLanguage = lang;
     localStorage.setItem("userLanguage", lang);
 
     // 모든 언어 버튼 상태 업데이트
@@ -188,16 +170,16 @@ class ComponentLoader {
     // HTML lang 속성 설정
     document.documentElement.lang = lang;
 
-    // 번역이 있다면 적용
+    // 번역 적용
     if (window.translations && window.translations[lang]) {
-      this.applyBasicTranslations(lang, window.translations[lang]);
+      this.applyTranslations(lang, window.translations[lang]);
     }
 
-    console.log(`Fallback language change completed: ${lang}`);
+    console.log(`Direct language change completed: ${lang}`);
   }
 
-  // 기본 번역 적용
-  static applyBasicTranslations(lang, texts) {
+  // 번역 적용
+  static applyTranslations(lang, texts) {
     // data-i18n 속성을 가진 요소들에 번역 적용
     document.querySelectorAll("[data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
@@ -213,6 +195,12 @@ class ComponentLoader {
     // 메타 태그 업데이트
     if (texts.pageTitle) {
       document.title = texts.pageTitle;
+    }
+
+    // 플레이스홀더 업데이트
+    const textInput = document.getElementById("textInput");
+    if (textInput && texts.textPlaceholder) {
+      textInput.placeholder = texts.textPlaceholder;
     }
   }
 
@@ -254,7 +242,7 @@ class ComponentLoader {
         (currentPath === "/" && href === "/") ||
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about.html")
+        (currentPath.includes("/about") && href === "/footer/about.html")
       ) {
         item.classList.add("active");
       }
@@ -417,10 +405,10 @@ class ComponentLoader {
         }, 100);
       });
 
-      // 언어 초기화 - 여러 방법으로 시도
+      // 언어 시스템 초기화 (강화됨)
       setTimeout(() => {
         this.initializeLanguageSystem();
-      }, 200);
+      }, 300);
 
       console.log("Component initialization complete");
       return true;
@@ -430,11 +418,11 @@ class ComponentLoader {
     }
   }
 
-  // 언어 시스템 초기화
+  // 강화된 언어 시스템 초기화
   static initializeLanguageSystem() {
     console.log("Initializing language system...");
 
-    // 다양한 방법으로 언어 초기화 시도
+    // 언어 초기화 함수 호출
     if (typeof window.initializeLanguage === "function") {
       console.log("Using window.initializeLanguage");
       window.initializeLanguage();
@@ -446,21 +434,49 @@ class ComponentLoader {
       this.fallbackLanguageInit();
     }
 
-    // 언어 버튼 다시 초기화
+    // 언어 버튼 재초기화
     this.initLanguageButtons();
+
+    // 번역 재적용 보장
+    setTimeout(() => {
+      if (typeof window.updateAllTranslations === "function") {
+        const currentLang =
+          window.currentLanguage ||
+          localStorage.getItem("userLanguage") ||
+          "ko";
+        window.updateAllTranslations(currentLang);
+      }
+    }, 500);
   }
 
   // 대체 언어 초기화
   static fallbackLanguageInit() {
     const savedLang = localStorage.getItem("userLanguage");
-    const defaultLang =
-      savedLang || (navigator.language?.startsWith("ko") ? "ko" : "en");
+    const browserLang = navigator.language?.startsWith("ko") ? "ko" : "en";
+    const defaultLang = savedLang || browserLang;
 
     console.log("Fallback language init with:", defaultLang);
 
-    if (savedLang && this.fallbackSetLanguage) {
-      this.fallbackSetLanguage(defaultLang);
+    // 현재 언어 설정
+    window.currentLanguage = defaultLang;
+
+    // 언어 버튼 상태 업데이트
+    this.updateLanguageButtonStates(defaultLang);
+
+    // 번역 적용
+    if (window.translations && window.translations[defaultLang]) {
+      this.applyTranslations(defaultLang, window.translations[defaultLang]);
     }
+  }
+
+  // 언어 버튼 상태 업데이트
+  static updateLanguageButtonStates(lang) {
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.dataset.lang === lang) {
+        btn.classList.add("active");
+      }
+    });
   }
 }
 

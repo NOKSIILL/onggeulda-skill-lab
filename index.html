@@ -3,14 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Onggeulda Skill Lab — Daily Skill Practice & Tools</title>
+    <title data-i18n="pageTitle">
+      Onggeulda Skill Lab — Daily Skill Practice & Tools
+    </title>
     <meta
       name="description"
       content="Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공."
+      data-i18n="pageDescription"
     />
     <meta
       name="keywords"
       content="FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트"
+      data-i18n="pageKeywords"
     />
     <meta name="author" content="Onggeulda Studio" />
     <meta name="robots" content="index, follow" />
@@ -53,7 +57,6 @@
 
     <!-- Canonical URL -->
     <!--<link rel="canonical" href="https://domain.com/" />-->
-
   </head>
   <body>
     <!-- 헤더 -->
@@ -66,20 +69,26 @@
           <!-- 히어로 배너 -->
           <div class="hero-banner">
             <div class="banner-slide active">
-              <div class="banner-title">🎯 게임과 도구의 허브</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle1">
+                🎯 게임과 도구의 허브
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle1">
                 FPS 에임 훈련부터 창작 도구까지, 모든 것이 한 곳에
               </div>
             </div>
             <div class="banner-slide">
-              <div class="banner-title">🚀 반응속도 향상</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle2">
+                🚀 반응속도 향상
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle2">
                 다양한 게임으로 집중력과 반응속도를 키워보세요
               </div>
             </div>
             <div class="banner-slide">
-              <div class="banner-title">🎨 창작자 도구</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle3">
+                🎨 창작자 도구
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle3">
                 색상 팔레트, 키워드 생성기 등 창작에 필요한 모든 도구
               </div>
             </div>
@@ -88,29 +97,33 @@
           <!-- 사이트맵 -->
           <div class="sitemap-container">
             <div class="sitemap-section">
-              <div class="sitemap-title">🎮 게임</div>
+              <div class="sitemap-title" data-i18n="sitemapGames">🎮 게임</div>
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/games/fps-aim.html'"
+                  data-i18n="game1"
                 >
                   🎯 FPS 에임 훈련
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/games/reaction-test.html'"
+                  data-i18n="game2"
                 >
                   🎲 반응속도 테스트
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/games/memory-game.html'"
+                  data-i18n="game3"
                 >
                   🎪 메모리 게임
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/games/color-match.html'"
+                  data-i18n="game4"
                 >
                   🎨 색깔 맞추기
                 </li>
@@ -118,29 +131,35 @@
             </div>
 
             <div class="sitemap-section">
-              <div class="sitemap-title">🛠️ 창작 도구</div>
+              <div class="sitemap-title" data-i18n="sitemapTools">
+                🛠️ 창작 도구
+              </div>
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/tools/color-palette.html'"
+                  data-i18n="tool1"
                 >
                   🎨 색상 팔레트 생성기
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/tools/keywords.html'"
+                  data-i18n="tool2"
                 >
                   💡 오늘의 키워드
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/tools/unit-converter.html'"
+                  data-i18n="tool3"
                 >
                   📏 단위 변환기
                 </li>
                 <li
                   class="sitemap-item"
                   onclick="window.location.href='/tools/text-transformer.html'"
+                  data-i18n="tool4"
                 >
                   🔤 텍스트 변환기
                 </li>
@@ -207,7 +226,13 @@
     <footer class="footer-info"></footer>
 
     <!-- 알림 -->
-    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+    <div
+      id="copyNotification"
+      class="copy-notification"
+      data-i18n="copyNotification"
+    >
+      복사되었습니다!
+    </div>
 
     <!-- JavaScript -->
     <script src="/assets/js/i18n/translations.js"></script>

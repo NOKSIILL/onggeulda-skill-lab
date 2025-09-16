@@ -280,7 +280,8 @@ body {
     flex-shrink: 0;
   }
 
-  .game-content {
+  .game-content,
+  .tool-content {
     flex: 1;
     min-width: 0;
     order: 2 !important;
@@ -292,7 +293,7 @@ body {
     padding: 40px 20px;
   }
 
-  /* 광고 사이드바 - 이 부분이 빠져있었음! */
+  /* 광고 사이드바 */
   .ad-sidebar {
     display: flex !important;
     flex-direction: column;
@@ -314,12 +315,14 @@ body {
     display: none !important;
   }
 
-  /* 게임 사이드바 가운데 정렬 - 데스크탑에서는 기본 */
-  .game-list {
+  /* 게임/도구 사이드바 가운데 정렬 - 데스크탑에서는 기본 */
+  .game-list,
+  .tool-list {
     display: block;
   }
 
-  .game-item {
+  .game-item,
+  .tool-item {
     margin-bottom: 8px;
     padding: 12px 16px;
     border-radius: 8px;
@@ -362,8 +365,6 @@ body {
     gap: 20px;
     align-items: flex-start;
   }
-
-  /* 푸터 페이지에는 사이드바가 없으므로 order 1 빈 공간, order 2 콘텐츠, order 3 광고바 */
 }
 
 /* ===== 태블릿 (768px ~ 1199px) ===== */
@@ -420,7 +421,8 @@ body {
     order: 1 !important;
   }
 
-  .game-content {
+  .game-content,
+  .tool-content {
     flex: 1;
     min-width: 0;
     order: 2 !important;
@@ -550,8 +552,9 @@ body {
     max-width: 400px;
   }
 
-  /* 태블릿 사이드바 가운데 정렬 - 가로 배열 */
-  .game-list {
+  /* 태블릿 사이드바 가로 배열 - 중요한 수정 부분! */
+  .game-list,
+  .tool-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -647,7 +650,8 @@ body {
   }
 
   /* 콘텐츠 - 사이드바 다음에 배치 */
-  .game-content {
+  .game-content,
+  .tool-content {
     order: 2 !important;
     width: 100%;
     flex: 1;
@@ -707,8 +711,9 @@ body {
     line-height: 1.4;
   }
 
-  /* 모바일 사이드바 가운데 정렬 - 가로 배열 */
-  .game-list {
+  /* 모바일 사이드바 가로 배열 - 중요한 수정 부분! */
+  .game-list,
+  .tool-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -1144,6 +1149,7 @@ body {
 @media (hover: none) and (pointer: coarse) {
   .nav-item:hover,
   .game-item:hover,
+  .tool-item:hover,
   .sitemap-item:hover,
   .footer-item:hover,
   .keyword-tag:hover,
@@ -1154,6 +1160,7 @@ body {
 
   .nav-item:active,
   .game-item:active,
+  .tool-item:active,
   .tool-button:active,
   .start-button:active,
   .restart-button:active,
