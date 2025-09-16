@@ -609,7 +609,8 @@ body {
     margin-left: 40px;
   }
 
-  .game-area-aim {
+  .game-area-aim,
+  .game-area-reaction {
     min-height: 570px;
     max-height: 580px;
   }
@@ -774,14 +775,15 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   .game-title {
     font-size: 18px;
   }
 
-  .game-area-aim {
+  .game-area-aim,
+  .game-area-reaction {
     min-height: 520px;
     max-height: 530px;
   }
@@ -829,7 +831,7 @@ body {
   }
 
   .memory-instructions p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .memory-grid {
     gap: 10px;
