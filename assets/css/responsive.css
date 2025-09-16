@@ -241,6 +241,14 @@ body {
   height: 100px;
 }
 
+.about-container .ad-sidebar {
+  display: none !important;
+}
+
+.about-container .mobile-ads {
+  display: none !important;
+}
+
 /* ===== 푸터 그리드 레이아웃 ===== */
 .footer-info {
   background: rgba(0, 0, 0, 0.9);
@@ -335,14 +343,6 @@ body {
   background: rgba(0, 255, 136, 0.2);
 }
 
-.about-container .ad-sidebar {
-  display: none !important;
-}
-
-.about-container .mobile-ads {
-  display: none !important;
-}
-
 /* ===== PC 전용 (1200px 이상) ===== */
 @media (min-width: 1200px) {
   .desktop-only {
@@ -353,6 +353,14 @@ body {
     display: none !important;
   }
   .mobile-ads {
+    display: none !important;
+  }
+
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
     display: none !important;
   }
 
@@ -510,6 +518,14 @@ body {
     display: block !important;
   }
 
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
+  }
+
   /* 토글 버튼 표시 */
   .sidebar-toggle {
     display: block !important;
@@ -637,6 +653,14 @@ body {
 
   .mobile-ads {
     display: block !important;
+  }
+
+  .about-container .ad-sidebar {
+    display: none !important;
+  }
+
+  .about-container .mobile-ads {
+    display: none !important;
   }
 
   /* 토글 버튼 표시 */
