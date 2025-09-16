@@ -58,9 +58,20 @@ class ComponentLoader {
     return success;
   }
 
-  // 토글 사이드바 로드 및 초기화
+  // 토글 사이드바 로드 및 초기화 (인덱스 페이지 제외)
   static initToggleSidebar(pageType, pageId = null) {
-    console.log("Initializing toggle sidebar for:", pageType);
+    console.log(
+      "Initializing toggle sidebar for:",
+      pageType,
+      "pageId:",
+      pageId
+    );
+
+    // 인덱스 페이지에서는 토글 사이드바를 생성하지 않음
+    if (!pageId) {
+      console.log("Index page detected, skipping toggle sidebar");
+      return;
+    }
 
     // 토글 버튼 생성
     this.createToggleButton();
@@ -526,12 +537,19 @@ class ComponentLoader {
   }
 
   // 반응형 레이아웃 적용 (강화됨)
-  static applyResponsiveLayout() {
+  static applyResponsiveLayout(pageType = null, pageId = null) {
     const width = window.innerWidth;
-    console.log("Applying responsive layout for width:", width);
+    console.log(
+      "Applying responsive layout for width:",
+      width,
+      "pageType:",
+      pageType,
+      "pageId:",
+      pageId
+    );
 
-    // 토글 사이드바 관리
-    this.manageToggleSidebar(width);
+    // 토글 사이드바 관리 (pageType과 pageId 전달)
+    this.manageToggleSidebar(width, pageType, pageId);
 
     const gameContainers = document.querySelectorAll(
       ".games-container, .tools-container"
@@ -618,11 +636,28 @@ class ComponentLoader {
     });
   }
 
-  // 토글 사이드바 관리
-  static manageToggleSidebar(width) {
+  // 토글 사이드바 관리 (인덱스 페이지 고려)
+  static manageToggleSidebar(width, pageType = null, pageId = null) {
     const toggleBtn = document.querySelector(".sidebar-toggle");
     const mobileSidebar = document.querySelector(".sidebar-mobile");
     const overlay = document.querySelector(".sidebar-overlay");
+
+    // 인덱스 페이지에서는 토글 사이드바 완전 제거
+    if (!pageId) {
+      if (toggleBtn) {
+        toggleBtn.style.display = "none";
+        toggleBtn.remove();
+      }
+      if (mobileSidebar) {
+        mobileSidebar.style.display = "none";
+        mobileSidebar.remove();
+      }
+      if (overlay) {
+        overlay.style.display = "none";
+        overlay.remove();
+      }
+      return;
+    }
 
     if (width >= 1200) {
       // PC에서는 토글 사이드바 숨김
@@ -632,7 +667,7 @@ class ComponentLoader {
       // 사이드바가 열려있다면 닫기
       this.closeSidebar();
     } else {
-      // 모바일/태블릿에서는 토글 사이드바 표시
+      // 모바일/태블릿에서는 토글 사이드바 표시 (pageId가 있는 경우만)
       if (toggleBtn) toggleBtn.style.display = "block";
       if (mobileSidebar) mobileSidebar.style.display = "block";
     }
@@ -647,28 +682,24 @@ class ComponentLoader {
       await this.loadHeader();
       await this.loadFooter();
 
-      // 페이지 타입별 사이드바 로드 (PC용)
-      if (pageType === "games") {
+      // 페이지 타입별 사이드바 로드 (PC용) - pageId가 있는 경우만
+      if (pageId && pageType === "games") {
         await this.loadGameSidebar();
-        if (pageId) {
-          this.setActiveGameSidebar(pageId);
-        }
-      } else if (pageType === "tools") {
+        this.setActiveGameSidebar(pageId);
+      } else if (pageId && pageType === "tools") {
         await this.loadToolSidebar();
-        if (pageId) {
-          this.setActiveToolSidebar(pageId);
-        }
+        this.setActiveToolSidebar(pageId);
       }
 
-      // 토글 사이드바 초기화 (모바일/태블릿용)
-      if (pageType === "games" || pageType === "tools") {
+      // 토글 사이드바 초기화 (모바일/태블릿용) - pageId가 있는 경우만
+      if (pageId && (pageType === "games" || pageType === "tools")) {
         setTimeout(() => {
           this.initToggleSidebar(pageType, pageId);
         }, 100);
       }
 
-      // 반응형 레이아웃 적용
-      this.applyResponsiveLayout();
+      // 반응형 레이아웃 적용 (pageType과 pageId 전달)
+      this.applyResponsiveLayout(pageType, pageId);
 
       // 리사이즈 이벤트 리스너 (개선됨)
       let resizeTimeout;
@@ -676,7 +707,7 @@ class ComponentLoader {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
           console.log("Window resized, applying responsive layout");
-          this.applyResponsiveLayout();
+          this.applyResponsiveLayout(pageType, pageId);
         }, 100);
       });
 

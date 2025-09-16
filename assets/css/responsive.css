@@ -79,9 +79,8 @@ body {
 .sidebar-toggle {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 100px; /* 헤더 아래쪽으로 이동 */
   left: 20px;
-  transform: translateY(-50%);
   z-index: 9999;
   width: 50px;
   height: 50px;
@@ -97,7 +96,7 @@ body {
 
 .sidebar-toggle:hover {
   background: #00ff88;
-  transform: translateY(-50%) scale(1.1);
+  transform: scale(1.1);
 }
 
 .sidebar-toggle.active {
@@ -115,7 +114,7 @@ body {
   background: rgba(0, 0, 0, 0.95);
   border-right: 1px solid rgba(0, 255, 136, 0.3);
   padding: 80px 20px 20px 20px;
-  z-index: 9998;
+  z-index: 10001; /* 헤더보다 높게 설정 */
   transition: left 0.3s ease;
   overflow-y: auto;
   backdrop-filter: blur(15px);
@@ -175,7 +174,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9997;
+  z-index: 10000; /* 헤더보다 높지만 사이드바보다 낮게 */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -866,6 +865,6 @@ body {
   }
 
   .sidebar-toggle:active {
-    transform: translateY(-50%) scale(0.95);
+    transform: scale(0.95);
   }
 }
