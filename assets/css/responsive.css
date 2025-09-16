@@ -277,6 +277,8 @@ body {
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
+    position: relative;
+    z-index: 200;
     flex-shrink: 0;
   }
 
@@ -419,6 +421,9 @@ body {
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
+    position: relative;
+    z-index: 200;
+    flex-shrink: 0;
   }
 
   .game-content,
@@ -647,6 +652,7 @@ body {
     margin: 0 -15px 20px -15px;
     position: relative;
     z-index: 200;
+    flex-shrink: 0;
   }
 
   /* 콘텐츠 - 사이드바 다음에 배치 */
@@ -1073,7 +1079,15 @@ body {
   }
 
   .sidebar {
+    order: 1 !important;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
     margin: 0 -10px 20px -10px;
+    position: relative;
+    z-index: 200;
   }
 
   .game-area {
