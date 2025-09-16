@@ -4,7 +4,6 @@
   height: calc(100vh - 70px);
 }
 
-/* 도구 콘텐츠 영역을 게임 콘텐츠와 동일하게 */
 .tool-content {
   flex: 1;
   position: relative;
@@ -12,7 +11,7 @@
   flex-direction: column;
 }
 
-/* 도구 헤더를 게임 헤더와 동일한 디자인으로 수정 */
+/* 도구 헤더 - 게임 헤더와 동일한 디자인 */
 .tool-header {
   background: rgba(0, 0, 0, 0.8);
   padding: 15px 30px;
@@ -53,13 +52,60 @@
   color: #00ff88;
 }
 
-/* 도구 영역은 기존 스타일 유지 */
+/* 도구 영역 */
 .tool-area {
-  padding: 40px;
+  flex: 1;
+  position: relative;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 136, 0.1) 0%,
+    transparent 70%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  min-height: 500px;
+  padding: 40px;
   gap: 30px;
+}
+
+/* 도구 사이드바 - 게임 사이드바와 동일한 디자인 적용 */
+.tools-container .sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-right: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.tools-container .sidebar h3 {
+  color: #00ff88;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.tool-list {
+  list-style: none;
+}
+
+.tool-item {
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.tool-item:hover,
+.tool-item.active {
+  background: rgba(0, 255, 136, 0.1);
+  border-left-color: #00ff88;
+  color: #00ff88;
 }
 
 .tool-instructions {

@@ -135,7 +135,7 @@ class ComponentLoader {
   }
 
   static initToolSidebarEvents() {
-    // 도구 사이드바 이벤트 수정 - 정상 작동하도록 수정
+    // 도구 사이드바 이벤트 - tool-item 클래스 사용
     document.querySelectorAll("#tool-sidebar .tool-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
@@ -247,7 +247,7 @@ class ComponentLoader {
     // 요소 순서 및 크기 설정
     const sidebars = document.querySelectorAll(".sidebar");
     const contents = document.querySelectorAll(
-      ".game-content, .about-content, .home-content"
+      ".game-content, .tool-content, .about-content, .home-content"
     );
     const adSidebars = document.querySelectorAll(".ad-sidebar");
 

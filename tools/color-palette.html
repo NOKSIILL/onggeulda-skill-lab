@@ -38,26 +38,29 @@
       <div class="tools-container">
         <aside class="sidebar" id="tool-sidebar"></aside>
 
-        <main class="game-content">
+        <main class="tool-content">
           <div class="tool-header">
-            <div class="tool-title">🎨 색상 팔레트 생성기</div>
+            <div class="tool-title">💡 오늘의 키워드</div>
+            <div class="tool-stats">
+              <!-- 도구 페이지는 통계가 없으므로 비워둠 -->
+            </div>
           </div>
 
           <div class="tool-area">
             <div class="tool-instructions">
-              <h2>창작에 영감을 주는 색상 조합</h2>
+              <h2>창작 영감을 위한 키워드</h2>
               <p>
-                아름다운 색상 팔레트를 생성하고 창작 프로젝트에 활용하세요. 각
-                색상을 클릭하면 색상 코드가 복사됩니다.
+                랜덤하게 생성되는 키워드로 새로운 아이디어를 얻어보세요. 글쓰기,
+                그림, 음악 등 모든 창작 활동에 활용할 수 있습니다.
               </p>
             </div>
-            <div class="color-palette" id="colorPalette"></div>
+            <div class="keyword-grid" id="keywordGrid"></div>
             <div class="tool-controls">
-              <button class="tool-button" onclick="generateColorPalette()">
-                새 팔레트 생성
+              <button class="tool-button" onclick="generateKeywords()">
+                새 키워드 생성
               </button>
-              <button class="tool-button" onclick="copyPalette()">
-                전체 색상 코드 복사
+              <button class="tool-button" onclick="copyKeywords()">
+                키워드 복사
               </button>
             </div>
           </div>
@@ -105,11 +108,11 @@
     <script src="/assets/js/i18n/translations.js"></script>
     <script src="/assets/js/utils/helpers.js"></script>
     <script src="/shared/components.js"></script>
-    <script src="/assets/js/tools/color-palette.js"></script>
+    <script src="/assets/js/tools/keywords.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
-        await ComponentLoader.init("tools", "color-palette");
-        generateColorPalette();
+        await ComponentLoader.init("tools", "keywords");
+        generateKeywords();
       });
     </script>
   </body>
