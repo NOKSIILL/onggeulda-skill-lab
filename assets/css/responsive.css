@@ -771,11 +771,11 @@ body {
   }
 
   .game-area {
-    min-height: 400px;
+    height: 400px;
   }
 
   .game-area-aim {
-    min-height: 500px;
+    height: 500px;
   }
 
   .start-title {
@@ -811,6 +811,11 @@ body {
   }
 
   .target-color {
+    width: 120px;
+    height: 120px;
+  }
+
+  .color-option {
     width: 100px;
     height: 100px;
   }
@@ -825,7 +830,7 @@ body {
   }
 
   .tool-area {
-    min-height: 450px;
+    height: 450px;
   }
 
   /* 푸터 모바일에서 2x2 */
