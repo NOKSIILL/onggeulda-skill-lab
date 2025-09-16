@@ -800,8 +800,14 @@ body {
   .final-stat-value {
     font-size: 20px;
   }
+
   .final-stat-label {
     font-size: 14px;
+  }
+
+  .color-instruction {
+    font-size: 15px;
+    margin-bottom: 5px;
   }
 
   .tool-header {
