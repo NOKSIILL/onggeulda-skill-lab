@@ -273,11 +273,21 @@ class ComponentLoader {
   }
 
   static setActiveToolSidebar(toolId) {
+    console.log("Setting active tool sidebar for:", toolId);
+
     setTimeout(() => {
       document.querySelectorAll("#tool-sidebar .tool-item").forEach((item) => {
         item.classList.remove("active");
+        console.log(
+          "Checking tool item:",
+          item.dataset.tool,
+          "against",
+          toolId
+        );
+
         if (item.dataset.tool === toolId) {
           item.classList.add("active");
+          console.log("Activated tool item:", toolId);
         }
       });
     }, 100);
