@@ -770,9 +770,7 @@ body {
     font-size: 18px;
   }
 
-  .game-area,
-  .reaction-area,
-  .color-game-area {
+  .game-area {
     height: 400px;
   }
 
