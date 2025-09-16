@@ -771,6 +771,10 @@ body {
   }
 
   .game-area {
+    min-height: 400px;
+  }
+
+  .game-area-aim {
     min-height: 500px;
   }
 
@@ -810,7 +814,7 @@ body {
   }
 
   .tool-area {
-    min-height: 500px;
+    min-height: 450px;
   }
 
   /* 푸터 모바일에서 2x2 */
