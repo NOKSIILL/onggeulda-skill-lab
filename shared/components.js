@@ -122,10 +122,11 @@ class ComponentLoader {
   }
 
   static initGameSidebarEvents() {
-    document.querySelectorAll(".game-item").forEach((item) => {
+    document.querySelectorAll("#game-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const game = item.dataset.game;
+        console.log("Game sidebar item clicked:", game);
         if (game) {
           window.location.href = `/games/${game}.html`;
         }
@@ -134,11 +135,12 @@ class ComponentLoader {
   }
 
   static initToolSidebarEvents() {
-    // 도구 사이드바는 tool-item 클래스 사용
+    // 도구 사이드바 이벤트 수정 - 정상 작동하도록 수정
     document.querySelectorAll("#tool-sidebar .tool-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const tool = item.dataset.tool;
+        console.log("Tool sidebar item clicked:", tool);
         if (tool) {
           window.location.href = `/tools/${tool}.html`;
         }
