@@ -87,7 +87,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/${page}.html`;
+          window.location.href = `/footer/${page}.html`;
         }
       });
     });
