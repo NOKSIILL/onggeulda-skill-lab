@@ -610,7 +610,7 @@ body {
   }
 
   .game-area {
-    max-height: 500px;
+    max-height: 600px;
   }
 
   .tool-header {
@@ -623,7 +623,7 @@ body {
   }
 
   .tool-area {
-    max-height: 500px;
+    max-height: 600px;
   }
 
   /* 푸터 그리드 태블릿에서 4x1 */
@@ -771,15 +771,7 @@ body {
   }
 
   .game-area {
-    max-height: 450px;
-  }
-
-  .game-area-aim {
-    max-height: 500px;
-  }
-
-  .game-area-memory {
-    max-height: 400px;
+    max-height: 550px;
   }
 
   .start-title {
@@ -844,7 +836,7 @@ body {
   }
 
   .tool-area {
-    max-height: 450px;
+    max-height: 550px;
   }
 
   /* 푸터 모바일에서 2x2 */
