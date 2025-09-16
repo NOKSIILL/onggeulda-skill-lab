@@ -1,4 +1,4 @@
-/* 완전히 수정된 반응형 CSS - 모든 레이아웃 문제 해결 */
+/* 완전히 수정된 반응형 CSS - 토글 사이드바 포함 */
 
 /* ===== 기본 설정 강화 ===== */
 * {
@@ -65,16 +65,126 @@ body {
   min-width: 0;
 }
 
-/* ===== 사이드바 - 모든 화면 크기에서 일관된 동작 ===== */
+/* ===== 사이드바 - 기본 스타일 ===== */
 .sidebar {
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(0, 255, 136, 0.3);
   position: relative;
   z-index: 200;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-/* ===== 광고 영역 기본 설정 (배경색 제거) ===== */
+/* ===== 토글 버튼 스타일 ===== */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 255, 136, 0.9);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #1a1a2e;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #00ff88;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.sidebar-toggle.active {
+  left: 270px;
+}
+
+/* ===== 모바일/태블릿 토글 사이드바 ===== */
+.sidebar-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  border-right: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 80px 20px 20px 20px;
+  z-index: 9998;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  backdrop-filter: blur(15px);
+}
+
+.sidebar-mobile.open {
+  left: 0;
+}
+
+.sidebar-mobile h3 {
+  color: #00ff88;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.sidebar-mobile .game-list,
+.sidebar-mobile .tool-list {
+  list-style: none;
+  display: block;
+}
+
+.sidebar-mobile .game-item,
+.sidebar-mobile .tool-item {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  color: white;
+  text-decoration: none;
+  display: block;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  font-size: 14px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-mobile .game-item:hover,
+.sidebar-mobile .tool-item:hover,
+.sidebar-mobile .game-item.active,
+.sidebar-mobile .tool-item.active {
+  background: rgba(0, 255, 136, 0.2);
+  border-left-color: #00ff88;
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+/* ===== 모바일 오버레이 ===== */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.open {
+  opacity: 1;
+}
+
+/* ===== 광고 영역 기본 설정 ===== */
 .ad-sidebar {
   display: flex;
   flex-direction: column;
@@ -126,14 +236,6 @@ body {
   justify-content: center;
   text-align: center;
   padding: 5px;
-}
-
-/* 모바일 크기에서도 40px 유지 */
-@media (max-width: 767px) {
-  .mobile-ads .ad-slot {
-    height: 40px;
-    font-size: 12px;
-  }
 }
 
 /* ===== 푸터 그리드 레이아웃 ===== */
@@ -251,6 +353,16 @@ body {
     display: none !important;
   }
 
+  /* 토글 버튼 숨김 */
+  .sidebar-toggle {
+    display: none !important;
+  }
+
+  .sidebar-mobile,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
   /* 헤더 아래 마진 */
   .main-container {
     margin-top: 85px;
@@ -272,14 +384,15 @@ body {
   }
 
   .sidebar {
+    display: block !important;
     width: 250px;
     padding: 20px;
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
-    position: relative;
-    z-index: 200;
     flex-shrink: 0;
+    position: relative;
+    left: 0;
   }
 
   .game-content,
@@ -312,15 +425,11 @@ body {
     max-width: 800px;
   }
 
-  /* 헤더에서 언어 선택기 숨김 */
-  .header-container .language-selector {
-    display: none !important;
-  }
-
-  /* 게임/도구 사이드바 가운데 정렬 - 데스크탑에서는 기본 */
+  /* 게임/도구 사이드바 - 세로 목록 */
   .game-list,
   .tool-list {
     display: block;
+    list-style: none;
   }
 
   .game-item,
@@ -334,9 +443,20 @@ body {
     font-size: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 255, 136, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
   }
 
-  /* About 컨테이너 (푸터 페이지들) - 다른 페이지와 동일한 레이아웃 */
+  .game-item:hover,
+  .tool-item:hover,
+  .game-item.active,
+  .tool-item.active {
+    background: rgba(0, 255, 136, 0.1);
+    border-left-color: #00ff88;
+  }
+
+  /* About 컨테이너 */
   .about-container {
     display: flex !important;
     gap: 20px;
@@ -344,24 +464,21 @@ body {
     align-items: flex-start;
   }
 
-  /* About 콘텐츠 - 블록 형태의 콘텐츠, 가운데 확장 */
   .about-content {
     flex: 1;
     min-width: 0;
-    max-width: none; /* 기존 max-width 제거 */
-    margin: 0; /* 기존 margin 제거 */
+    max-width: none;
+    margin: 0;
     padding: 40px 20px;
-    order: 2; /* 가운데 위치 */
+    order: 2;
   }
 
-  /* 홈 콘텐츠 - 광고바 포함 */
   .home-content {
     flex: 1;
     min-width: 0;
     order: 2;
   }
 
-  /* 홈 레이아웃 - 광고바 포함 */
   .home-layout {
     display: flex;
     gap: 20px;
@@ -378,6 +495,21 @@ body {
     display: block !important;
   }
   .mobile-only {
+    display: none !important;
+  }
+
+  /* 토글 버튼 표시 */
+  .sidebar-toggle {
+    display: block !important;
+  }
+
+  .sidebar-mobile,
+  .sidebar-overlay {
+    display: block !important;
+  }
+
+  /* 기존 사이드바 숨김 */
+  .sidebar {
     display: none !important;
   }
 
@@ -401,36 +533,21 @@ body {
     display: block;
   }
 
-  /* 게임/도구 컨테이너 - 고정된 레이아웃 */
+  /* 게임/도구 컨테이너 - 전체 너비 사용 */
   .games-container,
   .tools-container {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  /* about 등 정보 페이지는 일반 블록 레이아웃 */
-  .about-container {
     display: block !important;
-  }
-
-  .sidebar {
-    width: 200px;
-    padding: 20px;
-    border-right: 1px solid rgba(0, 255, 136, 0.3);
-    border-bottom: none;
-    order: 1 !important;
-    position: relative;
-    z-index: 200;
-    flex-shrink: 0;
+    width: 100%;
   }
 
   .game-content,
   .tool-content {
-    flex: 1;
-    min-width: 0;
-    order: 2 !important;
+    width: 100%;
+    order: 1 !important;
+  }
+
+  .about-container {
+    display: block !important;
   }
 
   .about-content {
@@ -475,17 +592,7 @@ body {
     padding: 0 20px;
   }
 
-  /* 사이트맵 조정 */
-  .sitemap-container {
-    padding: 30px 0;
-    gap: 25px;
-  }
-
-  .sitemap-section {
-    padding: 25px;
-  }
-
-  /* 게임 스타일 */
+  /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 25px;
   }
@@ -494,98 +601,18 @@ body {
     font-size: 22px;
   }
 
-  .game-stats {
-    gap: 25px;
-    font-size: 15px;
-  }
-
-  .stat-value {
-    font-size: 18px;
-  }
-
   .game-area {
     min-height: 500px;
   }
 
-  .target {
-    width: 55px;
-    height: 55px;
-  }
-
-  .memory-grid {
-    max-width: 320px;
-    gap: 12px;
-  }
-
-  .memory-card {
-    width: 70px;
-    height: 70px;
-    font-size: 20px;
-  }
-
-  .color-options {
-    gap: 15px;
-  }
-
-  .color-option {
-    width: 80px;
-    height: 80px;
-  }
-
-  /* 도구 영역 */
   .tool-area {
     padding: 35px;
-  }
-
-  .color-palette {
-    gap: 15px;
-  }
-
-  .color-box {
-    width: 70px;
-    height: 70px;
-  }
-
-  .transform-buttons {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
   }
 
   /* 푸터 그리드 태블릿에서 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     max-width: 400px;
-  }
-
-  /* 태블릿 사이드바 가로 배열 - 중요한 수정 부분! */
-  .game-list,
-  .tool-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .game-item,
-  .tool-item {
-    flex: 0 0 auto;
-    margin-bottom: 0;
-    padding: 12px 18px;
-    border-radius: 20px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .game-item.active,
-  .tool-item.active {
-    background: rgba(0, 255, 136, 0.2);
-    border-color: #00ff88;
   }
 }
 
@@ -597,6 +624,21 @@ body {
   }
   .mobile-only {
     display: block !important;
+  }
+
+  /* 토글 버튼 표시 */
+  .sidebar-toggle {
+    display: block !important;
+  }
+
+  .sidebar-mobile,
+  .sidebar-overlay {
+    display: block !important;
+  }
+
+  /* 기존 사이드바 숨김 */
+  .sidebar {
+    display: none !important;
   }
 
   /* 헤더 높이 조정 */
@@ -628,41 +670,21 @@ body {
     width: 100%;
   }
 
-  /* 게임/도구 컨테이너 - 세로 배치로 고정 */
+  /* 게임/도구 컨테이너 - 전체 너비 사용 */
   .games-container,
   .tools-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0;
-  }
-
-  /* about 등 정보 페이지는 일반 블록 레이아웃 */
-  .about-container {
     display: block !important;
-  }
-
-  /* 사이드바 - 항상 맨 위에 배치 */
-  .sidebar {
-    order: 1 !important;
     width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-    background: rgba(0, 0, 0, 0.95);
-    padding: 20px;
-    margin: 0 -15px 20px -15px;
-    position: relative;
-    z-index: 200;
-    flex-shrink: 0;
   }
 
-  /* 콘텐츠 - 사이드바 다음에 배치 */
   .game-content,
   .tool-content {
-    order: 2 !important;
     width: 100%;
-    flex: 1;
-    position: relative;
-    z-index: 1;
+    order: 1 !important;
+  }
+
+  .about-container {
+    display: block !important;
   }
 
   .about-content {
@@ -717,311 +739,33 @@ body {
     line-height: 1.4;
   }
 
-  /* 모바일 사이드바 가로 배열 - 중요한 수정 부분! */
-  .game-list,
-  .tool-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .game-item,
-  .tool-item {
-    flex: 0 0 auto;
-    margin-bottom: 0;
-    padding: 12px 18px;
-    border-radius: 20px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .game-item.active,
-  .tool-item.active {
-    background: rgba(0, 255, 136, 0.2);
-    border-color: #00ff88;
-  }
-
-  /* 게임 헤더 */
+  /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
-    position: relative;
-    z-index: 1;
   }
 
   .game-title {
     font-size: 18px;
   }
 
-  .game-stats {
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .stat-item {
-    min-width: 80px;
-  }
-
-  .stat-value {
-    font-size: 16px;
-  }
-
-  .stat-label {
-    font-size: 11px;
-  }
-
-  /* 게임 영역 */
   .game-area {
     min-height: 450px;
-    cursor: default;
-    position: relative;
-    z-index: 1;
   }
 
-  .start-title {
-    font-size: 22px;
-  }
-
-  .start-subtitle {
-    font-size: 14px;
-    padding: 0 20px;
-  }
-
-  .start-button,
-  .restart-button {
-    padding: 15px 30px;
-    font-size: 16px;
-    min-height: 50px;
-    border-radius: 25px;
-  }
-
-  /* FPS 게임 */
-  .target {
-    width: 65px;
-    height: 65px;
-  }
-
-  /* 반응속도 게임 */
-  .reaction-area {
-    min-height: 300px;
-    font-size: 18px;
-    padding: 25px;
-    border-radius: 15px;
-  }
-
-  /* 메모리 게임 */
-  .memory-grid {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 320px;
-    gap: 10px;
-  }
-
-  .memory-card {
-    width: 70px;
-    height: 70px;
-    font-size: 18px;
-    border-radius: 10px;
-  }
-
-  /* 색상 게임 */
-  .color-game-area {
-    gap: 25px;
-    padding: 20px;
-  }
-
-  .target-color {
-    width: 120px;
-    height: 120px;
-  }
-
-  .color-options {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .color-option {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-  }
-
-  /* 도구 영역 */
   .tool-area {
     padding: 25px 20px;
-    position: relative;
-    z-index: 1;
   }
 
-  .tool-instructions h2 {
-    font-size: 20px;
-  }
-
-  .tool-instructions p {
-    font-size: 14px;
-  }
-
-  .tool-controls {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .tool-button {
-    min-height: 44px;
-    padding: 12px 20px;
-    border-radius: 22px;
-    flex: 0 1 auto;
-    font-size: 14px;
-  }
-
-  /* 색상 팔레트 */
-  .color-palette {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-
-  .color-box {
-    width: 70px;
-    height: 70px;
-  }
-
-  /* 키워드 */
-  .keyword-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-  }
-
-  .keyword-tag {
-    padding: 12px 16px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-  }
-
-  /* 단위 변환기 */
-  .unit-converter-form {
-    padding: 20px;
-  }
-
-  .conversion-row {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .arrow {
-    transform: rotate(90deg);
-  }
-
-  .unit-selectors {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .input-group input,
-  .unit-group select {
-    min-height: 50px;
-    font-size: 16px;
-    padding: 15px;
-  }
-
-  /* 텍스트 변환기 */
-  .text-transformer-form {
-    max-width: 100%;
-  }
-
-  .input-section textarea {
-    min-height: 120px;
-    font-size: 16px;
-    padding: 15px;
-  }
-
-  .transform-buttons {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  /* 통계 영역 */
-  .final-stats {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-
-  .final-stat {
-    padding: 15px;
-  }
-
-  /* 소개/정보 페이지 */
-  .about-card {
-    padding: 20px;
-  }
-
-  .about-title {
-    font-size: 20px;
-  }
-
-  .about-card p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* 사이트맵 */
-  .sitemap-container {
-    grid-template-columns: 1fr;
-    padding: 20px 0;
-    gap: 20px;
-  }
-
-  .sitemap-section {
-    padding: 20px;
-  }
-
-  .sitemap-title {
-    font-size: 18px;
-  }
-
-  .sitemap-item {
-    padding: 12px 0;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-  }
-
-  /* 모바일 광고 최적화 */
-  .mobile-ads {
-    padding: 25px 15px;
-    margin: 40px 0;
-    order: 10 !important;
-  }
-
-  .mobile-ads .ad-slot {
-    max-width: 100%;
-    height: 40px;
-  }
-
-  /* 푸터 모바일 최적화 */
-  .footer-info {
-    padding: 20px 15px;
-    order: 20 !important;
-    margin-top: 40px;
-  }
-
-  /* 모바일에서 푸터 그리드 2x2 */
+  /* 푸터 모바일에서 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     max-width: 300px;
+  }
+
+  .footer-info {
+    padding: 20px 15px;
+    margin-top: 40px;
   }
 
   .footer-item {
@@ -1031,7 +775,6 @@ body {
 
   .footer-language {
     margin-top: 20px;
-    order: 30 !important;
   }
 
   .footer-lang-buttons {
@@ -1078,66 +821,8 @@ body {
     padding: 0 15px;
   }
 
-  .sidebar {
-    order: 1 !important;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-    background: rgba(0, 0, 0, 0.95);
-    padding: 20px;
-    margin: 0 -10px 20px -10px;
-    position: relative;
-    z-index: 200;
-  }
-
   .game-area {
     min-height: 380px;
-  }
-
-  .target {
-    width: 60px;
-    height: 60px;
-  }
-
-  .memory-grid {
-    max-width: 280px;
-    gap: 8px;
-  }
-
-  .memory-card {
-    width: 60px;
-    height: 60px;
-    font-size: 16px;
-  }
-
-  .color-options {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .color-option {
-    width: 70px;
-    height: 70px;
-  }
-
-  .color-palette {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .color-box {
-    width: 60px;
-    height: 60px;
-  }
-
-  .transform-buttons {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .final-stats {
-    grid-template-columns: 1fr;
-    gap: 12px;
   }
 
   .mobile-ads {
@@ -1165,10 +850,7 @@ body {
   .game-item:hover,
   .tool-item:hover,
   .sitemap-item:hover,
-  .footer-item:hover,
-  .keyword-tag:hover,
-  .color-box:hover,
-  .color-option:hover {
+  .footer-item:hover {
     transform: none;
   }
 
@@ -1183,7 +865,7 @@ body {
     transition: transform 0.1s ease;
   }
 
-  .target:active {
-    transform: scale(1.1);
+  .sidebar-toggle:active {
+    transform: translateY(-50%) scale(0.95);
   }
 }
