@@ -613,8 +613,8 @@ function generateKeywords() {
   grid.innerHTML = "";
 
   // 명사 3개, 형용사 3개 생성
-  const selectedNouns = shuffleArray(keywordData.nouns).slice(0, 3);
-  const selectedAdjectives = shuffleArray(keywordData.adjectives).slice(0, 3);
+  const selectedNouns = shuffleArray(keywordData.nouns).slice(0, 2);
+  const selectedAdjectives = shuffleArray(keywordData.adjectives).slice(0, 2);
 
   [...selectedNouns, ...selectedAdjectives].forEach((keyword) => {
     const tag = document.createElement("div");
