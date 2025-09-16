@@ -263,11 +263,31 @@ body {
     gap: 30px;
   }
 
-  /* about 페이지 등 정보 페이지는 일반 레이아웃 */
+  /* About 컨테이너 - 다른 페이지와 동일한 전체 너비 */
   .about-container {
-    display: block !important;
-    max-width: 1200px;
+    display: flex !important;
+    gap: 20px;
+    max-width: none !important; /* 기존 1200px 제한 제거 */
+    width: 100%;
     margin: 0 auto;
+    padding: 0 40px; /* 다른 페이지와 동일한 패딩 */
+    align-items: flex-start;
+  }
+
+  /* About 콘텐츠 - 가운데 확장 */
+  .about-content {
+    flex: 1;
+    min-width: 0;
+    order: 2;
+    padding: 40px 20px;
+    max-width: none !important; /* 기존 800px 제한 제거 */
+    margin: 0 !important; /* 기존 margin 제거 */
+  }
+
+  /* 푸터도 전체 너비 사용 */
+  .footer-info {
+    width: 100%;
+    max-width: none !important;
   }
 
   .sidebar {
@@ -283,12 +303,6 @@ body {
     flex: 1;
     min-width: 0;
     order: 2 !important;
-  }
-
-  .about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
   }
 
   /* 광고 사이드바 - 이 부분이 빠져있었음! */
@@ -388,9 +402,19 @@ body {
     align-items: flex-start;
   }
 
-  /* about 등 정보 페이지는 일반 블록 레이아웃 */
   .about-container {
-    display: block !important;
+    display: flex !important;
+    gap: 20px;
+    width: 100%;
+    padding: 0 20px;
+    max-width: none !important;
+  }
+
+  .about-content {
+    flex: 1;
+    order: 2;
+    max-width: none !important;
+    margin: 0 !important;
   }
 
   .sidebar {
@@ -405,12 +429,6 @@ body {
     flex: 1;
     min-width: 0;
     order: 2 !important;
-  }
-
-  .about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
   }
 
   /* 헤더 조정 */
@@ -609,9 +627,17 @@ body {
     gap: 0;
   }
 
-  /* about 등 정보 페이지는 일반 블록 레이아웃 */
   .about-container {
     display: block !important;
+    width: 100%;
+    padding: 0 15px;
+    max-width: none !important;
+  }
+
+  .about-content {
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
   }
 
   /* 사이드바 - 항상 맨 위에 배치 */
@@ -634,11 +660,6 @@ body {
     flex: 1;
     position: relative;
     z-index: 1;
-  }
-
-  .about-content {
-    max-width: 100%;
-    padding: 25px 20px;
   }
 
   /* 헤더 모바일 최적화 */
