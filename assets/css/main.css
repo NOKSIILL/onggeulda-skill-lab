@@ -342,6 +342,13 @@ body {
   color: #00ff88;
 }
 
+/* 푸터 하위메뉴 페이지들의 푸터도 동일한 스타일 적용 */
+.home-layout .footer-info {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 30px 20px;
+  border-top: 1px solid rgba(0, 255, 136, 0.3);
+}
+
 /* 알림 */
 .copy-notification {
   display: none;
