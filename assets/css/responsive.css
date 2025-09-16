@@ -610,7 +610,13 @@ body {
   }
 
   .game-area {
+    min-height: 590px;
     max-height: 600px;
+  }
+
+  .game-area-memory {
+    min-height: 610px;
+    max-height: 620px;
   }
 
   .tool-header {
@@ -775,6 +781,11 @@ body {
     max-height: 550px;
   }
 
+  .game-area-memory {
+    min-height: 560px;
+    max-height: 570px;
+  }
+
   .start-title {
     font-size: 24px;
   }
@@ -803,13 +814,13 @@ body {
   }
 
   .memory-instructions {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 12px;
+    margin-bottom: 5px;
     padding: 0 15px;
   }
 
   .memory-controls {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   .color-instruction {
