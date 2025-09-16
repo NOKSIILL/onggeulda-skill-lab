@@ -230,7 +230,7 @@ body {
   background: rgba(0, 255, 136, 0.2);
 }
 
-/* ===== PC 전용 (1200px 이상) ===== */
+/* PC 전용 (1200px 이상) - 광고바 고정 수정 */
 @media (min-width: 1200px) {
   .desktop-only {
     display: block !important;
@@ -249,18 +249,21 @@ body {
     padding: 0 40px;
   }
 
-  /* 홈 레이아웃 */
+  /* 홈 레이아웃 - 광고바 포함 */
   .home-layout {
     display: flex;
     gap: 20px;
+    align-items: flex-start; /* 상단 정렬 추가 */
   }
 
-  /* 게임/도구 컨테이너 */
+  /* 게임/도구 컨테이너 - 3단 레이아웃 강제 고정 */
   .games-container,
   .tools-container {
     display: flex !important;
     flex-direction: row !important;
     gap: 30px;
+    align-items: flex-start; /* 상단 정렬 추가 */
+    min-height: calc(100vh - 85px); /* 최소 높이 설정 */
   }
 
   /* about 페이지 등 정보 페이지는 일반 레이아웃 */
@@ -270,18 +273,28 @@ body {
     margin: 0 auto;
   }
 
+  /* 사이드바 - 좌측 고정 */
   .sidebar {
     width: 250px;
+    flex-shrink: 0; /* 축소 방지 */
     padding: 20px;
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
+    align-self: flex-start; /* 상단 정렬 */
+    position: sticky; /* sticky 위치 설정 */
+    top: 105px; /* 헤더 아래 고정 */
+    max-height: calc(100vh - 125px); /* 최대 높이 제한 */
+    overflow-y: auto; /* 내용이 많을 때 스크롤 */
   }
 
-  .game-content {
+  /* 메인 콘텐츠 - 중앙 확장 */
+  .game-content,
+  .home-content {
     flex: 1;
-    min-width: 0;
+    min-width: 0; /* flexbox 오버플로우 방지 */
     order: 2 !important;
+    align-self: flex-start; /* 상단 정렬 */
   }
 
   .about-content {
@@ -290,9 +303,35 @@ body {
     padding: 40px 20px;
   }
 
+  /* 광고 사이드바 - 우측 고정 */
   .ad-sidebar {
     display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 200px;
+    flex-shrink: 0; /* 축소 방지 - 중요! */
     order: 3 !important;
+    align-self: flex-start; /* 상단 정렬 */
+    position: sticky; /* sticky 위치 설정 */
+    top: 105px; /* 헤더 아래 고정 */
+    max-height: calc(100vh - 125px); /* 최대 높이 제한 */
+    overflow-y: auto; /* 내용이 많을 때 스크롤 */
+  }
+
+  /* 광고 슬롯 크기 고정 */
+  .ad-slot {
+    width: 200px;
+    height: 300px;
+    flex-shrink: 0; /* 축소 방지 */
+    border: 1px dashed rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   /* 푸터 그리드는 4x1 유지 */
@@ -306,7 +345,7 @@ body {
     display: none !important;
   }
 
-  /* 게임 사이드바 가운데 정렬 - 데스크탑에서는 기본 */
+  /* 게임 사이드바 기본 레이아웃 */
   .game-list {
     display: block;
   }
@@ -321,6 +360,70 @@ body {
     font-size: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 255, 136, 0.2);
+  }
+
+  /* 컨테이너 최대 너비 제한 */
+  .games-container,
+  .tools-container {
+    max-width: 1400px; /* 최대 너비 제한 */
+    margin: 0 auto; /* 가운데 정렬 */
+  }
+
+  /* 홈 레이아웃도 최대 너비 제한 */
+  .home-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* 추가 보장을 위한 CSS */
+@media (min-width: 1200px) {
+  /* Flexbox 요소들의 flex 속성 명시적 설정 */
+  .sidebar {
+    flex: 0 0 250px; /* grow: 0, shrink: 0, basis: 250px */
+  }
+
+  .game-content,
+  .home-content {
+    flex: 1 1 auto; /* grow: 1, shrink: 1, basis: auto */
+  }
+
+  .ad-sidebar {
+    flex: 0 0 200px; /* grow: 0, shrink: 0, basis: 200px */
+  }
+
+  /* 컨테이너가 충분한 너비를 가지도록 보장 */
+  .games-container,
+  .tools-container,
+  .home-layout {
+    min-width: 900px; /* 최소 너비 보장 (250 + 450 + 200) */
+  }
+}
+
+/* PC 대형 화면 (1400px 이상) 추가 최적화 */
+@media (min-width: 1400px) {
+  .main-container {
+    padding: 0 60px; /* 더 큰 여백 */
+  }
+
+  .games-container,
+  .tools-container,
+  .home-layout {
+    gap: 40px; /* 더 큰 간격 */
+  }
+
+  .sidebar {
+    width: 280px; /* 더 넓은 사이드바 */
+    flex: 0 0 280px;
+  }
+
+  .ad-sidebar {
+    width: 220px; /* 더 넓은 광고바 */
+    flex: 0 0 220px;
+  }
+
+  .ad-slot {
+    width: 220px;
   }
 }
 
