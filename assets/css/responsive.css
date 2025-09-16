@@ -770,7 +770,10 @@ body {
     font-size: 18px;
   }
 
-  .game-area {
+  .game-area,
+  .reaction-area,
+  .memory-game-container,
+  .color-game-area {
     height: 400px;
   }
 
@@ -803,6 +806,11 @@ body {
 
   .final-stat-label {
     font-size: 14px;
+  }
+
+  .memory-instructions {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 
   .color-instruction {
