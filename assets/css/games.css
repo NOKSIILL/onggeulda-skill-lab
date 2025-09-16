@@ -15,14 +15,10 @@
   background: rgba(0, 0, 0, 0.8);
   padding: 15px 30px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(10px);
-}
-
-.game-header-column {
-  flex-direction: column;
-  gap: 20px;
 }
 
 .game-title {
@@ -33,6 +29,7 @@
 
 .game-stats {
   display: flex;
+  margin-top: 20px;
   gap: 30px;
   font-size: 16px;
 }
