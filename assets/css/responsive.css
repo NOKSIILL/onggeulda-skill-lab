@@ -241,14 +241,6 @@ body {
   height: 100px;
 }
 
-.about-container .ad-sidebar {
-  display: none !important;
-}
-
-.about-container .mobile-ads {
-  display: none !important;
-}
-
 /* ===== 푸터 그리드 레이아웃 ===== */
 .footer-info {
   background: rgba(0, 0, 0, 0.9);
@@ -482,14 +474,6 @@ body {
     align-items: flex-start;
   }
 
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
-  }
-
   /* 푸터 그리드는 4x1 유지 */
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -619,14 +603,6 @@ body {
 
   .tool-area {
     padding: 35px;
-  }
-
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
   }
 
   /* 푸터 그리드 태블릿에서 4x1 */
@@ -776,14 +752,6 @@ body {
     padding: 25px 20px;
   }
 
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
-  }
-
   /* 푸터 모바일에서 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -859,13 +827,6 @@ body {
 
   .about-content {
     padding: 20px 10px;
-  }
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
-
-  .about-container .mobile-ads {
-    display: none !important;
   }
 
   .footer-info {
