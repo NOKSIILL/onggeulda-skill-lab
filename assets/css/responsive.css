@@ -793,6 +793,7 @@ body {
 
   .start-subtitle {
     font-size: 14px;
+    padding: 0 15px;
   }
 
   .game-over-title {
