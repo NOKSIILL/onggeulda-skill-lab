@@ -910,7 +910,7 @@ body {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    max-width: 300px;
+    max-width: 400px;
   }
 
   .footer-info {
@@ -920,7 +920,7 @@ body {
 
   .footer-item {
     padding: 15px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .footer-language {
@@ -991,6 +991,10 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     max-width: 280px;
+  }
+
+  .footer-item {
+    font-size: 14px;
   }
 
   .ads-hide {
