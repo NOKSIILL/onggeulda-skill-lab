@@ -358,13 +358,15 @@ body {
     display: none !important;
   }
 
-  .about-container .ad-sidebar {
-    display: none !important;
-  }
+  /*
+.about-container .ad-sidebar {
+  display: none !important;
+}
 
-  .about-container .mobile-ads {
-    display: none !important;
-  }
+.about-container .mobile-ads {
+  display: none !important;
+}
+*/
 
   /* 토글 버튼 숨김 */
   .sidebar-toggle {
