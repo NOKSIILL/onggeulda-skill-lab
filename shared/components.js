@@ -87,7 +87,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/footer/${page}.html`;
+          window.location.href = `/${page}.html`;
         }
       });
     });
@@ -134,8 +134,8 @@ class ComponentLoader {
   }
 
   static initToolSidebarEvents() {
-    // 도구 사이드바도 game-item 클래스를 사용하므로 동일한 이벤트 처리
-    document.querySelectorAll("#tool-sidebar .game-item").forEach((item) => {
+    // 도구 사이드바는 tool-item 클래스 사용
+    document.querySelectorAll("#tool-sidebar .tool-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
         const tool = item.dataset.tool;

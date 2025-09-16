@@ -306,12 +306,13 @@ body {
     display: none !important;
   }
 
-  /* 게임 사이드바 가운데 정렬 - 데스크탑에서는 기본 */
+  /* 게임/도구 사이드바 - 데스크탑에서는 기본 세로 배치 */
   .game-list {
     display: block;
   }
 
-  .game-item {
+  .game-item,
+  .tool-item {
     margin-bottom: 8px;
     padding: 12px 16px;
     border-radius: 8px;
@@ -321,6 +322,17 @@ body {
     font-size: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 255, 136, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .game-item:hover,
+  .tool-item:hover,
+  .game-item.active,
+  .tool-item.active {
+    background: rgba(0, 255, 136, 0.1);
+    border-left-color: #00ff88;
   }
 }
 
@@ -516,7 +528,8 @@ body {
     justify-content: center;
   }
 
-  .game-item {
+  .game-item,
+  .tool-item {
     flex: 0 0 auto;
     margin-bottom: 0;
     padding: 12px 18px;
@@ -527,9 +540,12 @@ body {
     font-size: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 255, 136, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  .game-item.active {
+  .game-item.active,
+  .tool-item.active {
     background: rgba(0, 255, 136, 0.2);
     border-color: #00ff88;
   }

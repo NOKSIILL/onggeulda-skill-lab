@@ -322,7 +322,7 @@ function setupEventDelegation() {
 
     // 도구 사이드바 클릭 처리
     if (
-      target.classList.contains("game-item") &&
+      target.classList.contains("tool-item") &&
       target.closest("#toolsPage")
     ) {
       event.preventDefault();
