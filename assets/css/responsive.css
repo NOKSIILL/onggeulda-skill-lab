@@ -824,11 +824,16 @@ body {
   }
 
   .memory-instructions {
-    font-size: 10px;
     margin-bottom: 5px;
     padding: 0 15px;
   }
 
+  .memory-instructions p {
+    font-size: 10px;
+  }
+  .memory-grid {
+    gap: 10px;
+  }
   .memory-controls {
     margin-top: 5px;
   }
