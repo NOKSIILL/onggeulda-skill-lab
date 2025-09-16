@@ -609,15 +609,15 @@ body {
     margin-left: 40px;
   }
 
+  .game-area {
+    min-height: 590px;
+    max-height: 600px;
+  }
+
   .game-area-aim,
   .game-area-reaction {
     min-height: 570px;
     max-height: 580px;
-  }
-
-  .game-area {
-    min-height: 590px;
-    max-height: 600px;
   }
 
   .memory-grid {
@@ -785,15 +785,15 @@ body {
     font-size: 18px;
   }
 
+  .game-area {
+    min-height: 540px;
+    max-height: 550px;
+  }
+
   .game-area-aim,
   .game-area-reaction {
     min-height: 500px;
     max-height: 510px;
-  }
-
-  .game-area {
-    min-height: 540px;
-    max-height: 550px;
   }
 
   .start-title {
@@ -824,12 +824,13 @@ body {
   }
 
   .memory-instructions {
+    margin-top: 0;
     margin-bottom: 5px;
     padding: 0 15px;
   }
 
   .memory-instructions p {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .memory-grid {
