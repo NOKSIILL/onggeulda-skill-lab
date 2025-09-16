@@ -192,9 +192,10 @@ class ComponentLoader {
       ".games-container, .tools-container"
     );
     const homeLayouts = document.querySelectorAll(".home-layout");
+    const aboutContainers = document.querySelectorAll(".about-container");
     const width = window.innerWidth;
 
-    // 게임/도구 컨테이너만 처리
+    // 게임/도구 컨테이너 처리
     gameContainers.forEach((container) => {
       if (width >= 1200) {
         container.style.display = "flex";
@@ -211,19 +212,45 @@ class ComponentLoader {
       }
     });
 
-    // 홈 레이아웃(푸터 페이지들)은 항상 블록 레이아웃 유지
+    // 홈 레이아웃 처리 (인덱스 페이지들)
     homeLayouts.forEach((layout) => {
-      layout.style.display = "block";
+      if (width >= 1200) {
+        // PC에서는 flex로 광고바 포함
+        layout.style.display = "flex";
+        layout.style.gap = "20px";
+      } else {
+        // 모바일/태블릿에서는 block
+        layout.style.display = "block";
+      }
     });
 
-    // 요소 순서 설정
+    // About 컨테이너 처리 (푸터 페이지들) - 다른 페이지와 동일한 전체 레이아웃
+    aboutContainers.forEach((container) => {
+      if (width >= 1200) {
+        // PC에서 다른 페이지와 동일하게 flex 레이아웃
+        container.style.display = "flex";
+        container.style.gap = "20px";
+        container.style.maxWidth = "1200px";
+        container.style.margin = "0 auto";
+      } else if (width >= 768) {
+        container.style.display = "flex";
+        container.style.gap = "20px";
+      } else {
+        container.style.display = "block";
+        container.style.maxWidth = "100%";
+        container.style.margin = "0";
+      }
+    });
+
+    // 요소 순서 및 크기 설정
     const sidebars = document.querySelectorAll(".sidebar");
-    const contents = document.querySelectorAll(".game-content, .about-content");
+    const contents = document.querySelectorAll(
+      ".game-content, .about-content, .home-content"
+    );
     const adSidebars = document.querySelectorAll(".ad-sidebar");
 
     sidebars.forEach((sidebar) => {
       sidebar.style.order = "1";
-      // PC에서 사이드바 크기 고정
       if (width >= 1200) {
         sidebar.style.width = "250px";
         sidebar.style.flexShrink = "0";
@@ -232,7 +259,6 @@ class ComponentLoader {
 
     contents.forEach((content) => {
       content.style.order = "2";
-      // PC에서 콘텐츠 flex 설정
       if (width >= 1200) {
         content.style.flex = "1";
         content.style.minWidth = "0";
@@ -241,7 +267,6 @@ class ComponentLoader {
 
     adSidebars.forEach((adSidebar) => {
       adSidebar.style.order = "3";
-      // PC에서 광고바 크기 고정 - 이 부분이 핵심!
       if (width >= 1200) {
         adSidebar.style.display = "flex";
         adSidebar.style.flexDirection = "column";
