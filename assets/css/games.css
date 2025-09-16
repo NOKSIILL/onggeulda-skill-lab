@@ -30,7 +30,7 @@
 .game-stats {
   display: flex;
   margin-top: 20px;
-  gap: 30px;
+  gap: 40px;
   font-size: 16px;
 }
 
@@ -67,7 +67,6 @@
   justify-content: center;
   min-height: 500px;
   margin-top: 10px;
-  padding: 10px;
 }
 
 /* FPS 에임 게임 스타일 */

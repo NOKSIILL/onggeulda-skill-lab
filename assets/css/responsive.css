@@ -820,6 +820,14 @@ body {
   .ads-hide {
     display: none !important;
   }
+
+  .start-title {
+    font-size: 24px;
+  }
+
+  .start-subtitle {
+    font-size: 14px;
+  }
 }
 
 /* ===== 소형 모바일 (479px 이하) ===== */
