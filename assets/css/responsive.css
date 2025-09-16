@@ -613,8 +613,17 @@ body {
     min-height: 500px;
   }
 
+  .tool-header {
+    padding: 15px 20px;
+  }
+
+  .tool-title {
+    font-size: 22px;
+    margin-left: 40px;
+  }
+
   .tool-area {
-    padding: 35px;
+    min-height: 500px;
   }
 
   /* 푸터 그리드 태블릿에서 4x1 */
@@ -674,6 +683,11 @@ body {
   /* 헤더 높이 조정 */
   .site-header {
     padding: 10px 0;
+  }
+
+  .main-container {
+    margin-top: 130px;
+    padding: 0 15px;
   }
 
   /* 홈 레이아웃 모바일 버전 */
@@ -749,6 +763,7 @@ body {
   /* 게임/도구 스타일 조정 */
   .game-header {
     padding: 15px 20px;
+    margin-top: 40px;
   }
 
   .game-title {
@@ -759,8 +774,17 @@ body {
     min-height: 450px;
   }
 
+  .tool-header {
+    padding: 15px 20px;
+    margin-top: 40px;
+  }
+
+  .tool-title {
+    font-size: 18px;
+  }
+
   .tool-area {
-    padding: 25px 20px;
+    min-height: 450px;
   }
 
   /* 푸터 모바일에서 2x2 */
@@ -796,15 +820,15 @@ body {
   .ads-hide {
     display: none !important;
   }
-
-  .main-container {
-    margin-top: 130px;
-    padding: 0 15px;
-  }
 }
 
 /* ===== 소형 모바일 (479px 이하) ===== */
 @media (max-width: 479px) {
+  .main-container {
+    margin-top: 150px;
+    padding: 0 10px;
+  }
+
   .header-container {
     padding: 12px;
   }
@@ -856,11 +880,6 @@ body {
 
   .ads-hide {
     display: none !important;
-  }
-
-  .main-container {
-    margin-top: 150px;
-    padding: 0 10px;
   }
 }
 
