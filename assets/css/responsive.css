@@ -330,26 +330,6 @@ body {
     border: 1px solid rgba(0, 255, 136, 0.2);
   }
 
-  /* About 컨테이너 - 다른 페이지와 동일한 레이아웃, 푸터 위치 보장 */
-  .about-container {
-    display: flex !important;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: flex-start;
-    /* 푸터를 하단에 유지하기 위한 최소 높이 */
-    min-height: calc(100vh - 85px - 160px); /* 헤더 - 푸터 여백 */
-  }
-
-  /* About 콘텐츠 - order 2로 가운데 위치 */
-  .about-content {
-    flex: 1;
-    min-width: 0;
-    order: 2;
-    padding: 40px 20px;
-    /* 기존 max-width, margin 제거하여 flex 공간 활용 */
-  }
-
   /* 홈 콘텐츠 - 광고바 포함 */
   .home-content {
     flex: 1;
