@@ -230,6 +230,14 @@ body {
   background: rgba(0, 255, 136, 0.2);
 }
 
+.about-container .ad-sidebar {
+  display: none !important;
+}
+
+.about-container .mobile-ads {
+  display: none !important;
+}
+
 /* ===== PC 전용 (1200px 이상) ===== */
 @media (min-width: 1200px) {
   .desktop-only {
