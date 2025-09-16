@@ -624,6 +624,10 @@ body {
     height: 550px;
   }
 
+  .memory-instructions {
+    margin-bottom: 10px;
+  }
+
   .memory-grid {
     gap: 13px;
   }
@@ -858,7 +862,7 @@ body {
   .memory-card {
     width: 70px;
     height: 70px;
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .memory-controls {
