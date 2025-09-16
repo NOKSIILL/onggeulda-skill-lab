@@ -245,6 +245,10 @@ body {
   display: none !important;
 }
 
+.ads-hide {
+  display: none !important;
+}
+
 /* ===== 푸터 그리드 레이아웃 ===== */
 .footer-info {
   background: rgba(0, 0, 0, 0.9);
