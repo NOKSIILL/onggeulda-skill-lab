@@ -487,6 +487,10 @@ body {
     grid-template-columns: repeat(4, 1fr);
     max-width: 800px;
   }
+
+  .ads-hide {
+    display: none !important;
+  }
 }
 
 /* ===== 태블릿 (768px ~ 1199px) ===== */
@@ -617,6 +621,10 @@ body {
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
     max-width: 800px;
+  }
+
+  .ads-hide {
+    display: none !important;
   }
 }
 
@@ -789,6 +797,10 @@ body {
     padding: 12px 20px;
     font-size: 14px;
   }
+
+  .ads-hide {
+    display: none !important;
+  }
 }
 
 /* ===== 소형 모바일 (479px 이하) ===== */
@@ -845,6 +857,10 @@ body {
     grid-template-columns: 1fr;
     gap: 8px;
     max-width: 280px;
+  }
+
+  .ads-hide {
+    display: none !important;
   }
 }
 
