@@ -188,12 +188,14 @@ class ComponentLoader {
 
   // 반응형 레이아웃 적용
   static applyResponsiveLayout() {
-    const containers = document.querySelectorAll(
-      ".games-container, .tools-container, .about-container"
+    const gameContainers = document.querySelectorAll(
+      ".games-container, .tools-container"
     );
+    const homeLayouts = document.querySelectorAll(".home-layout");
     const width = window.innerWidth;
 
-    containers.forEach((container) => {
+    // 게임/도구 컨테이너만 처리
+    gameContainers.forEach((container) => {
       if (width >= 1200) {
         container.style.display = "flex";
         container.style.flexDirection = "row";
@@ -207,6 +209,11 @@ class ComponentLoader {
         container.style.flexDirection = "column";
         container.style.gap = "0";
       }
+    });
+
+    // 홈 레이아웃(푸터 페이지들)은 항상 블록 레이아웃 유지
+    homeLayouts.forEach((layout) => {
+      layout.style.display = "block";
     });
 
     // 요소 순서 설정

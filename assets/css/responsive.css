@@ -388,6 +388,9 @@ body {
     border-right: 1px solid rgba(0, 255, 136, 0.3);
     border-bottom: none;
     order: 1 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .game-content {
@@ -526,6 +529,7 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    width: 100%;
   }
 
   .game-item,
@@ -605,15 +609,14 @@ body {
 
   /* 사이드바 - 항상 맨 위에 배치 */
   .sidebar {
-    order: 1 !important;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-    background: rgba(0, 0, 0, 0.95);
+    width: 200px;
     padding: 20px;
-    margin: 0 -15px 20px -15px;
-    position: relative;
-    z-index: 200;
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    border-bottom: none;
+    order: 1 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* 콘텐츠 - 사이드바 다음에 배치 */
@@ -683,6 +686,7 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    width: 100%;
   }
 
   .game-item,
@@ -1038,7 +1042,14 @@ body {
   }
 
   .sidebar {
-    margin: 0 -10px 20px -10px;
+    width: 200px;
+    padding: 20px;
+    border-right: 1px solid rgba(0, 255, 136, 0.3);
+    border-bottom: none;
+    order: 1 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .game-area {
