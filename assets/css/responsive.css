@@ -772,13 +772,16 @@ body {
 
   .game-area,
   .reaction-area,
-  .memory-game-container,
   .color-game-area {
     height: 400px;
   }
 
   .game-area-aim {
     height: 500px;
+  }
+
+  .game-area-memory {
+    height: 450px;
   }
 
   .start-title {
