@@ -344,16 +344,14 @@ function setupEventDelegation() {
       showPage("home");
     }
 
-    // 언어 버튼 클릭 처리 (강화된 이벤트 처리)
+    // 언어 버튼 클릭 처리
     if (target.classList.contains("lang-btn")) {
       event.preventDefault();
       event.stopPropagation();
       const lang = target.dataset.lang;
       console.log("Language button clicked:", lang, target);
-      if (lang && typeof setLanguage === "function") {
+      if (lang) {
         setLanguage(lang);
-      } else {
-        console.error("setLanguage function not found or lang is missing");
       }
     }
   });
@@ -537,19 +535,29 @@ function applyTranslations(lang) {
 }
 
 function updateMetaTags(texts) {
-  document.title = texts.pageTitle;
+  if (texts.pageTitle) {
+    document.title = texts.pageTitle;
+  }
 
   const descMeta = document.querySelector('meta[name="description"]');
-  if (descMeta) descMeta.content = texts.pageDescription;
+  if (descMeta && texts.pageDescription) {
+    descMeta.content = texts.pageDescription;
+  }
 
   const keywordsMeta = document.querySelector('meta[name="keywords"]');
-  if (keywordsMeta) keywordsMeta.content = texts.pageKeywords;
+  if (keywordsMeta && texts.pageKeywords) {
+    keywordsMeta.content = texts.pageKeywords;
+  }
 
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.content = texts.pageTitle;
+  if (ogTitle && texts.pageTitle) {
+    ogTitle.content = texts.pageTitle;
+  }
 
   const ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc) ogDesc.content = texts.pageDescription;
+  if (ogDesc && texts.pageDescription) {
+    ogDesc.content = texts.pageDescription;
+  }
 }
 
 function updatePlaceholders(texts) {
