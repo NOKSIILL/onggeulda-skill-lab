@@ -609,6 +609,11 @@ body {
     margin-left: 40px;
   }
 
+  .game-area-aim {
+    min-height: 570px;
+    max-height: 580px;
+  }
+
   .game-area {
     min-height: 590px;
     max-height: 600px;
@@ -776,6 +781,11 @@ body {
     font-size: 18px;
   }
 
+  .game-area-aim {
+    min-height: 520px;
+    max-height: 530px;
+  }
+
   .game-area {
     min-height: 540px;
     max-height: 550px;
@@ -814,7 +824,7 @@ body {
   }
 
   .memory-instructions {
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: 5px;
     padding: 0 15px;
   }
@@ -825,7 +835,7 @@ body {
 
   .color-instruction {
     font-size: 15px;
-    margin-bottom: 5px;
+    margin: 0 auto;
   }
 
   .target-color {
