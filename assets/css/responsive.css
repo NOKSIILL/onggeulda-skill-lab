@@ -828,6 +828,17 @@ body {
   .start-subtitle {
     font-size: 14px;
   }
+
+  .game-over-title {
+    font-size: 24px;
+  }
+
+  .final-stat-value {
+    font-size: 20px;
+  }
+  .final-stat-label {
+    font-size: 14px;
+  }
 }
 
 /* ===== 소형 모바일 (479px 이하) ===== */
