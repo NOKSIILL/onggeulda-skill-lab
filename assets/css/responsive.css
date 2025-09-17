@@ -947,6 +947,10 @@ body {
   .ads-hide {
     display: none !important;
   }
+
+  .footer-biz-item {
+    font-size: 13px;
+  }
 }
 
 /* ===== 소형 모바일 (479px 이하) ===== */
