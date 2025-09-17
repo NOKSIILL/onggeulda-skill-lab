@@ -1,4 +1,4 @@
-# Onggeulda Skill Lab
+# Onggeulda Skills Lab
 
 FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 게임과 다양한 창작 도구를 제공하는 올인원 웹 애플리케이션입니다.
 
@@ -25,7 +25,7 @@ FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 �
 
 ## 📁 프로젝트 구조
 
-onggeulda-skill-lab/
+onggeulda-skills-lab/
 ├── index.html # ✅ 새로운 홈페이지
 ├── about.html # ✅ 소개 페이지  
 ├── contact.html # ✅ 문의하기 페이지

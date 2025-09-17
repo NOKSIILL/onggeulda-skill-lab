@@ -15,18 +15,18 @@ const PageStateManager = {
   // 페이지별 제목 설정
   getPageTitle: function (page, subPage) {
     const titles = {
-      home: "Onggeulda Skill Lab — Daily Skill Practice & Tools",
-      games: "게임 - Onggeulda Skill Lab",
-      tools: "창작 도구 - Onggeulda Skill Lab",
-      about: "소개 - Onggeulda Skill Lab",
-      "fps-aim": "FPS 에임 훈련 - Onggeulda Skill Lab",
-      "reaction-test": "반응속도 테스트 - Onggeulda Skill Lab",
-      "memory-game": "메모리 게임 - Onggeulda Skill Lab",
-      "color-match": "색깔 맞추기 - Onggeulda Skill Lab",
-      "color-palette": "색상 팔레트 생성기 - Onggeulda Skill Lab",
-      keywords: "키워드 생성기 - Onggeulda Skill Lab",
-      "unit-converter": "단위 변환기 - Onggeulda Skill Lab",
-      "text-transformer": "텍스트 변환기 - Onggeulda Skill Lab",
+      home: "Onggeulda Skills Lab — Daily Skill Practice & Tools",
+      games: "게임 - Onggeulda Skills Lab",
+      tools: "창작 도구 - Onggeulda Skills Lab",
+      about: "소개 - Onggeulda Skills Lab",
+      "fps-aim": "FPS 에임 훈련 - Onggeulda Skills Lab",
+      "reaction-test": "반응속도 테스트 - Onggeulda Skills Lab",
+      "memory-game": "메모리 게임 - Onggeulda Skills Lab",
+      "color-match": "색깔 맞추기 - Onggeulda Skills Lab",
+      "color-palette": "색상 팔레트 생성기 - Onggeulda Skills Lab",
+      keywords: "키워드 생성기 - Onggeulda Skills Lab",
+      "unit-converter": "단위 변환기 - Onggeulda Skills Lab",
+      "text-transformer": "텍스트 변환기 - Onggeulda Skills Lab",
     };
 
     return titles[subPage] || titles[page] || titles["home"];
@@ -36,44 +36,44 @@ const PageStateManager = {
   updatePageMeta: function (page, subPage) {
     const metaData = {
       "fps-aim": {
-        title: "FPS 에임 훈련 - Onggeulda Skill Lab",
+        title: "FPS 에임 훈련 - Onggeulda Skills Lab",
         description:
           "FPS 게임 실력 향상을 위한 에임 훈련 게임. 반응속도와 정확도를 개선하세요.",
         keywords: "FPS 게임, 에임 훈련, 반응속도, 정확도, 온라인 게임",
       },
       "reaction-test": {
-        title: "반응속도 테스트 - Onggeulda Skill Lab",
+        title: "반응속도 테스트 - Onggeulda Skills Lab",
         description:
           "순간 반응 능력을 측정하고 개선할 수 있는 반응속도 테스트 게임.",
         keywords: "반응속도, 반응속도 테스트, 순간 반응, 반사신경",
       },
       "memory-game": {
-        title: "메모리 게임 - Onggeulda Skill Lab",
+        title: "메모리 게임 - Onggeulda Skills Lab",
         description: "기억력과 집중력 훈련을 위한 카드 매칭 메모리 게임.",
         keywords: "메모리 게임, 기억력, 집중력, 카드 매칭",
       },
       "color-match": {
-        title: "색깔 맞추기 - Onggeulda Skill Lab",
+        title: "색깔 맞추기 - Onggeulda Skills Lab",
         description: "색감과 관찰력 향상을 위한 색상 매칭 게임.",
         keywords: "색깔 맞추기, 색감, 관찰력, 색상 매칭",
       },
       "color-palette": {
-        title: "색상 팔레트 생성기 - Onggeulda Skill Lab",
+        title: "색상 팔레트 생성기 - Onggeulda Skills Lab",
         description: "창작을 위한 아름다운 색상 조합을 생성하는 도구.",
         keywords: "색상 팔레트, 색상 생성기, 디자인 도구, 창작 도구",
       },
       keywords: {
-        title: "키워드 생성기 - Onggeulda Skill Lab",
+        title: "키워드 생성기 - Onggeulda Skills Lab",
         description: "창작 영감을 위한 랜덤 키워드 생성 도구.",
         keywords: "키워드 생성기, 창작 영감, 랜덤 키워드, 아이디어",
       },
       "unit-converter": {
-        title: "단위 변환기 - Onggeulda Skill Lab",
+        title: "단위 변환기 - Onggeulda Skills Lab",
         description: "디자인 작업용 다양한 단위 변환 도구.",
         keywords: "단위 변환기, 픽셀 변환, 디자인 도구, 단위 계산",
       },
       "text-transformer": {
-        title: "텍스트 변환기 - Onggeulda Skill Lab",
+        title: "텍스트 변환기 - Onggeulda Skills Lab",
         description: "다양한 텍스트 변환 및 처리 기능을 제공하는 도구.",
         keywords: "텍스트 변환기, 텍스트 변환, 문자열 처리, 텍스트 도구",
       },

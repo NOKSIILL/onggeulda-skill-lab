@@ -340,18 +340,10 @@ body {
   color: #00ff88;
 }
 
-.footer-biz-item a {
-  text-decoration: none !important;
-}
-
 .footer-biz-info {
   margin-top: 20px;
   padding: 10px;
   border-top: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-.footer-biz-item a:hover {
-  text-decoration: underline !important;
 }
 
 .footer-biz-item {
@@ -359,6 +351,16 @@ body {
   padding: 5px;
   font-size: 13px;
   line-height: 1.6;
+}
+
+.footer-biz-item a {
+  text-decoration-line: none;
+  text-decoration-style: none;
+  text-decoration-color: #aaa;
+}
+
+.footer-biz-item a:hover {
+  text-decoration: underline;
 }
 
 /* 알림 */
