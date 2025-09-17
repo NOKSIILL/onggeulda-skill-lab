@@ -32,6 +32,7 @@ class ComponentLoader {
     const success = await this.loadComponent("footer", "/shared/footer.html");
     if (success) {
       this.initFooterEvents();
+      this.setActiveNavigation();
     }
     return success;
   }
@@ -499,8 +500,7 @@ class ComponentLoader {
         (currentPath === "/" && href === "/") ||
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about/about.html") ||
-        (currentPath.startsWith("/about") && href === "/about.html")
+        (currentPath.includes("/about") && href === "/about/about.html")
       ) {
         item.classList.add("active");
       }
