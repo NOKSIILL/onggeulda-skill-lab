@@ -55,6 +55,74 @@ onggeulda-skills-lab/
 ├── css/ (기존 파일들)
 └── js/ (기존 파일들)
 
+## 📁 (변경 예정) 전체 디렉토리 구조
+
+onggeulda-skills-lab/
+│
+├── 📄 index.html # 언어 감지 + 리다이렉트
+├── 📄 .htaccess # 서버 설정 (Apache)
+├── 📄 robots.txt # 검색엔진 크롤링 규칙
+├── 📄 sitemap.xml # 통합 사이트맵
+├── 📄 sitemap-ko.xml # 한국어 사이트맵
+├── 📄 sitemap-en.xml # 영어 사이트맵
+│
+├── 📂 ko/ # 🇰🇷 한국어 버전
+│ ├── 📄 index.html # 한국어 홈페이지
+│ ├── 📂 games/
+│ │ ├── 📄 index.html # 게임 목록 (한국어)
+│ │ ├── 📄 fps-aim.html # FPS 조준 게임
+│ │ ├── 📄 reaction-test.html # 반응속도 테스트
+│ │ ├── 📄 memory-game.html # 기억력 게임
+│ │ └── 📄 color-match.html # 색상 매칭
+│ ├── 📂 tools/
+│ │ ├── 📄 index.html # 도구 목록 (한국어)
+│ │ ├── 📄 color-palette.html # 색상 팔레트
+│ │ ├── 📄 keywords.html # 키워드 도구
+│ │ ├── 📄 unit-converter.html # 단위 변환기
+│ │ └── 📄 text-transformer.html # 텍스트 변환기
+│ └── 📂 about/
+│ ├── 📄 about.html # 소개 페이지
+│ ├── 📄 contact.html # 연락처
+│ ├── 📄 privacy.html # 개인정보처리방침
+│ └── 📄 terms.html # 이용약관
+│
+├── 📂 en/ # 🇺🇸 영어 버전
+│ ├── 📄 index.html # English Homepage
+│ ├── 📂 games/
+│ │ ├── 📄 index.html # Games List (English)
+│ │ ├── 📄 fps-aim.html # FPS Aim Trainer
+│ │ ├── 📄 reaction-test.html # Reaction Speed Test
+│ │ ├── 📄 memory-game.html # Memory Game
+│ │ └── 📄 color-match.html # Color Matching Game
+│ ├── 📂 tools/
+│ │ ├── 📄 index.html # Tools List (English)
+│ │ ├── 📄 color-palette.html # Color Palette Generator
+│ │ ├── 📄 keywords.html # Keyword Tool
+│ │ ├── 📄 unit-converter.html # Unit Converter
+│ │ └── 📄 text-transformer.html # Text Transformer
+│ └── 📂 about/
+│ ├── 📄 about.html # About Page
+│ ├── 📄 contact.html # Contact
+│ ├── 📄 privacy.html # Privacy Policy
+│ └── 📄 terms.html # Terms of Service
+│
+├── 📂 shared/ # 🔧 공통 리소스
+│ ├── 📂 components/
+│ │ ├── 📄 header-ko.html # 한국어 헤더
+│ │ ├── 📄 header-en.html # 영어 헤더
+│ │ ├── 📄 footer-ko.html # 한국어 푸터
+│ │ └── 📄 footer-en.html # 영어 푸터
+│ └── 📂 js/
+│ ├── 📄 lang-detector.js # 언어 감지
+│ ├── 📄 component-loader.js # 컴포넌트 로더 (수정된 버전)
+│ └── 📄 url-manager.js # URL 관리
+│
+└── 📂 assets/ # 🎨 기존 리소스 (변경 없음)
+├── 📂 css/
+├── 📂 js/
+├── 📂 images/
+└── 📂 sounds/
+
 ## 🚀 설치 및 실행
 
 ### 1. 프로젝트 다운로드
