@@ -101,7 +101,7 @@
         height: 100%;
         background: linear-gradient(90deg, #4caf50, #45a049);
         border-radius: 2px;
-        animation: progress 2s ease-in-out;
+        animation: progress 0.6s ease-out;
         transform-origin: left;
       }
 
@@ -212,10 +212,12 @@
           debugInfo.classList.add("show");
           manualLinks.classList.add("show");
 
-          // 5초 후에 수동 링크 표시 (자동 리다이렉트를 기다리지 않고 테스트 가능)
+          // 개발 모드에서만 수동 링크를 빠르게 표시
           setTimeout(() => {
-            manualLinks.style.display = "block";
-          }, 2000);
+            if (manualLinks && isDevelopmentMode) {
+              manualLinks.style.display = "block";
+            }
+          }, 500);
         }
 
         // 1. URL에서 언어 파라미터 확인
@@ -258,8 +260,8 @@
           });
         }
 
-        // 리다이렉트 (개발 모드에서는 시간을 좀 더 줌)
-        const redirectDelay = isDevelopmentMode ? 3000 : 1500;
+        // 즉시 리다이렉트 (개발 모드에서만 약간의 딜레이)
+        const redirectDelay = isDevelopmentMode ? 800 : 300;
 
         setTimeout(() => {
           window.location.replace(`/${targetLang}/`);
