@@ -499,7 +499,9 @@ class ComponentLoader {
         (currentPath === "/" && href === "/") ||
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about/about.html")
+        (currentPath.includes("/about") && href === "/about/about.html") ||
+        (currentPath.includes("/about") &&
+          href.includes === "/about/about.html")
       ) {
         item.classList.add("active");
       }
