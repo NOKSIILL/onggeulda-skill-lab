@@ -506,7 +506,10 @@ class ComponentLoader {
         // about 폴더 하위 모든 페이지에 대해 소개 메뉴 활성화
         //(currentPath.startsWith("/about/") && href === "/about/about.html")
         // 푸터에서 about 페이지로 갈 때 헤더의 소개 메뉴 활성화
-        (currentPath === "/about/about.html" && href === "/about/about.html")
+        //(currentPath === "/about/about.html" && href === "/about/about.html")
+        ((currentPath === "/about/about.html" ||
+          currentPath === "/about/about") &&
+          (href === "/about/about.html" || href === "/about/about"))
       ) {
         item.classList.add("active");
         console.log("Activated nav item:", href); // 디버깅용
