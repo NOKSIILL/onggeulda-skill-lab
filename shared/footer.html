@@ -26,11 +26,11 @@
     <div class="footer-biz-grid">
       <div class="footer-biz-item">
         <p>
-          © <span id="copyright-year"></span>옹글다 스튜디오(ONGGEULDA STUDIO).
-          All rights reserved.<br />
-          Designed by <strong>NOKSIILL</strong>.:
+          © <span id="copyright-year" data-start="2025"></span>옹글다
+          스튜디오(ONGGEULDA STUDIO). All rights reserved.<br />
+          Designed by NOKSIILL.:
           <a href="https://onggeulda-studio.com"
-            >https://onggeulda-studio.com</a
+            ><strong>https://onggeulda-studio.com</strong></a
           >
         </p>
       </div>
@@ -40,11 +40,32 @@
 </div>
 
 <script>
-  const startYear = 2025; // 사이트가 처음 공개된 연도. 필요없으면 currentYear만 사용.
-  const currentYear = new Date().getFullYear();
-  const display =
-    startYear && startYear < currentYear
-      ? `${startYear}–${currentYear}`
-      : `${currentYear}`;
-  document.getElementById("copyright-year").textContent = display;
+  (function () {
+    function safeDisplayYear(startYear) {
+      const currentYear = new Date().getFullYear();
+      const s =
+        startYear === undefined || startYear === null
+          ? null
+          : Number(startYear);
+      // 유효성: 정수인지, 적절한 범위인지(1900 ~ currentYear)
+      if (!Number.isInteger(s) || s < 1900 || s > currentYear) {
+        if (s > currentYear)
+          console.warn("startYear is in the future. Ignoring.");
+        return String(currentYear);
+      }
+      // startYear 유효할 때
+      return s < currentYear ? `${s}–${currentYear}` : String(currentYear);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const el = document.getElementById("copyright-year");
+      if (!el) {
+        console.warn("Element not found: #copyright-year");
+        return;
+      }
+      const startAttr = el.dataset.start; // data-start="2018" 옵션
+      const display = safeDisplayYear(startAttr);
+      el.textContent = display;
+    });
+  })();
 </script>

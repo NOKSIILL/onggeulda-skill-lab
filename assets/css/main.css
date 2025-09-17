@@ -341,18 +341,18 @@ body {
 }
 
 .footer-biz-info {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 30px 20px;
+  margin-top: 20px;
+  padding: 20px;
   border-top: 1px solid rgba(0, 255, 136, 0.3);
-  margin-top: 10px;
+}
+
+.footer-biz-item a {
+  text-decoration: none;
 }
 
 .footer-biz-item {
   color: #aaa;
   padding: 15px;
-}
-
-.footer-biz-item p {
   font-size: 15px;
   line-height: 1.6;
 }
