@@ -344,8 +344,49 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
+          // ---------- 추가: about 클릭이면 네비 상태를 즉시 'about'으로 변경 ----------
+          if (page === "about") {
+            try {
+              // 1) 기존 active 제거 (안전하게 모든 .nav-item에서 제거)
+              document.querySelectorAll(".nav-item.active").forEach((n) => {
+                n.classList.remove("active");
+                n.removeAttribute("aria-current");
+              });
+
+              // 2) about에 해당하는 nav-item 찾기 (여러 케이스 대비 넉넉하게 검사)
+              const aboutNav = Array.from(
+                document.querySelectorAll(".nav-item")
+              ).find((n) => {
+                const href = (n.getAttribute("href") || "").trim();
+                // 정확 매치 또는 /about 포함 등 넉넉한 매칭
+                return (
+                  href === "/about/about.html" ||
+                  href === "/about/" ||
+                  href === "/about" ||
+                  href.includes("/about")
+                );
+              });
+
+              // 3) 찾았으면 active 추가 (접근성도 함께)
+              if (aboutNav) {
+                aboutNav.classList.add("active");
+                aboutNav.setAttribute("aria-current", "page");
+              }
+
+              // 4) (선택) 새 페이지에서도 처리하고 싶다면 플래그 저장
+              //    — 새 페이지에 읽는 코드가 없다면 무시해도 됨
+              try {
+                sessionStorage.setItem("activateAbout", "1");
+              } catch (e) {
+                /* ignore */
+              }
+            } catch (err) {
+              console.warn("pre-activate about nav failed", err);
+            }
+          }
+          // ------------------------------------------------------------------------
+
           window.location.href = `/about/${page}.html`;
-          if (page === "about") setActiveNavigation("/about");
         }
       });
     });
