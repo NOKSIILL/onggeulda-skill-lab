@@ -345,7 +345,7 @@ class ComponentLoader {
         const page = item.dataset.page;
         if (page) {
           window.location.href = `/about/${page}.html`;
-          if (page === "about") setActiveNavigation("/about/about.html");
+          if (page === "about") setActiveNavigation("/about");
         }
       });
     });
