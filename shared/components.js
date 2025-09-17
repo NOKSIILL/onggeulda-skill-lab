@@ -344,7 +344,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/footer/${page}.html`;
+          window.location.href = `/about/${page}.html`;
         }
       });
     });
@@ -499,7 +499,7 @@ class ComponentLoader {
         (currentPath === "/" && href === "/") ||
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/footer/about.html")
+        (currentPath.includes("/about") && href === "/about/about.html")
       ) {
         item.classList.add("active");
       }
