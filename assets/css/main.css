@@ -347,7 +347,11 @@ body {
 }
 
 .footer-biz-item a {
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.footer-biz-item a:hover {
+  text-decoration: underline !important;
 }
 
 .footer-biz-item {
