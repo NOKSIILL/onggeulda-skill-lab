@@ -354,13 +354,33 @@ body {
 }
 
 .footer-biz-item a {
-  text-decoration-line: none;
+  text-decoration: none;
   text-decoration-style: none;
-  text-decoration-color: #aaa;
+  color: #aaa;
+}
+
+.footer-biz-item a:link {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:visited {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #aaa;
 }
 
 .footer-biz-item a:hover {
   text-decoration: underline;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:active {
+  text-decoration: underline;
+  text-decoration-style: none;
+  color: #aaa;
 }
 
 /* 알림 */
