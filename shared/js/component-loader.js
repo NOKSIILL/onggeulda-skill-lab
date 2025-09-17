@@ -1,5 +1,3 @@
-// 컴포넌트 로더(수정)
-
 class ComponentLoader {
   static currentLang = "ko";
   static isInitialized = false;
