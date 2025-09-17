@@ -299,6 +299,14 @@ body {
   border-color: rgba(0, 255, 136, 0.5);
 }
 
+.footer-biz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
 /* ===== 언어 선택기 ===== */
 .footer-language {
   display: block;

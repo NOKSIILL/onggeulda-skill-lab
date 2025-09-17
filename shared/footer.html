@@ -21,4 +21,30 @@
       <button class="lang-btn" data-lang="en">English</button>
     </div>
   </div>
+
+  <div class="footer-biz-info">
+    <div class="footer-biz-grid">
+      <div class="footer-biz-item">
+        <p>
+          © <span id="copyright-year"></span>옹글다 스튜디오(ONGGEULDA STUDIO).
+          All rights reserved.<br />
+          Contact:
+          <a href="mailto:onggeulda.studio@gmail.com"
+            >onggeulda.studio@gmail.com</a
+          >
+        </p>
+      </div>
+      <div class="footer-biz-item"></div>
+    </div>
+  </div>
 </div>
+
+<script>
+  const startYear = 2025; // 사이트가 처음 공개된 연도. 필요없으면 currentYear만 사용.
+  const currentYear = new Date().getFullYear();
+  const display =
+    startYear && startYear < currentYear
+      ? `${startYear}–${currentYear}`
+      : `${currentYear}`;
+  document.getElementById("copyright-year").textContent = display;
+</script>
