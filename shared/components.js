@@ -490,9 +490,12 @@ class ComponentLoader {
 
   static setActiveNavigation() {
     const currentPath = window.location.pathname;
+    console.log("Setting active navigation for path:", currentPath); // 디버깅용
+
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.classList.remove("active");
       const href = item.getAttribute("href");
+      console.log("Checking nav item:", href); // 디버깅용
 
       if (
         href === currentPath ||
@@ -506,6 +509,7 @@ class ComponentLoader {
         (currentPath === "/about/about.html" && href === "/about/about.html")
       ) {
         item.classList.add("active");
+        console.log("Activated nav item:", href); // 디버깅용
       }
     });
   }
