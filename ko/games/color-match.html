@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>색깔 맞추기 - Onggeulda Skills Lab</title>
+    <meta
+      name="description"
+      content="색감과 관찰력 향상을 위한 색상 매칭 게임"
+    />
+    <meta
+      name="keywords"
+      content="색깔 맞추기, 색감, 관찰력, 색상 매칭, 시각 훈련"
+    />
+
+    <meta property="og:title" content="색깔 맞추기 - Onggeulda Skills Lab" />
+    <meta
+      property="og:description"
+      content="색감과 관찰력 향상을 위한 색상 매칭 게임"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://domain.com/games/color-match.html"
+    />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/games.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header"></header>
+
+    <div class="main-container">
+      <div class="games-container">
+        <aside class="sidebar" id="game-sidebar"></aside>
+
+        <main class="game-content">
+          <div class="game-header">
+            <div class="game-title">🎨 색깔 맞추기</div>
+            <div class="game-stats">
+              <div class="stat-item">
+                <div class="stat-label">점수</div>
+                <div class="stat-value" id="colorScore">0</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">정답률</div>
+                <div class="stat-value" id="colorAccuracy">100%</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">레벨</div>
+                <div class="stat-value" id="colorLevel">1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-area">
+            <div class="color-game-area">
+              <div class="color-instruction">
+                이 색과 같은 색을 선택하세요 :
+              </div>
+              <div class="target-color" id="targetColor"></div>
+              <div class="color-options" id="colorOptions"></div>
+              <button class="tool-button" onclick="startColorGame()">
+                새 게임
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <aside class="ad-sidebar desktop-only">
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="mobile-ads">
+      <div class="ad-container">
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-info"></footer>
+
+    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
+    <script src="/assets/js/games/color-match.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        await ComponentLoader.init("games", "color-match");
+        startColorGame();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>색상 팔레트 생성기 - Onggeulda Skills Lab</title>
+    <meta
+      name="description"
+      content="창작을 위한 아름다운 색상 조합을 생성하는 도구"
+    />
+    <meta
+      name="keywords"
+      content="색상 팔레트, 색상 생성기, 디자인 도구, 창작 도구, 컬러 팔레트"
+    />
+
+    <meta
+      property="og:title"
+      content="색상 팔레트 생성기 - Onggeulda Skills Lab"
+    />
+    <meta
+      property="og:description"
+      content="창작을 위한 아름다운 색상 조합을 생성하는 도구"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://domain.com/tools/color-palette.html"
+    />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/tools.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header"></header>
+
+    <div class="main-container">
+      <div class="tools-container">
+        <aside class="sidebar" id="tool-sidebar"></aside>
+
+        <main class="tool-content">
+          <div class="tool-header">
+            <div class="tool-title">🎨 색상 팔레트 생성기</div>
+            <div class="tool-stats">
+              <!-- 도구 페이지는 통계가 없으므로 비워둠 -->
+            </div>
+          </div>
+
+          <div class="tool-area">
+            <div class="tool-instructions">
+              <h2>창작에 영감을 주는 색상 조합</h2>
+              <p>
+                아름다운 색상 팔레트를 생성하고 창작 프로젝트에 활용하세요. 각
+                색상을 클릭하면 색상 코드가 복사됩니다.
+              </p>
+            </div>
+            <div class="color-palette" id="colorPalette"></div>
+            <div class="tool-controls">
+              <button class="tool-button" onclick="generateColorPalette()">
+                새 팔레트 생성
+              </button>
+              <button class="tool-button" onclick="copyPalette()">
+                전체 색상 코드 복사
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <!-- 광고 영역 (데스크탑) -->
+        <aside class="ad-sidebar desktop-only">
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 모바일/태블릿 광고 -->
+    <div class="mobile-ads">
+      <div class="ad-container">
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-info"></footer>
+
+    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
+    <script src="/assets/js/tools/color-palette.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        await ComponentLoader.init("tools", "color-palette");
+        generateColorPalette();
+      });
+    </script>
+  </body>
+</html>

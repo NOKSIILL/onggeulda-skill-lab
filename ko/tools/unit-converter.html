@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단위 변환기 - Onggeulda Skills Lab</title>
+    <meta name="description" content="디자인 작업용 다양한 단위 변환 도구" />
+    <meta
+      name="keywords"
+      content="단위 변환기, 픽셀 변환, 디자인 도구, 단위 계산, px pt em rem"
+    />
+
+    <meta property="og:title" content="단위 변환기 - Onggeulda Skills Lab" />
+    <meta
+      property="og:description"
+      content="디자인 작업용 다양한 단위 변환 도구"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://domain.com/tools/unit-converter.html"
+    />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/tools.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header"></header>
+
+    <div class="main-container">
+      <div class="tools-container">
+        <aside class="sidebar" id="tool-sidebar"></aside>
+
+        <main class="tool-content">
+          <div class="tool-header">
+            <div class="tool-title">📏 단위 변환기</div>
+            <div class="tool-stats">
+              <!-- 도구 페이지는 통계가 없으므로 비워둠 -->
+            </div>
+          </div>
+
+          <div class="tool-area">
+            <div class="tool-instructions">
+              <h2>디자인 단위 변환기</h2>
+              <p>
+                픽셀, 포인트, 인치, 센티미터 등 다양한 단위를 쉽게 변환하세요.
+                웹 디자인과 인쇄물 작업에 필수적인 도구입니다.
+              </p>
+            </div>
+            <div class="unit-converter-form">
+              <div class="conversion-row">
+                <div class="input-group">
+                  <label>변환할 값</label>
+                  <input
+                    type="number"
+                    id="inputValue"
+                    placeholder="숫자 입력"
+                  />
+                </div>
+                <div class="arrow">→</div>
+                <div class="result-group">
+                  <label>결과</label>
+                  <div id="conversionResult">결과가 여기에 표시됩니다</div>
+                </div>
+              </div>
+              <div class="unit-selectors">
+                <div class="unit-group">
+                  <label>변환 전 단위</label>
+                  <select id="fromUnit">
+                    <option value="px">픽셀 (px)</option>
+                    <option value="pt">포인트 (pt)</option>
+                    <option value="pc">파이카 (pc)</option>
+                    <option value="em">Em (em)</option>
+                    <option value="rem">Rem (rem)</option>
+                    <option value="vw">뷰포트 너비 (vw)</option>
+                    <option value="vh">뷰포트 높이 (vh)</option>
+                    <option value="in">인치 (in)</option>
+                    <option value="cm">센티미터 (cm)</option>
+                    <option value="mm">밀리미터 (mm)</option>
+                    <option value="q">쿼터 밀리미터 (q)</option>
+                  </select>
+                </div>
+                <div class="unit-group">
+                  <label>변환 후 단위</label>
+                  <select id="toUnit">
+                    <option value="px">픽셀 (px)</option>
+                    <option value="pt">포인트 (pt)</option>
+                    <option value="pc">파이카 (pc)</option>
+                    <option value="em">Em (em)</option>
+                    <option value="rem">Rem (rem)</option>
+                    <option value="vw">뷰포트 너비 (vw)</option>
+                    <option value="vh">뷰포트 높이 (vh)</option>
+                    <option value="in">인치 (in)</option>
+                    <option value="cm">센티미터 (cm)</option>
+                    <option value="mm">밀리미터 (mm)</option>
+                    <option value="q">쿼터 밀리미터 (q)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="tool-controls">
+                <button class="tool-button" onclick="convertUnits()">
+                  변환하기
+                </button>
+                <button class="tool-button" onclick="copyConversionResult()">
+                  결과 복사
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- 광고 영역 (데스크탑) -->
+        <aside class="ad-sidebar desktop-only">
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+          <div class="ad-slot">
+            <div class="ad-placeholder">
+              광고 영역<br />
+              (애드센스/쿠팡파트너스)
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 모바일/태블릿 광고 -->
+    <div class="mobile-ads">
+      <div class="ad-container">
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+        <div class="ad-slot">
+          <div class="ad-placeholder">
+            광고 영역 (애드센스/쿠팡파트너스)<br />
+            width : 728px
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-info"></footer>
+
+    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+
+    <script src="/assets/js/i18n/translations.js"></script>
+    <script src="/assets/js/utils/helpers.js"></script>
+    <script src="/shared/components.js"></script>
+    <script src="/assets/js/tools/unit-converter.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        await ComponentLoader.init("tools", "unit-converter");
+
+        // 단위 변환기 이벤트 리스너
+        const inputValue = document.getElementById("inputValue");
+        const fromUnit = document.getElementById("fromUnit");
+        const toUnit = document.getElementById("toUnit");
+
+        if (inputValue) inputValue.addEventListener("input", convertUnits);
+        if (fromUnit) fromUnit.addEventListener("change", convertUnits);
+        if (toUnit) toUnit.addEventListener("change", convertUnits);
+      });
+    </script>
+  </body>
+</html>
