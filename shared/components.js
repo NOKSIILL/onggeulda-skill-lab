@@ -690,6 +690,11 @@ class ComponentLoader {
       await this.loadHeader();
       await this.loadFooter();
 
+      // 헤더 로드 후 네비게이션 활성화
+      setTimeout(() => {
+        this.setActiveNavigation();
+      }, 100);
+
       // 페이지 타입별 사이드바 로드 (PC용) - pageId가 있는 경우만
       if (pageId && pageType === "games") {
         await this.loadGameSidebar();
