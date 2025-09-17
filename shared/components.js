@@ -490,12 +490,12 @@ class ComponentLoader {
 
   static setActiveNavigation() {
     const currentPath = window.location.pathname;
-    console.log("Setting active navigation for path:", currentPath); // 디버깅용
+    //console.log("Setting active navigation for path:", currentPath); // 디버깅
 
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.classList.remove("active");
       const href = item.getAttribute("href");
-      console.log("Checking nav item:", href); // 디버깅용
+      //console.log("Checking nav item:", href); // 디버깅
 
       if (
         href === currentPath ||
@@ -507,12 +507,13 @@ class ComponentLoader {
         //(currentPath.startsWith("/about/") && href === "/about/about.html")
         // 푸터에서 about 페이지로 갈 때 헤더의 소개 메뉴 활성화
         //(currentPath === "/about/about.html" && href === "/about/about.html")
+        //about 경로를 유연하게 매칭
         ((currentPath === "/about/about.html" ||
           currentPath === "/about/about") &&
           (href === "/about/about.html" || href === "/about/about"))
       ) {
         item.classList.add("active");
-        console.log("Activated nav item:", href); // 디버깅용
+        //console.log("Activated nav item:", href); // 디버깅
       }
     });
   }
