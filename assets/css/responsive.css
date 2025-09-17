@@ -299,6 +299,14 @@ body {
   border-color: rgba(0, 255, 136, 0.5);
 }
 
+.footer-biz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
 /* ===== 언어 선택기 ===== */
 .footer-language {
   display: block;
@@ -910,7 +918,7 @@ body {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    max-width: 300px;
+    max-width: 400px;
   }
 
   .footer-info {
@@ -920,7 +928,7 @@ body {
 
   .footer-item {
     padding: 15px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .footer-language {
@@ -988,9 +996,13 @@ body {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     max-width: 280px;
+  }
+
+  .footer-item {
+    font-size: 14px;
   }
 
   .ads-hide {

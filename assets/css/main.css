@@ -340,6 +340,28 @@ body {
   color: #00ff88;
 }
 
+.footer-biz-info {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 30px 20px;
+  border-top: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.footer-biz-item {
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+.footer-biz-item:hover {
+  color: #00ff88;
+}
+
+.footer-biz-item p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 /* 알림 */
 .copy-notification {
   display: none;
