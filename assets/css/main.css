@@ -340,14 +340,14 @@ body {
   color: #00ff88;
 }
 
-.footer-biz-info {
-  margin-top: 20px;
-  padding: 20px;
-  border-top: 1px solid rgba(0, 255, 136, 0.3);
-}
-
 .footer-biz-item a {
   text-decoration: none !important;
+}
+
+.footer-biz-info {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid rgba(0, 255, 136, 0.3);
 }
 
 .footer-biz-item a:hover {
@@ -356,8 +356,8 @@ body {
 
 .footer-biz-item {
   color: #aaa;
-  padding: 15px;
-  font-size: 15px;
+  padding: 5px;
+  font-size: 13px;
   line-height: 1.6;
 }
 
