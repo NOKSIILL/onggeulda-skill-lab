@@ -32,7 +32,6 @@ class ComponentLoader {
     const success = await this.loadComponent("footer", "/shared/footer.html");
     if (success) {
       this.initFooterEvents();
-      this.setActiveNavigation();
     }
     return success;
   }
@@ -346,6 +345,7 @@ class ComponentLoader {
         const page = item.dataset.page;
         if (page) {
           window.location.href = `/about/${page}.html`;
+          if (page === "about") this.setActiveNavigation(about);
         }
       });
     });
