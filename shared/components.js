@@ -500,8 +500,7 @@ class ComponentLoader {
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
         (currentPath.includes("/about") && href === "/about/about.html") ||
-        (currentPath.includes("/about") &&
-          href.includes === "/about/about.html")
+        (currentPath.startsWith("/about") && href === "/about/about.html")
       ) {
         item.classList.add("active");
       }
