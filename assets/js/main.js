@@ -350,9 +350,11 @@ function setupEventDelegation() {
       event.stopPropagation();
       const lang = target.dataset.lang;
       console.log("Language button clicked:", lang, target);
+      /*
       if (lang) {
         setLanguage(lang);
       }
+        */
     }
   });
 }
@@ -411,10 +413,10 @@ document.addEventListener("DOMContentLoaded", function () {
       forceLayoutReset();
     }, 100);
   });
-
+  /*
   // 언어 초기화
   initializeLanguage();
-
+*/
   console.log("Initialization complete");
 });
 
@@ -441,11 +443,12 @@ const DeviceUtils = {
 
 // 향상된 알림 시스템
 function showCopyNotification(message = null, duration = 2000) {
+  /*
   if (!message) {
     message =
       translations[currentLanguage]?.copyNotification || "복사되었습니다!";
   }
-
+*/
   const existingNotification = document.querySelector(".copy-notification");
   if (existingNotification) {
     existingNotification.remove();
@@ -470,6 +473,7 @@ function showCopyNotification(message = null, duration = 2000) {
   }, duration);
 }
 
+/*
 // 다국어 지원 함수들
 function setLanguage(lang) {
   console.log("setLanguage called with:", lang);
@@ -507,7 +511,6 @@ function applyTranslations(lang) {
 
   // 기본 요소들에 번역 적용
   Object.keys(texts).forEach((key) => {
-    const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
     elements.forEach((element) => {
       if (key.includes("Subtitle") || key.includes("Instructions")) {
         element.innerHTML = texts[key];
@@ -625,12 +628,14 @@ function initializeLanguage() {
   const detectedLang = detectBrowserLanguage();
   setLanguage(detectedLang);
 }
-
+*/
 // 전역 함수로 노출
 window.showPage = showPage;
 window.selectGame = selectGame;
 window.selectTool = selectTool;
 window.showCopyNotification = showCopyNotification;
+/*
 window.setLanguage = setLanguage;
 window.initializeLanguage = initializeLanguage;
 window.currentLanguage = currentLanguage;
+*/

@@ -90,8 +90,6 @@ function calculateAverage(numbers) {
   return Math.round(sum / numbers.length);
 }
 
-// === 강화된 다국어 지원 시스템 ===
-
 // 현재 언어 전역 변수
 let currentLanguage = localStorage.getItem("userLanguage") || "ko";
 
@@ -99,7 +97,7 @@ let currentLanguage = localStorage.getItem("userLanguage") || "ko";
 function getCurrentLanguage() {
   return currentLanguage;
 }
-
+/*
 // 번역 텍스트 가져오기
 function getTranslation(key, fallback = key) {
   if (
@@ -111,7 +109,7 @@ function getTranslation(key, fallback = key) {
   }
   return fallback;
 }
-
+*/
 // 언어별 알림 메시지 표시
 function showLocalizedNotification(messageKey, fallbackMessage = null) {
   const message = getTranslation(messageKey, fallbackMessage || messageKey);
@@ -124,6 +122,7 @@ function showLocalizedCopyNotification() {
   showCopyNotification(message);
 }
 
+/*
 // 브라우저 언어 감지
 function detectBrowserLanguage() {
   const browserLang = navigator.language || navigator.userLanguage;
@@ -195,7 +194,7 @@ function updatePlaceholders(texts) {
     conversionResult.textContent = texts.resultPlaceholder;
   }
 }
-
+*/
 // 언어 버튼 상태 업데이트
 function updateLanguageButtonStates(lang) {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -225,6 +224,7 @@ function triggerLanguageChangeCallbacks(newLanguage) {
   });
 }
 
+/*
 // 메인 언어 변경 함수
 function setLanguage(lang) {
   console.log("Setting language to:", lang);
@@ -297,7 +297,7 @@ function applyTranslationToElement(element, translationKey) {
 function applyTranslationToNewElement(element, key) {
   const translation = getTranslation(key);
   if (translation && translation !== key) {
-    element.setAttribute("data-i18n", key);
+    
     applyTranslationToElement(element, key);
   }
 }
@@ -376,15 +376,20 @@ if (document.readyState === "loading") {
 
 // 언어 변경 시 페이지별 특별 처리 콜백 등록
 addLanguageChangeCallback(applyPageSpecificTranslations);
+*/
 
 // 전역 함수로 노출
 window.getCurrentLanguage = getCurrentLanguage;
 window.getTranslation = getTranslation;
 window.showLocalizedNotification = showLocalizedNotification;
 window.showLocalizedCopyNotification = showLocalizedCopyNotification;
+/*
 window.setLanguage = setLanguage;
 window.initializeLanguage = initializeLanguage;
+*/
 window.addLanguageChangeCallback = addLanguageChangeCallback;
+/*
 window.updateAllTranslations = updateAllTranslations;
 window.applyTranslationToNewElement = applyTranslationToNewElement;
+*/
 window.currentLanguage = currentLanguage;
