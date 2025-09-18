@@ -114,36 +114,36 @@ class ComponentLoader {
 
     if (pageType === "games") {
       sidebarContent = `
-        <h3 data-i18n="sidebarTitle">🎯 게임 목록</h3>
+        <h3>🎯 게임 목록</h3>
         <ul class="game-list">
-          <li class="game-item" data-game="fps-aim" data-i18n="game1">🎯 FPS 에임 훈련</li>
-          <li class="game-item" data-game="reaction-test" data-i18n="game2">🎲 반응속도 테스트</li>
-          <li class="game-item" data-game="memory-game" data-i18n="game3">🎪 메모리 게임</li>
-          <li class="game-item" data-game="color-match" data-i18n="game4">🎨 색깔 맞추기</li>
+          <li class="game-item" data-game="fps-aim">🎯 FPS 에임 훈련</li>
+          <li class="game-item" data-game="reaction-test">🎲 반응속도 테스트</li>
+          <li class="game-item" data-game="memory-game">🎪 메모리 게임</li>
+          <li class="game-item" data-game="color-match">🎨 색깔 맞추기</li>
         </ul>
       `;
     } else if (pageType === "tools") {
       sidebarContent = `
-        <h3 data-i18n="toolSidebarTitle">🛠️ 도구 목록</h3>
+        <h3>🛠️ 도구 목록</h3>
         <ul class="tool-list">
-          <li class="tool-item" data-tool="color-palette" data-i18n="tool1">🎨 색상 팔레트 생성기</li>
-          <li class="tool-item" data-tool="keywords" data-i18n="tool2">💡 오늘의 키워드</li>
-          <li class="tool-item" data-tool="unit-converter" data-i18n="tool3">📏 단위 변환기</li>
-          <li class="tool-item" data-tool="text-transformer" data-i18n="tool4">🔤 텍스트 변환기</li>
+          <li class="tool-item" data-tool="color-palette">🎨 색상 팔레트 생성기</li>
+          <li class="tool-item" data-tool="keywords">💡 오늘의 키워드</li>
+          <li class="tool-item" data-tool="unit-converter">📏 단위 변환기</li>
+          <li class="tool-item" data-tool="text-transformer">🔤 텍스트 변환기</li>
         </ul>
       `;
     }
 
     mobileSidebar.innerHTML = sidebarContent;
     document.body.appendChild(mobileSidebar);
-
+    /*
     // 번역 적용
     if (typeof window.updateAllTranslations === "function") {
       setTimeout(() => {
         window.updateAllTranslations();
       }, 100);
     }
-
+*/
     // 사이드바 이벤트 설정
     if (pageType === "games") {
       this.initMobileGameSidebarEvents();
@@ -348,11 +348,12 @@ class ComponentLoader {
         }
       });
     });
-
+    /*
     // 강화된 언어 버튼 이벤트
     this.initLanguageButtons();
+    */
   }
-
+  /*
   // 강화된 언어 버튼 초기화
   static initLanguageButtons() {
     console.log("Initializing language buttons...");
@@ -435,19 +436,6 @@ class ComponentLoader {
     console.log(`Direct language change completed: ${lang}`);
   }
 
-  // 번역 적용
-  static applyTranslations(lang, texts) {
-    // data-i18n 속성을 가진 요소들에 번역 적용
-    document.querySelectorAll("[data-i18n]").forEach((element) => {
-      const key = element.getAttribute("data-i18n");
-      if (texts[key]) {
-        if (key.includes("Subtitle") || key.includes("Instructions")) {
-          element.innerHTML = texts[key];
-        } else {
-          element.textContent = texts[key];
-        }
-      }
-    });
 
     // 메타 태그 업데이트
     if (texts.pageTitle) {
@@ -460,7 +448,7 @@ class ComponentLoader {
       textInput.placeholder = texts.textPlaceholder;
     }
   }
-
+*/
   static initGameSidebarEvents() {
     document.querySelectorAll("#game-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
@@ -731,12 +719,12 @@ class ComponentLoader {
           this.applyResponsiveLayout(pageType, pageId);
         }, 100);
       });
-
+      /*
       // 언어 시스템 초기화
       setTimeout(() => {
         this.initializeLanguageSystem();
       }, 300);
-
+*/
       console.log("Component initialization complete");
       return true;
     } catch (error) {
@@ -744,7 +732,7 @@ class ComponentLoader {
       return false;
     }
   }
-
+  /*
   // 강화된 언어 시스템 초기화
   static initializeLanguageSystem() {
     console.log("Initializing language system...");
@@ -760,7 +748,7 @@ class ComponentLoader {
       console.log("Using fallback language initialization");
       this.fallbackLanguageInit();
     }
-
+   
     // 언어 버튼 재초기화
     this.initLanguageButtons();
 
@@ -805,6 +793,7 @@ class ComponentLoader {
       }
     });
   }
+    */
 }
 
 // 전역으로 노출

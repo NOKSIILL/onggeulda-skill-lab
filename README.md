@@ -23,68 +23,37 @@ FPS 에임 훈련, 반응속도 테스트, 메모리 게임, 색깔 맞추기 �
 - 한국어/영어 지원
 - 실시간 언어 전환
 
-## 📁 프로젝트 구조
-
-onggeulda-skills-lab/
-├── index.html # ✅ 새로운 홈페이지
-├── about.html # ✅ 소개 페이지  
-├── contact.html # ✅ 문의하기 페이지
-├── privacy.html # ✅ 개인정보처리방침
-├── terms.html # ✅ 이용약관
-├── sitemap.xml # ✅ SEO 사이트맵
-├── robots.txt # ✅ 검색엔진 로봇 설정
-├── games/
-│ ├── index.html # ✅ 게임 목록 페이지
-│ ├── fps-aim.html # ✅ FPS 에임 훈련
-│ ├── reaction-test.html # ✅ 반응속도 테스트
-│ ├── memory-game.html # ✅ 메모리 게임
-│ └── color-match.html # ✅ 색깔 맞추기
-├── tools/
-│ ├── index.html # ✅ 도구 목록 페이지
-│ ├── color-palette.html # ✅ 색상 팔레트 생성기
-│ ├── keywords.html # ✅ 키워드 생성기
-│ ├── unit-converter.html # ✅ 단위 변환기
-│ └── text-transformer.html # ✅ 텍스트 변환기
-├── shared/ # ✅ 공통 컴포넌트
-│ ├── components.js # ✅ 컴포넌트 로더
-│ ├── header.html # ✅ 공통 헤더
-│ ├── footer.html # ✅ 공통 푸터
-│ ├── game-sidebar.html # ✅ 게임 사이드바
-│ └── tool-sidebar.html # ✅ 도구 사이드바
-└── assets/ # 기존 리소스 유지
-├── css/ (기존 파일들)
-└── js/ (기존 파일들)
-
-## 📁 (변경 예정) 전체 디렉토리 구조
+## 📁 전체 디렉토리 구조
 
 onggeulda-skills-lab/
 │
-├── 📄 index.html # 언어 감지 + 리다이렉트
+├── 📄 index.html # 언어 감지 + 리다이렉트 # 기존 리소스 (변경 없음) #index-lang.html 로 임의 추가해 둠
 ├── 📄 .htaccess # 서버 설정 (Apache)
-├── 📄 robots.txt # 검색엔진 크롤링 규칙
-├── 📄 sitemap.xml # 통합 사이트맵
+├── 📄 README.md # 프로젝트 설명서
+├── 📄 robots.txt # 검색엔진 크롤링 규칙 # 기존 리소스 (변경 없음) #robots-lang.txt 로 임의 추가해 둠
+├── 📄 sitemap.xml # 통합 사이트맵 # 기존 리소스 (변경 없음) #sitemap-lang.xml 로 임의 추가해 둠
 ├── 📄 sitemap-ko.xml # 한국어 사이트맵
 ├── 📄 sitemap-en.xml # 영어 사이트맵
 │
 ├── 📂 ko/ # 🇰🇷 한국어 버전
-│ ├── 📄 index.html # 한국어 홈페이지
+│ ├── 📄 index.html # 한국어 홈페이지 # 기존 리소스이며, 스크립트 경로만 수정되어 있음 # 디자인과 구조 유지하며 수정
 │ ├── 📂 games/
-│ │ ├── 📄 index.html # 게임 목록 (한국어)
-│ │ ├── 📄 fps-aim.html # FPS 조준 게임
-│ │ ├── 📄 reaction-test.html # 반응속도 테스트
-│ │ ├── 📄 memory-game.html # 기억력 게임
-│ │ └── 📄 color-match.html # 색상 매칭
+│ │ ├── 📄 index.html # 게임 목록 페이지 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 fps-aim.html # FPS 에임 훈련 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 reaction-test.html # 반응속도 테스트 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 memory-game.html # 메모리 게임 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ └── 📄 color-match.html # 색깔 맞추기 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
 │ ├── 📂 tools/
-│ │ ├── 📄 index.html # 도구 목록 (한국어)
-│ │ ├── 📄 color-palette.html # 색상 팔레트
-│ │ ├── 📄 keywords.html # 키워드 도구
-│ │ ├── 📄 unit-converter.html # 단위 변환기
-│ │ └── 📄 text-transformer.html # 텍스트 변환기
+│ │ ├── 📄 index.html # 도구 목록 페이지 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 color-palette.html # 색상 팔레트 생성기 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 keywords.html # 키워드 생성기 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ ├── 📄 unit-converter.html # 단위 변환기 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ │ └── 📄 text-transformer.html # 텍스트 변환기 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
 │ └── 📂 about/
-│ ├── 📄 about.html # 소개 페이지
-│ ├── 📄 contact.html # 연락처
-│ ├── 📄 privacy.html # 개인정보처리방침
-│ └── 📄 terms.html # 이용약관
+│ ├── 📄 about.html # 소개 페이지 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ ├── 📄 contact.html # 문의하기 페이지 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ ├── 📄 privacy.html # 개인정보처리방침 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
+│ └── 📄 terms.html # 이용약관 # 기존 리소스이며 스크립트 경로만 수정되어 있음 (변경 없음)
 │
 ├── 📂 en/ # 🇺🇸 영어 버전
 │ ├── 📄 index.html # English Homepage
@@ -108,20 +77,64 @@ onggeulda-skills-lab/
 │
 ├── 📂 shared/ # 🔧 공통 리소스
 │ ├── 📂 components/
-│ │ ├── 📄 header-ko.html # 한국어 헤더
+│ │ ├── 📄 header-ko.html # 한국어 헤더 # 수정 완료된 상태이며 기능 추가만 가능
 │ │ ├── 📄 header-en.html # 영어 헤더
-│ │ ├── 📄 footer-ko.html # 한국어 푸터
+│ │ ├── 📄 footer-ko.html # 한국어 푸터 # 수정 완료된 상태이며 기능 추가만 가능
 │ │ └── 📄 footer-en.html # 영어 푸터
 │ └── 📂 js/
-│ ├── 📄 lang-detector.js # 언어 감지
-│ ├── 📄 component-loader.js # 컴포넌트 로더 (수정된 버전)
-│ └── 📄 url-manager.js # URL 관리
+│ │ ├── 📄 lang-detector.js # 다국어 지원 사이트의 언어 감지 #index-lang.html에서 언어 감지에 사용하는 스크립트 정리
+│ │ ├── 📄 component-loader.js # 다국어 지원 사이트의 공통 컴포넌트 로더 # 기존 리소스이며 경로 수정 필요하고 기능 필요 시 추가
+│ │ └── 📄 url-manager.js # 다국어 지원 사이트의 URL 라우팅 및 상태 관리 개선 # 기존 리소스이며 기능 필요 시 추가
+│ ├── 📄components.js # 현재 사이트 컴포넌트 로더 # 기존 리소스 (변경 없음) # 새로운 사이트는 shared/js/component-loader.js 사용
+│ ├── 📄header.html # 현재 사이트 헤더 # 기존 리소스 (변경 없음)
+│ ├── 📄game-sidebar.html # 현재 사이트 게임 사이드바 # 기존 리소스 (변경 없음)
+│ ├── 📄tool-sidebar.html # 현재 사이트 사이드바 # 기존 리소스 (변경 없음)
+│ └── 📄footer.html # 현재 사이트 푸터 # 기존 리소스 (변경 없음)
 │
-└── 📂 assets/ # 🎨 기존 리소스 (변경 없음)
-├── 📂 css/
-├── 📂 js/
-├── 📂 images/
-└── 📂 sounds/
+├── 📂 config/  
+│ └── seo.json # SEO 메타데이터 설정 # 필요한 경우 수정
+│
+└── 📂 assets/ # 🎨 기존 공통 리소스 # 기존 리소스 (변경 없음)
+│ ├── 📂 css/ # 기존 리소스 (변경 없음)
+│ │ ├── 📄main.css # 메인 애플리케이션 스타일 # 기존 리소스 (변경 없음)
+│ │ ├── 📄responsive.css # 반응형 (미디어 사이즈 : 기본,PC,태블릿,모바일(기본),모바일(소형)) 스타일 # 기존 리소스 (변경 없음)
+│ │ ├── 📄games.css # 게임 관련 스타일 # 기존 리소스 (변경 없음)
+│ │ └── 📄tools.css # 도구 관련 스타일 # 기존 리소스 (변경 없음)
+│ └── 📂 js/ # 기존 리소스 (변경 없음)
+│ ├── 📂games/
+│ │ ├── 📄fps-aim.js # FPS 에임 훈련 게임 # 기존 리소스 (변경 없음)
+│ │ ├── 📄reaction-test.js # 반응속도 테스트 게임 # 기존 리소스 (변경 없음)
+│ │ ├── 📄memory-game.js # 메모리 게임 # 기존 리소스 (변경 없음)
+│ │ └── 📄color-match.js # 색깔 맞추기 게임 # 기존 리소스 (변경 없음)
+│ ├── 📂i8n/ # 사용 제외 # 삭제 예정
+│ │ └── 📄translations.js # 다국어 번역 데이터 # 사용 제외 # 삭제 예정
+│ ├── 📂tools/ # 기존 리소스 (변경 없음)
+│ │ ├── 📄color-palette.js # 색상 팔레트 생성기 # 기존 리소스 (변경 없음)
+│ │ ├── 📄keywords.js # 키워드 생성기 # 기존 리소스 (변경 없음)
+│ │ ├── 📄unit-converter.js # 단위 변환기 # 기존 리소스 (변경 없음)
+│ │ └── 📄text-transformer.js # 텍스트 변환기 # 기존 리소스 (변경 없음)
+│ ├── 📂utils/
+│ │ └── 📄helpers.js # 공통 유틸리티 함수 # 새로운 사이트에 추가할 내용이 있을 경우 기존 리소스를 유지(기존 리소스 삭제 안됨)하며 추가만 가능
+│ ├── 📄main.js # 메인 애플리케이션 로직 # 기존 리소스 (변경 없음) # 새로운 사이트에 필요할 경우 shared/js/에 복사하여 내용 추가
+│ └── 📄url-routing.js # URL 라우팅 및 상태 관리 개선 # 기존 리소스 (변경 없음) # 새로운 사이트는 shared/js/url-manager.js 사용
+├── 📂 games/
+│ ├── 📄 index.html # 게임 목록 페이지 # 기존 리소스 (변경 없음)
+│ ├── 📄 fps-aim.html # FPS 에임 훈련 # 기존 리소스 (변경 없음)
+│ ├── 📄 reaction-test.html # 반응속도 테스트 # 기존 리소스 (변경 없음)
+│ ├── 📄 memory-game.html # 메모리 게임 # 기존 리소스 (변경 없음)
+│ └── 📄 color-match.html # 색상 맞추기 # 기존 리소스 (변경 없음)
+├── 📂 tools/
+│ ├── 📄 index.html # 도구 목록 페이지 # 기존 리소스 (변경 없음)
+│ ├── 📄 color-palette.html # 색상 팔레트 생성기 # 기존 리소스 (변경 없음)
+│ ├── 📄 keywords.html # 키워드 생성기 # 기존 리소스 (변경 없음)
+│ ├── 📄 unit-converter.html # 단위 변환기 # 기존 리소스 (변경 없음)
+│ └── 📄 text-transformer.html # 텍스트 변환기 # 기존 리소스 (변경 없음)
+└── 📂 about/
+│ ├── 📄 about.html # 소개 페이지 # 기존 리소스 (변경 없음)
+│ ├── 📄 contact.html # 문의하기 페이지 # 기존 리소스 (변경 없음)
+│ ├── 📄 privacy.html # 개인정보처리방침 # 기존 리소스 (변경 없음)
+│ └── 📄 terms.html # 이용약관 # 기존 리소스 (변경 없음)
+└── 📂 images/ # 이미지 리소스 # 비어있음
 
 ## 🚀 설치 및 실행
 
@@ -189,9 +202,8 @@ noun
 '꿈', '여행',
 
 // 새로운 명
-추가 ], adjecti
-es: [
-'
+추가 ], adjecties: [
+']}
 
 text
 

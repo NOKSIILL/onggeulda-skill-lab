@@ -10,6 +10,7 @@
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/"/>
         <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.com/ko/"/>
     </url>
     
     <!-- 게임 섹션 -->
@@ -22,7 +23,7 @@
         <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/"/>
     </url>
     
-    <!-- 개별 게임들 -->
+    <!-- FPS 에임 훈련 게임 -->
     <url>
         <loc>https://your-domain.com/ko/games/fps-aim.html</loc>
         <lastmod>2024-01-01T10:00:00Z</lastmod>
@@ -32,6 +33,124 @@
         <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/fps-aim.html"/>
     </url>
     
-    <!-- 추가 페이지들... -->
+    <!-- 반응속도 테스트 게임 -->
+    <url>
+        <loc>https://your-domain.com/ko/games/reaction-test.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/reaction-test.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/reaction-test.html"/>
+    </url>
+    
+    <!-- 메모리 게임 -->
+    <url>
+        <loc>https://your-domain.com/ko/games/memory-game.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/memory-game.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/memory-game.html"/>
+    </url>
+    
+    <!-- 색깔 맞추기 게임 -->
+    <url>
+        <loc>https://your-domain.com/ko/games/color-match.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/color-match.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/color-match.html"/>
+    </url>
+    
+    <!-- 도구 섹션 -->
+    <url>
+        <loc>https://your-domain.com/ko/tools/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/"/>
+    </url>
+    
+    <!-- 색상 팔레트 생성기 -->
+    <url>
+        <loc>https://your-domain.com/ko/tools/color-palette.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/color-palette.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/color-palette.html"/>
+    </url>
+    
+    <!-- 키워드 생성기 -->
+    <url>
+        <loc>https://your-domain.com/ko/tools/keywords.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/keywords.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/keywords.html"/>
+    </url>
+    
+    <!-- 단위 변환기 -->
+    <url>
+        <loc>https://your-domain.com/ko/tools/unit-converter.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/unit-converter.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/unit-converter.html"/>
+    </url>
+    
+    <!-- 텍스트 변환기 -->
+    <url>
+        <loc>https://your-domain.com/ko/tools/text-transformer.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/text-transformer.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/text-transformer.html"/>
+    </url>
+    
+    <!-- 소개 페이지 -->
+    <url>
+        <loc>https://your-domain.com/ko/about/about.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/about.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/about.html"/>
+    </url>
+    
+    <!-- 문의하기 페이지 -->
+    <url>
+        <loc>https://your-domain.com/ko/about/contact.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/contact.html"/>
+    </url>
+    
+    <!-- 개인정보처리방침 -->
+    <url>
+        <loc>https://your-domain.com/ko/about/privacy.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/privacy.html"/>
+    </url>
+    
+    <!-- 이용약관 -->
+    <url>
+        <loc>https://your-domain.com/ko/about/terms.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/terms.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/terms.html"/>
+    </url>
     
 </urlset>

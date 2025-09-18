@@ -29,25 +29,25 @@
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/color-palette.html'"
+                  onclick="window.location.href='/ko/tools/color-palette.html'"
                 >
                   🎨 색상 팔레트 생성기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/keywords.html'"
+                  onclick="window.location.href='/ko/tools/keywords.html'"
                 >
                   💡 오늘의 키워드
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/unit-converter.html'"
+                  onclick="window.location.href='/ko/tools/unit-converter.html'"
                 >
                   📏 단위 변환기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/tools/text-transformer.html'"
+                  onclick="window.location.href='/ko/tools/text-transformer.html'"
                 >
                   🔤 텍스트 변환기
                 </li>
@@ -120,9 +120,8 @@
 
     <footer class="footer-info"></footer>
 
-    <script src="/assets/js/i18n/translations.js"></script>
     <script src="/assets/js/utils/helpers.js"></script>
-    <script src="/shared/components.js"></script>
+    <script src="/shared/js/component-loader.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
         await ComponentLoader.init("tools");

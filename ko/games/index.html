@@ -29,25 +29,25 @@
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/fps-aim.html'"
+                  onclick="window.location.href='/ko/games/fps-aim.html'"
                 >
                   🎯 FPS 에임 훈련
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/reaction-test.html'"
+                  onclick="window.location.href='/ko/games/reaction-test.html'"
                 >
                   🎲 반응속도 테스트
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/memory-game.html'"
+                  onclick="window.location.href='/ko/games/memory-game.html'"
                 >
                   🎪 메모리 게임
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/games/color-match.html'"
+                  onclick="window.location.href='/ko/games/color-match.html'"
                 >
                   🎨 색깔 맞추기
                 </li>
@@ -120,9 +120,8 @@
 
     <footer class="footer-info"></footer>
 
-    <script src="/assets/js/i18n/translations.js"></script>
     <script src="/assets/js/utils/helpers.js"></script>
-    <script src="/shared/components.js"></script>
+    <script src="/shared/js/component-loader.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
         await ComponentLoader.init("games");

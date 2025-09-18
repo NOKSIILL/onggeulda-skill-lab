@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://your-domain.com/en/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://your-domain.com/ko/"/>
+    </url>
+    
+    <!-- Games Section -->
+    <url>
+        <loc>https://your-domain.com/en/games/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/"/>
+    </url>
+    
+    <!-- FPS Aim Training Game -->
+    <url>
+        <loc>https://your-domain.com/en/games/fps-aim.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/fps-aim.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/fps-aim.html"/>
+    </url>
+    
+    <!-- Reaction Speed Test Game -->
+    <url>
+        <loc>https://your-domain.com/en/games/reaction-test.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/reaction-test.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/reaction-test.html"/>
+    </url>
+    
+    <!-- Memory Game -->
+    <url>
+        <loc>https://your-domain.com/en/games/memory-game.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/memory-game.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/memory-game.html"/>
+    </url>
+    
+    <!-- Color Match Game -->
+    <url>
+        <loc>https://your-domain.com/en/games/color-match.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/color-match.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/color-match.html"/>
+    </url>
+    
+    <!-- Tools Section -->
+    <url>
+        <loc>https://your-domain.com/en/tools/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/"/>
+    </url>
+    
+    <!-- Color Palette Generator -->
+    <url>
+        <loc>https://your-domain.com/en/tools/color-palette.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/color-palette.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/color-palette.html"/>
+    </url>
+    
+    <!-- Keywords Generator -->
+    <url>
+        <loc>https://your-domain.com/en/tools/keywords.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/keywords.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/keywords.html"/>
+    </url>
+    
+    <!-- Unit Converter -->
+    <url>
+        <loc>https://your-domain.com/en/tools/unit-converter.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/unit-converter.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/unit-converter.html"/>
+    </url>
+    
+    <!-- Text Transformer -->
+    <url>
+        <loc>https://your-domain.com/en/tools/text-transformer.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/tools/text-transformer.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/tools/text-transformer.html"/>
+    </url>
+    
+    <!-- About Page -->
+    <url>
+        <loc>https://your-domain.com/en/about/about.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/about.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/about.html"/>
+    </url>
+    
+    <!-- Contact Page -->
+    <url>
+        <loc>https://your-domain.com/en/about/contact.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/contact.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/contact.html"/>
+    </url>
+    
+    <!-- Privacy Policy -->
+    <url>
+        <loc>https://your-domain.com/en/about/privacy.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/privacy.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/privacy.html"/>
+    </url>
+    
+    <!-- Terms of Service -->
+    <url>
+        <loc>https://your-domain.com/en/about/terms.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/about/terms.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/about/terms.html"/>
+    </url>
+    
+</urlset>
