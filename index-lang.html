@@ -20,14 +20,18 @@
     <!-- 파비콘 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
-    <!-- 즉시 언어 감지 및 리다이렉트 (JavaScript가 로드되기 전에) -->
+    <!-- 즉시 언어 감지 및 리다이렉트 -->
     <script>
         (function() {
             // 개발 모드 확인
             const isDev = window.location.hostname === 'localhost' || 
                          window.location.hostname === '127.0.0.1' ||
                          window.location.pathname.includes('index-lang.html') ||
-                         window.location.search.includes('debug=1');
+                         window.location.search.includes('debug=1') ||
+                         window.location.search.includes('dev=1');
+            
+            // 운영 모드 확인 (prod=1 파라미터)
+            const isProd = window.location.search.includes('prod=1');
             
             // 즉시 언어 감지
             const urlParams = new URLSearchParams(window.location.search);
@@ -35,8 +39,9 @@
             const savedLang = localStorage.getItem('userLanguage');
             const browserLang = navigator.language || navigator.userLanguage;
             
-            let targetLang = 'ko';
+            let targetLang = 'ko'; // 기본값
             
+            // 언어 결정 우선순위: URL > 저장된 설정 > 브라우저 언어
             if (urlLang === 'en' || urlLang === 'ko') {
                 targetLang = urlLang;
                 localStorage.setItem('userLanguage', targetLang);
@@ -46,91 +51,138 @@
                 targetLang = 'en';
             }
             
-            // 개발 모드가 아니면 즉시 리다이렉트
-            if (!isDev) {
+            // 운영 모드이거나 개발 모드가 아니면 즉시 리다이렉트
+            if (isProd || !isDev) {
                 window.location.replace(`/${targetLang}/`);
                 return;
             }
             
-            // 개발 모드일 때만 아래 로딩 UI 표시
+            // 개발 모드일 때만 디버깅 데이터 저장
             window._devModeData = {
                 targetLang,
                 urlLang,
                 savedLang,
-                browserLang
+                browserLang,
+                isDev,
+                isProd
             };
         })();
     </script>
     
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             color: white;
+            overflow: hidden;
         }
         
         .dev-container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            max-width: 500px;
             width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
         }
         
         .dev-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
-            color: #ffeb3b;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
         
         .dev-info {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
             text-align: left;
             font-family: 'Courier New', monospace;
-            font-size: 12px;
+            font-size: 13px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .dev-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dev-info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .dev-info-label {
+            color: #aaa;
+            font-weight: bold;
+        }
+        
+        .dev-info-value {
+            color: #00ff88;
+            font-weight: bold;
         }
         
         .dev-links {
-            margin-top: 20px;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
         
         .dev-links a {
             display: inline-block;
-            margin: 5px;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #1a1a2e;
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
         .dev-links a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
+            background: linear-gradient(45deg, #00cc6a, #00ff88);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
         }
         
         .countdown {
-            font-size: 24px;
-            color: #4CAF50;
+            font-size: 36px;
+            color: #00ff88;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            animation: pulse 1s infinite;
         }
         
-        /* 일반 사용자용 최소 로딩 스타일 */
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .countdown-text {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        /* 일반 사용자용 최소 로딩 (거의 보이지 않음) */
         .minimal-loading {
             position: fixed;
             top: 50%;
@@ -140,17 +192,26 @@
         }
         
         .minimal-spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top: 2px solid white;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(0, 255, 136, 0.3);
+            border-top: 3px solid #00ff88;
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            animation: spin 1s linear infinite;
         }
         
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        .instant-btn {
+            background: linear-gradient(45deg, #ff4444, #cc0000) !important;
+            grid-column: span 2;
+        }
+        
+        .instant-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #ff4444) !important;
         }
     </style>
 </head>
@@ -160,24 +221,44 @@
         <div class="dev-title">🔧 개발 모드 - 언어 감지 테스트</div>
         
         <div class="dev-info" id="devInfo">
-            <div>브라우저 언어: <span id="browserLang">-</span></div>
-            <div>저장된 언어: <span id="savedLang">-</span></div>
-            <div>URL 언어: <span id="urlLang">-</span></div>
-            <div>선택될 언어: <span id="targetLang">-</span></div>
+            <div class="dev-info-row">
+                <span class="dev-info-label">브라우저 언어:</span>
+                <span class="dev-info-value" id="browserLang">-</span>
+            </div>
+            <div class="dev-info-row">
+                <span class="dev-info-label">저장된 언어:</span>
+                <span class="dev-info-value" id="savedLang">-</span>
+            </div>
+            <div class="dev-info-row">
+                <span class="dev-info-label">URL 언어:</span>
+                <span class="dev-info-value" id="urlLang">-</span>
+            </div>
+            <div class="dev-info-row">
+                <span class="dev-info-label">선택될 언어:</span>
+                <span class="dev-info-value" id="targetLang">-</span>
+            </div>
+            <div class="dev-info-row">
+                <span class="dev-info-label">개발 모드:</span>
+                <span class="dev-info-value" id="devMode">-</span>
+            </div>
         </div>
         
         <div class="countdown" id="countdown">3</div>
-        <div>초 후 자동 이동</div>
+        <div class="countdown-text">초 후 자동 이동</div>
         
         <div class="dev-links">
             <a href="/ko/">🇰🇷 한국어</a>
             <a href="/en/">🇺🇸 English</a>
-            <a href="javascript:localStorage.clear();location.reload();">🔄 초기화</a>
-            <a href="javascript:goNow();">⚡ 즉시 이동</a>
+            <a href="javascript:localStorage.clear();location.reload();">🔄 언어 설정 초기화</a>
+            <a href="javascript:goNow();" class="instant-btn">⚡ 즉시 이동</a>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 12px; color: #666;">
+            💡 URL에 ?prod=1을 추가하면 운영 모드로 테스트할 수 있습니다.
         </div>
     </div>
     
-    <!-- 일반 사용자용 최소 로딩 (거의 보이지 않음) -->
+    <!-- 일반 사용자용 최소 로딩 -->
     <div class="minimal-loading" id="minimalLoading">
         <div class="minimal-spinner"></div>
     </div>
@@ -187,13 +268,14 @@
         const isDevelopmentMode = window.location.hostname === 'localhost' || 
                                  window.location.hostname === '127.0.0.1' ||
                                  window.location.pathname.includes('index-lang.html') ||
-                                 window.location.search.includes('debug=1');
+                                 window.location.search.includes('debug=1') ||
+                                 window.location.search.includes('dev=1');
         
-        if (isDevelopmentMode && window._devModeData) {
+        const isProdMode = window.location.search.includes('prod=1');
+        
+        if (isDevelopmentMode && !isProdMode && window._devModeData) {
             // 개발 모드 UI 표시
             const devContainer = document.getElementById('devContainer');
-            const devInfo = document.getElementById('devInfo');
-            
             devContainer.style.display = 'block';
             
             // 개발 정보 표시
@@ -202,6 +284,7 @@
             document.getElementById('savedLang').textContent = data.savedLang || '없음';
             document.getElementById('urlLang').textContent = data.urlLang || '없음';
             document.getElementById('targetLang').textContent = data.targetLang;
+            document.getElementById('devMode').textContent = data.isDev ? 'ON' : 'OFF';
             
             // 카운트다운
             let count = 3;
@@ -221,12 +304,16 @@
                 window.location.replace(`/${data.targetLang}/`);
             };
             
-            console.log('🔧 개발 모드:', data);
+            // 개발 모드 로깅
+            console.log('🔧 개발 모드 정보:', data);
+            console.log('📍 현재 URL:', window.location.href);
+            console.log('🎯 리다이렉트될 URL:', `/${data.targetLang}/`);
+            
         } else {
-            // 일반 사용자 모드: 매우 짧은 로딩만 표시
+            // 일반 사용자 모드 또는 운영 모드
             document.getElementById('minimalLoading').style.display = 'block';
             
-            // 100ms 후에도 리다이렉트가 안되었다면 수동 실행 (안전장치)
+            // 안전장치: 200ms 후에도 리다이렉트가 안되었다면 수동 실행
             setTimeout(() => {
                 console.warn('자동 리다이렉트 실패, 수동 실행');
                 const savedLang = localStorage.getItem('userLanguage');
@@ -234,14 +321,55 @@
                 const targetLang = savedLang === 'en' ? 'en' : 
                                   browserLang.startsWith('en') ? 'en' : 'ko';
                 window.location.replace(`/${targetLang}/`);
-            }, 100);
+            }, 200);
+        }
+        
+        // 키보드 단축키 (개발 모드에서만)
+        if (isDevelopmentMode && !isProdMode) {
+            document.addEventListener('keydown', function(e) {
+                // Ctrl + K: 한국어로 이동
+                if (e.ctrlKey && e.key === 'k') {
+                    e.preventDefault();
+                    localStorage.setItem('userLanguage', 'ko');
+                    window.location.href = '/ko/';
+                }
+                
+                // Ctrl + E: 영어로 이동
+                if (e.ctrlKey && e.key === 'e') {
+                    e.preventDefault();
+                    localStorage.setItem('userLanguage', 'en');
+                    window.location.href = '/en/';
+                }
+                
+                // Ctrl + R: 언어 설정 리셋
+                if (e.ctrlKey && e.key === 'r') {
+                    e.preventDefault();
+                    localStorage.removeItem('userLanguage');
+                    location.reload();
+                }
+                
+                // Ctrl + P: 운영 모드로 전환
+                if (e.ctrlKey && e.key === 'p') {
+                    e.preventDefault();
+                    window.location.href = window.location.pathname + '?prod=1';
+                }
+            });
+            
+            console.log('⌨️ 개발 모드 단축키:');
+            console.log('Ctrl+K: 한국어 페이지로 이동');
+            console.log('Ctrl+E: 영어 페이지로 이동');
+            console.log('Ctrl+R: 언어 설정 초기화');
+            console.log('Ctrl+P: 운영 모드로 전환');
         }
     </script>
-    
+
     <!-- 검색엔진을 위한 언어별 링크 -->
     <noscript>
         <meta http-equiv="refresh" content="0; url=/ko/">
-        <p><a href="/ko/">한국어로 이동</a> | <a href="/en/">Go to English</a></p>
+        <div style="text-align: center; margin-top: 100px;">
+            <h1>Onggeulda Skills Lab</h1>
+            <p><a href="/ko/" style="color: #00ff88;">한국어로 이동</a> | <a href="/en/" style="color: #00ff88;">Go to English</a></p>
+        </div>
     </noscript>
 </body>
 </html>
