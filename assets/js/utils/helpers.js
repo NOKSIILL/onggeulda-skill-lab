@@ -135,40 +135,6 @@ function detectBrowserLanguage() {
   return "ko"; // 기본값
 }
 
-// 모든 data-i18n 요소에 번역 적용
-function updateAllTranslations(lang = null) {
-  const targetLanguage = lang || currentLanguage;
-
-  console.log("Updating translations for language:", targetLanguage);
-
-  if (!window.translations || !window.translations[targetLanguage]) {
-    console.warn("No translations available for language:", targetLanguage);
-    return;
-  }
-
-  const texts = window.translations[targetLanguage];
-
-  // data-i18n 속성을 가진 모든 요소 업데이트
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n");
-    if (texts[key]) {
-      if (key.includes("Subtitle") || key.includes("Instructions")) {
-        element.innerHTML = texts[key];
-      } else {
-        element.textContent = texts[key];
-      }
-    }
-  });
-
-  // 메타 태그 업데이트
-  updateMetaTags(texts);
-
-  // 플레이스홀더 업데이트
-  updatePlaceholders(texts);
-
-  console.log("Translation update completed for:", targetLanguage);
-}
-
 // 메타 태그 업데이트
 function updateMetaTags(texts) {
   if (texts.pageTitle) {
@@ -395,48 +361,6 @@ function updateToolDescriptions() {
       if (descElement) {
         descElement.textContent = getTranslation(key);
       }
-    }
-  });
-}
-
-// 인덱스 페이지 설명 업데이트
-function updateIndexDescriptions() {
-  // 게임/도구 인덱스 페이지의 상세 설명 업데이트
-  const gameDescriptions = document.querySelectorAll(".sitemap-section p");
-  gameDescriptions.forEach((p) => {
-    const text = p.innerHTML;
-    if (text.includes("FPS 에임 훈련")) {
-      p.innerHTML = `<strong style="color: #00ff88">🎯 ${getTranslation(
-        "game1"
-      )}</strong><br>${getTranslation("fpsAimDesc")}`;
-    } else if (text.includes("반응속도 테스트")) {
-      p.innerHTML = `<strong style="color: #00ff88">🎲 ${getTranslation(
-        "game2"
-      )}</strong><br>${getTranslation("reactionTestDesc")}`;
-    } else if (text.includes("메모리 게임")) {
-      p.innerHTML = `<strong style="color: #00ff88">🎪 ${getTranslation(
-        "game3"
-      )}</strong><br>${getTranslation("memoryGameDesc")}`;
-    } else if (text.includes("색깔 맞추기")) {
-      p.innerHTML = `<strong style="color: #00ff88">🎨 ${getTranslation(
-        "game4"
-      )}</strong><br>${getTranslation("colorMatchDesc")}`;
-    } else if (text.includes("색상 팔레트")) {
-      p.innerHTML = `<strong style="color: #00ff88">🎨 ${getTranslation(
-        "tool1"
-      )}</strong><br>${getTranslation("colorPaletteDesc")}`;
-    } else if (text.includes("키워드")) {
-      p.innerHTML = `<strong style="color: #00ff88">💡 ${getTranslation(
-        "tool2"
-      )}</strong><br>${getTranslation("keywordsDesc")}`;
-    } else if (text.includes("단위 변환기")) {
-      p.innerHTML = `<strong style="color: #00ff88">📏 ${getTranslation(
-        "tool3"
-      )}</strong><br>${getTranslation("unitConverterDesc")}`;
-    } else if (text.includes("텍스트 변환기")) {
-      p.innerHTML = `<strong style="color: #00ff88">🔤 ${getTranslation(
-        "tool4"
-      )}</strong><br>${getTranslation("textTransformerDesc")}`;
     }
   });
 }
