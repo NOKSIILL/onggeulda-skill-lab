@@ -142,14 +142,14 @@ class ComponentLoader {
 
     mobileSidebar.innerHTML = sidebarContent;
     document.body.appendChild(mobileSidebar);
-
+    /*
     // 번역 적용
     if (typeof window.updateAllTranslations === "function") {
       setTimeout(() => {
         window.updateAllTranslations();
       }, 100);
     }
-
+*/
     // 사이드바 이벤트 설정
     if (pageType === "games") {
       this.initMobileGameSidebarEvents();
@@ -361,9 +361,10 @@ class ComponentLoader {
         }
       });
     });
-
+    /*
     // 강화된 언어 버튼 이벤트
     this.initLanguageButtons();
+    */
   }
   /*
   // 강화된 언어 버튼 초기화
@@ -745,12 +746,12 @@ class ComponentLoader {
           this.applyResponsiveLayout(pageType, pageId);
         }, 100);
       });
-
+      /*
       // 언어 시스템 초기화
       setTimeout(() => {
         this.initializeLanguageSystem();
       }, 300);
-
+*/
       console.log("Component initialization complete");
       return true;
     } catch (error) {
