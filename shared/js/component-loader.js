@@ -327,7 +327,10 @@ class ComponentLoader {
     if (logo) {
       logo.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "/";
+        if (logo == "/ko/") {
+          window.location.href = "/ko/";
+        }
+        window.location.href = "/ko/";
       });
     }
 
