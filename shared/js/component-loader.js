@@ -365,7 +365,7 @@ class ComponentLoader {
     // 강화된 언어 버튼 이벤트
     this.initLanguageButtons();
   }
-
+  /*
   // 강화된 언어 버튼 초기화
   static initLanguageButtons() {
     console.log("Initializing language buttons...");
@@ -473,7 +473,7 @@ class ComponentLoader {
       textInput.placeholder = texts.textPlaceholder;
     }
   }
-
+*/
   static initGameSidebarEvents() {
     document.querySelectorAll("#game-sidebar .game-item").forEach((item) => {
       item.addEventListener("click", (e) => {
@@ -759,6 +759,7 @@ class ComponentLoader {
     }
   }
 
+  /*
   // 강화된 언어 시스템 초기화
   static initializeLanguageSystem() {
     console.log("Initializing language system...");
@@ -819,7 +820,7 @@ class ComponentLoader {
       }
     });
   }
+*/
 }
-
 // 전역으로 노출
 window.ComponentLoader = ComponentLoader;
