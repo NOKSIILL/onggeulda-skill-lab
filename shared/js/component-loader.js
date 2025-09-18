@@ -20,7 +20,10 @@ class ComponentLoader {
   }
 
   static async loadHeader() {
-    const success = await this.loadComponent("header", "/shared/header.html");
+    const success = await this.loadComponent(
+      "header",
+      "/shared/components/header-ko.html"
+    );
     if (success) {
       this.initHeaderEvents();
       this.setActiveNavigation();
@@ -29,7 +32,10 @@ class ComponentLoader {
   }
 
   static async loadFooter() {
-    const success = await this.loadComponent("footer", "/shared/footer.html");
+    const success = await this.loadComponent(
+      "footer",
+      "/shared/components/footer-ko.html"
+    );
     if (success) {
       this.initFooterEvents();
     }
@@ -267,7 +273,7 @@ class ComponentLoader {
           // 사이드바 닫기
           this.closeSidebar();
           // 페이지 이동
-          window.location.href = `/games/${game}.html`;
+          window.location.href = `/ko/games/${game}.html`;
         }
       });
     });
@@ -283,7 +289,7 @@ class ComponentLoader {
           // 사이드바 닫기
           this.closeSidebar();
           // 페이지 이동
-          window.location.href = `/tools/${tool}.html`;
+          window.location.href = `/ko/tools/${tool}.html`;
         }
       });
     });
@@ -344,7 +350,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/about/${page}.html`;
+          window.location.href = `/ko/about/${page}.html`;
         }
       });
     });
@@ -468,7 +474,7 @@ class ComponentLoader {
         const game = item.dataset.game;
         console.log("Game sidebar item clicked:", game);
         if (game) {
-          window.location.href = `/games/${game}.html`;
+          window.location.href = `/ko/games/${game}.html`;
         }
       });
     });
@@ -482,7 +488,7 @@ class ComponentLoader {
         const tool = item.dataset.tool;
         console.log("Tool sidebar item clicked:", tool);
         if (tool) {
-          window.location.href = `/tools/${tool}.html`;
+          window.location.href = `/ko/tools/${tool}.html`;
         }
       });
     });
@@ -500,17 +506,18 @@ class ComponentLoader {
       if (
         href === currentPath ||
         (currentPath === "/" && href === "/") ||
-        (currentPath.startsWith("/games") && href === "/games/") ||
-        (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/about/about.html") ||
+        (currentPath.startsWith("/ko/games") && href === "/ko/games/") ||
+        (currentPath.startsWith("/ko/tools") && href === "/ko/tools/") ||
+        (currentPath.includes("/ko/about") &&
+          href === "/ko/about/about.html") ||
         // about 폴더 하위 모든 페이지에 대해 소개 메뉴 활성화
         //(currentPath.startsWith("/about/") && href === "/about/about.html")
         // 푸터에서 about 페이지로 갈 때 헤더의 소개 메뉴 활성화
         //(currentPath === "/about/about.html" && href === "/about/about.html")
         //about 경로를 유연하게 매칭
-        ((currentPath === "/about/about.html" ||
-          currentPath === "/about/about") &&
-          (href === "/about/about.html" || href === "/about/about"))
+        ((currentPath === "/ko/about/about.html" ||
+          currentPath === "/ko/about/about") &&
+          (href === "/ko/about/about.html" || href === "/ko/about/about"))
       ) {
         item.classList.add("active");
         //console.log("Activated nav item:", href); // 디버깅
