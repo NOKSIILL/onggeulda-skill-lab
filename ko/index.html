@@ -3,69 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Onggeulda Skills Lab - 스킬 측정 게임 & 창작 도구</title>
-
-    <!-- SEO 메타 태그 -->
+    <title data-i18n="pageTitle">
+      Onggeulda Skills Lab — Daily Skill Practice & Tools
+    </title>
     <meta
       name="description"
-      content="반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 창작 도구를 제공합니다. FPS 에임 훈련, 메모리 게임, 색상 팔레트 생성기 등을 무료로 이용하세요."
+      content="Onggeulda Skills Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공."
+      data-i18n="pageDescription"
     />
     <meta
       name="keywords"
-      content="반응속도 테스트, FPS 에임 훈련, 기억력 게임, 색감 테스트, 메모리 게임, 색상 팔레트 생성기, 키워드 생성기, 단위 변환기, 온라인 게임, 창작 도구"
+      content="FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트"
+      data-i18n="pageKeywords"
     />
-    <meta name="robots" content="index, follow" />
     <meta name="author" content="Onggeulda Studio" />
-
-    <!-- hreflang 태그 (향후 영어 버전 추가 시) -->
-    <link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/" />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://your-domain.com/ko/"
-    />
-
-    <!-- 캐노니컬 URL -->
-    <link rel="canonical" href="https://your-domain.com/ko/" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph -->
     <meta
       property="og:title"
-      content="Onggeulda Skills Lab - 스킬 측정 게임 & 창작 도구"
+      content="Onggeulda Skills Lab — Daily Skill Practice & Tools"
     />
     <meta
       property="og:description"
-      content="반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 창작 도구를 제공합니다."
+      content="Onggeulda Skills Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://your-domain.com/ko/" />
-    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content="https://domain.com/" />
     <meta
       property="og:image"
-      content="https://your-domain.com/assets/images/og-image-ko.jpg"
+      content="https://domain.com/assets/images/og-image.jpg"
     />
+    <meta property="og:locale" content="ko_KR" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Onggeulda Skills Lab - 스킬 측정 게임 & 창작 도구"
+      content="Onggeulda Skills Lab — Daily Skill Practice & Tools"
     />
     <meta
       name="twitter:description"
-      content="반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 창작 도구를 제공합니다."
+      content="Onggeulda Skills Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구."
     />
     <meta
       name="twitter:image"
-      content="https://your-domain.com/assets/images/twitter-card-ko.jpg"
+      content="https://domain.com/assets/images/twitter-card.jpg"
     />
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="stylesheet" href="/assets/css/responsive.css" />
 
-    <!-- 파비콘 -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Canonical URL -->
+    <!--<link rel="canonical" href="https://domain.com/" />-->
   </head>
   <body>
     <!-- 헤더 -->
@@ -78,20 +69,26 @@
           <!-- 히어로 배너 -->
           <div class="hero-banner">
             <div class="banner-slide active">
-              <div class="banner-title">🎯 게임과 도구의 허브</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle1">
+                🎯 게임과 도구의 허브
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle1">
                 FPS 에임 훈련부터 창작 도구까지, 모든 것이 한 곳에
               </div>
             </div>
             <div class="banner-slide">
-              <div class="banner-title">🚀 반응속도 향상</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle2">
+                🚀 반응속도 향상
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle2">
                 다양한 게임으로 집중력과 반응속도를 키워보세요
               </div>
             </div>
             <div class="banner-slide">
-              <div class="banner-title">🎨 창작자 도구</div>
-              <div class="banner-subtitle">
+              <div class="banner-title" data-i18n="bannerTitle3">
+                🎨 창작자 도구
+              </div>
+              <div class="banner-subtitle" data-i18n="bannerSubtitle3">
                 색상 팔레트, 키워드 생성기 등 창작에 필요한 모든 도구
               </div>
             </div>
@@ -100,29 +97,33 @@
           <!-- 사이트맵 -->
           <div class="sitemap-container">
             <div class="sitemap-section">
-              <div class="sitemap-title">🎮 게임</div>
+              <div class="sitemap-title" data-i18n="sitemapGames">🎮 게임</div>
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/games/fps-aim.html'"
+                  onclick="window.location.href='/games/fps-aim.html'"
+                  data-i18n="game1"
                 >
                   🎯 FPS 에임 훈련
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/games/reaction-test.html'"
+                  onclick="window.location.href='/games/reaction-test.html'"
+                  data-i18n="game2"
                 >
                   🎲 반응속도 테스트
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/games/memory-game.html'"
+                  onclick="window.location.href='/games/memory-game.html'"
+                  data-i18n="game3"
                 >
                   🎪 메모리 게임
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/games/color-match.html'"
+                  onclick="window.location.href='/games/color-match.html'"
+                  data-i18n="game4"
                 >
                   🎨 색깔 맞추기
                 </li>
@@ -130,93 +131,39 @@
             </div>
 
             <div class="sitemap-section">
-              <div class="sitemap-title">🛠️ 창작 도구</div>
+              <div class="sitemap-title" data-i18n="sitemapTools">
+                🛠️ 창작 도구
+              </div>
               <ul class="sitemap-list">
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/tools/color-palette.html'"
+                  onclick="window.location.href='/tools/color-palette.html'"
+                  data-i18n="tool1"
                 >
                   🎨 색상 팔레트 생성기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/tools/keywords.html'"
+                  onclick="window.location.href='/tools/keywords.html'"
+                  data-i18n="tool2"
                 >
                   💡 오늘의 키워드
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/tools/unit-converter.html'"
+                  onclick="window.location.href='/tools/unit-converter.html'"
+                  data-i18n="tool3"
                 >
                   📏 단위 변환기
                 </li>
                 <li
                   class="sitemap-item"
-                  onclick="window.location.href='/ko/tools/text-transformer.html'"
+                  onclick="window.location.href='/tools/text-transformer.html'"
+                  data-i18n="tool4"
                 >
                   🔤 텍스트 변환기
                 </li>
               </ul>
-            </div>
-
-            <div class="sitemap-section">
-              <div class="sitemap-title">📊 게임 정보</div>
-              <div style="padding: 20px; line-height: 1.6; color: #aaa">
-                <p>
-                  <strong style="color: #00ff88">🎯 FPS 에임 훈련</strong><br />
-                  반응속도와 정확도를 향상시키는 타겟 클릭 게임입니다. 30초 동안
-                  빨간 타겟을 클릭하여 당신의 반응속도를 측정하고 개선하세요.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎲 반응속도 테스트</strong
-                  ><br />
-                  순간 반응 능력을 측정하고 개선할 수 있는 게임입니다. 초록색
-                  신호가 나타나면 즉시 클릭하여 반응속도를 측정하세요.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎪 메모리 게임</strong><br />
-                  기억력과 집중력 훈련을 위한 카드 매칭 게임입니다. 카드를
-                  뒤집어 같은 그림을 찾아 매치하세요.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🎨 색깔 맞추기</strong><br />
-                  색감과 관찰력 향상을 위한 색상 매칭 게임입니다. 제시된 색상과
-                  같은 색을 선택하여 색감 능력을 향상시키세요.
-                </p>
-              </div>
-            </div>
-
-            <div class="sitemap-section">
-              <div class="sitemap-title">📋 도구 정보</div>
-              <div style="padding: 20px; line-height: 1.6; color: #aaa">
-                <p>
-                  <strong style="color: #00ff88">🎨 색상 팔레트 생성기</strong
-                  ><br />
-                  창작을 위한 아름다운 색상 조합을 생성하는 도구입니다. 디자인
-                  프로젝트에 활용할 수 있는 조화로운 색상 팔레트를 만들어보세요.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">💡 오늘의 키워드</strong><br />
-                  창작 영감을 위한 랜덤 키워드를 생성하는 도구입니다. 글쓰기,
-                  그림, 음악 등 모든 창작 활동에 새로운 아이디어를 제공합니다.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">📏 단위 변환기</strong><br />
-                  디자인 작업용 다양한 단위를 변환하는 도구입니다. 픽셀, 포인트,
-                  인치, 센티미터 등을 쉽게 변환할 수 있습니다.
-                </p>
-
-                <p>
-                  <strong style="color: #00ff88">🔤 텍스트 변환기</strong><br />
-                  다양한 텍스트 변환 및 처리 기능을 제공하는 도구입니다.
-                  대소문자 변환, 텍스트 뒤집기 등 다양한 기능을 제공합니다.
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -261,12 +208,17 @@
     <footer class="footer-info"></footer>
 
     <!-- 알림 -->
-    <div id="copyNotification" class="copy-notification">복사되었습니다!</div>
+    <div
+      id="copyNotification"
+      class="copy-notification"
+      data-i18n="copyNotification"
+    >
+      복사되었습니다!
+    </div>
 
     <!-- JavaScript -->
     <script src="/assets/js/utils/helpers.js"></script>
     <script src="/shared/component-loader.js"></script>
-
     <script>
       // 배너 슬라이드 기능
       let currentSlide = 0;
@@ -282,87 +234,16 @@
 
       // 페이지 로드 시 초기화
       document.addEventListener("DOMContentLoaded", async function () {
-        console.log("Korean homepage loading...");
-
-        // 언어를 한국어로 설정
-        window.currentLanguage = "ko";
-        localStorage.setItem("userLanguage", "ko");
-
-        // 컴포넌트 로드 (홈페이지는 pageId 없음)
-        try {
-          await ComponentLoader.init("home");
-          console.log("Components loaded successfully");
-        } catch (error) {
-          console.error("Component loading error:", error);
-        }
+        // 컴포넌트 로드
+        await ComponentLoader.init("home");
 
         // 배너 슬라이드 시작
         if (slides.length > 0) {
           setInterval(nextSlide, 4000);
-          console.log("Banner slides initialized");
         }
 
-        // 사이트맵 아이템 이벤트 설정 (모바일에서 터치 최적화)
-        document.querySelectorAll(".sitemap-item").forEach((item) => {
-          item.addEventListener("click", function (e) {
-            // 이미 onclick 속성이 있으므로 추가 처리 필요 시 여기에
-            console.log("Sitemap item clicked:", this.textContent.trim());
-          });
-        });
-
-        console.log("Korean homepage loaded successfully");
+        console.log("Home page loaded successfully");
       });
-
-      // 페이지 성능 최적화
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-          // 향후 서비스 워커 추가 시 사용
-          // navigator.serviceWorker.register('/sw.js');
-        });
-      }
-
-      // 구글 애널리틱스 등 트래킹 코드 (필요 시 추가)
-      /*
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_TRACKING_ID');
-      */
-    </script>
-
-    <!-- 구조화된 데이터 (SEO 최적화) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Onggeulda Skills Lab",
-        "description": "반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 창작 도구를 제공합니다.",
-        "url": "https://your-domain.com/ko/",
-        "inLanguage": "ko-KR",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://your-domain.com/ko/?search={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "KRW",
-          "description": "모든 게임과 도구를 무료로 제공합니다"
-        },
-        "applicationCategory": "Game",
-        "operatingSystem": "Web Browser",
-        "featureList": [
-          "FPS 에임 훈련 게임",
-          "반응속도 테스트",
-          "메모리 게임",
-          "색깔 맞추기 게임",
-          "색상 팔레트 생성기",
-          "키워드 생성기",
-          "단위 변환기",
-          "텍스트 변환기"
-        ]
-      }
     </script>
   </body>
 </html>
