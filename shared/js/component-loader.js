@@ -326,6 +326,7 @@ class ComponentLoader {
     const logo = document.querySelector(".logo");
     if (logo) {
       logo.addEventListener("click", (e) => {
+        const href = item.getAttribute("href");
         e.preventDefault();
         if (href.startsWith("/ko/")) {
           window.location.href = "/ko/";
