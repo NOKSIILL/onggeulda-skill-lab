@@ -330,7 +330,7 @@ class ComponentLoader {
         if (logo == "/ko/") {
           window.location.href = "/ko/";
         }
-        window.location.href = "/ko/";
+        //window.location.href = "/ko/";
       });
     }
 
