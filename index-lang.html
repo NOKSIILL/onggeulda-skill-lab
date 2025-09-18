@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onggeulda Skills Lab</title>
+    
+    <!-- SEO 메타 태그 -->
+    <meta name="description" content="반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 도구를 제공합니다.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- hreflang 태그 -->
+    <link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/">
+    <link rel="alternate" hreflang="en" href="https://your-domain.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://your-domain.com/ko/">
+    
+    <!-- 캐노니컬 URL -->
+    <link rel="canonical" href="https://your-domain.com/">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- 즉시 언어 감지 및 리다이렉트 (JavaScript가 로드되기 전에) -->
+    <script>
+        (function() {
+            // 개발 모드 확인
+            const isDev = window.location.hostname === 'localhost' || 
+                         window.location.hostname === '127.0.0.1' ||
+                         window.location.pathname.includes('index-lang.html') ||
+                         window.location.search.includes('debug=1');
+            
+            // 즉시 언어 감지
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('userLanguage');
+            const browserLang = navigator.language || navigator.userLanguage;
+            
+            let targetLang = 'ko';
+            
+            if (urlLang === 'en' || urlLang === 'ko') {
+                targetLang = urlLang;
+                localStorage.setItem('userLanguage', targetLang);
+            } else if (savedLang === 'en' || savedLang === 'ko') {
+                targetLang = savedLang;
+            } else if (browserLang.startsWith('en')) {
+                targetLang = 'en';
+            }
+            
+            // 개발 모드가 아니면 즉시 리다이렉트
+            if (!isDev) {
+                window.location.replace(`/${targetLang}/`);
+                return;
+            }
+            
+            // 개발 모드일 때만 아래 로딩 UI 표시
+            window._devModeData = {
+                targetLang,
+                urlLang,
+                savedLang,
+                browserLang
+            };
+        })();
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .dev-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .dev-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+        
+        .dev-info {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        .dev-links {
+            margin-top: 20px;
+        }
+        
+        .dev-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .dev-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .countdown {
+            font-size: 24px;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        /* 일반 사용자용 최소 로딩 스타일 */
+        .minimal-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        
+        .minimal-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 개발 모드일 때만 표시되는 UI -->
+    <div class="dev-container" id="devContainer" style="display: none;">
+        <div class="dev-title">🔧 개발 모드 - 언어 감지 테스트</div>
+        
+        <div class="dev-info" id="devInfo">
+            <div>브라우저 언어: <span id="browserLang">-</span></div>
+            <div>저장된 언어: <span id="savedLang">-</span></div>
+            <div>URL 언어: <span id="urlLang">-</span></div>
+            <div>선택될 언어: <span id="targetLang">-</span></div>
+        </div>
+        
+        <div class="countdown" id="countdown">3</div>
+        <div>초 후 자동 이동</div>
+        
+        <div class="dev-links">
+            <a href="/ko/">🇰🇷 한국어</a>
+            <a href="/en/">🇺🇸 English</a>
+            <a href="javascript:localStorage.clear();location.reload();">🔄 초기화</a>
+            <a href="javascript:goNow();">⚡ 즉시 이동</a>
+        </div>
+    </div>
+    
+    <!-- 일반 사용자용 최소 로딩 (거의 보이지 않음) -->
+    <div class="minimal-loading" id="minimalLoading">
+        <div class="minimal-spinner"></div>
+    </div>
+
+    <script>
+        // 개발 모드 확인 및 처리
+        const isDevelopmentMode = window.location.hostname === 'localhost' || 
+                                 window.location.hostname === '127.0.0.1' ||
+                                 window.location.pathname.includes('index-lang.html') ||
+                                 window.location.search.includes('debug=1');
+        
+        if (isDevelopmentMode && window._devModeData) {
+            // 개발 모드 UI 표시
+            const devContainer = document.getElementById('devContainer');
+            const devInfo = document.getElementById('devInfo');
+            
+            devContainer.style.display = 'block';
+            
+            // 개발 정보 표시
+            const data = window._devModeData;
+            document.getElementById('browserLang').textContent = data.browserLang;
+            document.getElementById('savedLang').textContent = data.savedLang || '없음';
+            document.getElementById('urlLang').textContent = data.urlLang || '없음';
+            document.getElementById('targetLang').textContent = data.targetLang;
+            
+            // 카운트다운
+            let count = 3;
+            const countdownEl = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                count--;
+                countdownEl.textContent = count;
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.replace(`/${data.targetLang}/`);
+                }
+            }, 1000);
+            
+            // 즉시 이동 함수
+            window.goNow = function() {
+                clearInterval(countdownInterval);
+                window.location.replace(`/${data.targetLang}/`);
+            };
+            
+            console.log('🔧 개발 모드:', data);
+        } else {
+            // 일반 사용자 모드: 매우 짧은 로딩만 표시
+            document.getElementById('minimalLoading').style.display = 'block';
+            
+            // 100ms 후에도 리다이렉트가 안되었다면 수동 실행 (안전장치)
+            setTimeout(() => {
+                console.warn('자동 리다이렉트 실패, 수동 실행');
+                const savedLang = localStorage.getItem('userLanguage');
+                const browserLang = navigator.language || navigator.userLanguage;
+                const targetLang = savedLang === 'en' ? 'en' : 
+                                  browserLang.startsWith('en') ? 'en' : 'ko';
+                window.location.replace(`/${targetLang}/`);
+            }, 100);
+        }
+    </script>
+    
+    <!-- 검색엔진을 위한 언어별 링크 -->
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/ko/">
+        <p><a href="/ko/">한국어로 이동</a> | <a href="/en/">Go to English</a></p>
+    </noscript>
+</body>
+</html>

@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# 언어별 디렉토리 허용
+Allow: /ko/
+Allow: /en/
+Allow: /shared/
+Allow: /assets/
+
+# 임시 파일들 차단
+Disallow: *.tmp
+Disallow: *.backup
+
+# 사이트맵 위치
+Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://your-domain.com/sitemap-ko.xml  
+Sitemap: https://your-domain.com/sitemap-en.xml
+
+# 크롤링 지연 (선택사항)
+Crawl-delay: 1

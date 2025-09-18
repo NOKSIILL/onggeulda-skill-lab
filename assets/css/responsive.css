@@ -299,14 +299,6 @@ body {
   border-color: rgba(0, 255, 136, 0.5);
 }
 
-.footer-biz-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  max-width: 800px;
-  margin: 0 auto 30px auto;
-}
-
 /* ===== 언어 선택기 ===== */
 .footer-language {
   display: block;
@@ -349,6 +341,14 @@ body {
 .lang-btn:hover {
   border-color: #00ff88;
   background: rgba(0, 255, 136, 0.2);
+}
+
+.footer-biz-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
 }
 
 /* ===== PC 전용 (1200px 이상) ===== */
@@ -942,6 +942,10 @@ body {
   .lang-btn {
     padding: 12px 20px;
     font-size: 14px;
+  }
+
+  .footer-biz-item {
+    font-size: 11px;
   }
 
   .ads-hide {

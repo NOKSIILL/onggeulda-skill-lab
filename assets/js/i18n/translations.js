@@ -2,7 +2,7 @@
 const translations = {
   ko: {
     // ===== 기본 네비게이션 =====
-    siteLogo: "Onggeulda Skill Lab",
+    siteLogo: "Onggeulda Skills Lab",
     navHome: "홈",
     navGames: "게임",
     navTools: "도구",
@@ -133,9 +133,9 @@ const translations = {
     footerLangTitle: "언어 / Language",
 
     // ===== 메타 정보 =====
-    pageTitle: "Onggeulda Skill Lab — Daily Skill Practice & Tools",
+    pageTitle: "Onggeulda Skills Lab — Daily Skill Practice & Tools",
     pageDescription:
-      "Onggeulda Skill Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공.",
+      "Onggeulda Skills Lab: 일상적으로 연습하는 스킬 트레이닝과 간단한 창작 도구. Static Click, Flick, Tracking 등 실전형 연습 제공.",
     pageKeywords:
       "FPS 게임, 에임 훈련, 반응속도 게임, 온라인 게임, 무료 게임, 클릭 게임, 창작 도구, 색상 팔레트",
 
@@ -144,9 +144,9 @@ const translations = {
     gameCompleteNotification: "축하합니다! 게임 완료!",
 
     // ===== 소개 페이지 =====
-    aboutTitle: "Onggeulda Skill Lab 소개",
+    aboutTitle: "Onggeulda Skills Lab 소개",
     aboutDescription:
-      "Onggeulda Skill Lab은 일상적으로 연습하는 게임 스킬 트레이닝과 간단한 창작 도구를 한 곳에서 제공하는 웹사이트입니다.",
+      "Onggeulda Skills Lab은 일상적으로 연습하는 게임 스킬 트레이닝과 간단한 창작 도구를 한 곳에서 제공하는 웹사이트입니다.",
     gamesSection: "🎮 게임 페이지:",
     toolsSection: "🛠️ 도구 페이지:",
     featuresTitle: "🎯 주요 특징",
@@ -170,7 +170,7 @@ const translations = {
   },
   en: {
     // ===== 기본 네비게이션 =====
-    siteLogo: "Onggeulda Skill Lab",
+    siteLogo: "Onggeulda Skills Lab",
     navHome: "Home",
     navGames: "Games",
     navTools: "Tools",
@@ -303,9 +303,9 @@ const translations = {
     footerLangTitle: "Language / 언어",
 
     // ===== 메타 정보 =====
-    pageTitle: "Onggeulda Skill Lab — Daily Skill Practice & Tools",
+    pageTitle: "Onggeulda Skills Lab — Daily Skill Practice & Tools",
     pageDescription:
-      "Onggeulda Skill Lab: Daily skill training and simple creative tools. Providing practical training like Static Click, Flick, Tracking and more.",
+      "Onggeulda Skills Lab: Daily skill training and simple creative tools. Providing practical training like Static Click, Flick, Tracking and more.",
     pageKeywords:
       "FPS games, aim training, reaction speed games, online games, free games, click games, creative tools, color palette",
 
@@ -314,9 +314,9 @@ const translations = {
     gameCompleteNotification: "Congratulations! Game Complete!",
 
     // ===== 소개 페이지 =====
-    aboutTitle: "About Onggeulda Skill Lab",
+    aboutTitle: "About Onggeulda Skills Lab",
     aboutDescription:
-      "Onggeulda Skill Lab is a website that provides daily skill training and simple creative tools in one place.",
+      "Onggeulda Skills Lab is a website that provides daily skill training and simple creative tools in one place.",
     gamesSection: "🎮 Games:",
     toolsSection: "🛠️ Tools:",
     featuresTitle: "🎯 Key Features",

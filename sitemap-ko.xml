@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
+    <!-- 홈페이지 -->
+    <url>
+        <loc>https://your-domain.com/ko/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/"/>
+    </url>
+    
+    <!-- 게임 섹션 -->
+    <url>
+        <loc>https://your-domain.com/ko/games/</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/"/>
+    </url>
+    
+    <!-- 개별 게임들 -->
+    <url>
+        <loc>https://your-domain.com/ko/games/fps-aim.html</loc>
+        <lastmod>2024-01-01T10:00:00Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://your-domain.com/en/games/fps-aim.html"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/games/fps-aim.html"/>
+    </url>
+    
+    <!-- 추가 페이지들... -->
+    
+</urlset>

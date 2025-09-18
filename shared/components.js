@@ -344,7 +344,7 @@ class ComponentLoader {
         e.preventDefault();
         const page = item.dataset.page;
         if (page) {
-          window.location.href = `/footer/${page}.html`;
+          window.location.href = `/about/${page}.html`;
         }
       });
     });
@@ -490,18 +490,30 @@ class ComponentLoader {
 
   static setActiveNavigation() {
     const currentPath = window.location.pathname;
+    //console.log("Setting active navigation for path:", currentPath); // 디버깅
+
     document.querySelectorAll(".nav-item").forEach((item) => {
       item.classList.remove("active");
       const href = item.getAttribute("href");
+      //console.log("Checking nav item:", href); // 디버깅
 
       if (
         href === currentPath ||
         (currentPath === "/" && href === "/") ||
         (currentPath.startsWith("/games") && href === "/games/") ||
         (currentPath.startsWith("/tools") && href === "/tools/") ||
-        (currentPath.includes("/about") && href === "/footer/about.html")
+        (currentPath.includes("/about") && href === "/about/about.html") ||
+        // about 폴더 하위 모든 페이지에 대해 소개 메뉴 활성화
+        //(currentPath.startsWith("/about/") && href === "/about/about.html")
+        // 푸터에서 about 페이지로 갈 때 헤더의 소개 메뉴 활성화
+        //(currentPath === "/about/about.html" && href === "/about/about.html")
+        //about 경로를 유연하게 매칭
+        ((currentPath === "/about/about.html" ||
+          currentPath === "/about/about") &&
+          (href === "/about/about.html" || href === "/about/about"))
       ) {
         item.classList.add("active");
+        //console.log("Activated nav item:", href); // 디버깅
       }
     });
   }
@@ -685,6 +697,11 @@ class ComponentLoader {
       // 기본 컴포넌트 로드
       await this.loadHeader();
       await this.loadFooter();
+
+      // 헤더 로드 후 네비게이션 활성화
+      setTimeout(() => {
+        this.setActiveNavigation();
+      }, 100);
 
       // 페이지 타입별 사이드바 로드 (PC용) - pageId가 있는 경우만
       if (pageId && pageType === "games") {

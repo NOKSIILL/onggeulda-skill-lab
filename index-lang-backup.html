@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onggeulda Skills Lab - 리다이렉트 중...</title>
+
+    <!-- SEO 메타 태그 -->
+    <meta
+      name="description"
+      content="반응속도, 기억력, 색감 등 다양한 능력을 측정하고 향상시킬 수 있는 게임과 도구를 제공합니다."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- hreflang 태그 -->
+    <link rel="alternate" hreflang="ko" href="https://your-domain.com/ko/" />
+    <link rel="alternate" hreflang="en" href="https://your-domain.com/en/" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://your-domain.com/ko/"
+    />
+
+    <!-- 캐노니컬 URL -->
+    <link rel="canonical" href="https://your-domain.com/" />
+
+    <!-- 파비콘 (기존 것 사용) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .loading-container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        max-width: 400px;
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .spinner {
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        font-size: 18px;
+        margin: 20px 0 10px 0;
+      }
+
+      .loading-subtext {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 20px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+        margin: 20px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4caf50, #45a049);
+        border-radius: 2px;
+        animation: progress 0.6s ease-out;
+        transform-origin: left;
+      }
+
+      @keyframes progress {
+        0% {
+          transform: scaleX(0);
+        }
+        100% {
+          transform: scaleX(1);
+        }
+      }
+
+      /* 개발용 디버그 정보 (개발 중에만 표시) */
+      .debug-info {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #00ff00;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        display: none; /* 기본적으로 숨김 */
+        z-index: 9999;
+      }
+
+      .debug-info.show {
+        display: block;
+      }
+
+      .manual-links {
+        margin-top: 30px;
+        display: none; /* 기본적으로 숨김 */
+      }
+
+      .manual-links.show {
+        display: block;
+      }
+
+      .manual-links a {
+        display: inline-block;
+        margin: 5px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .manual-links a:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-container">
+      <div class="logo">Onggeulda Skills Lab</div>
+      <div class="spinner"></div>
+      <div class="loading-text">언어를 감지하는 중...</div>
+      <div class="loading-subtext">Detecting your preferred language...</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+
+      <!-- 개발/테스트용 수동 링크들 (일반 사용자에게는 보이지 않음) -->
+      <div class="manual-links" id="manualLinks">
+        <div style="font-size: 10px; margin-bottom: 10px; opacity: 0.7">
+          개발 모드 - 수동 선택:
+        </div>
+        <a href="/ko/">🇰🇷 한국어</a>
+        <a href="/en/">🇺🇸 English</a>
+        <a href="javascript:localStorage.clear();location.reload();"
+          >🔄 언어 설정 초기화</a
+        >
+      </div>
+    </div>
+
+    <!-- 개발용 디버그 정보 -->
+    <div class="debug-info" id="debugInfo">
+      <div>개발 모드 활성</div>
+      <div>브라우저 언어: <span id="debugBrowserLang">-</span></div>
+      <div>저장된 언어: <span id="debugSavedLang">-</span></div>
+      <div>선택될 언어: <span id="debugTargetLang">-</span></div>
+    </div>
+
+    <script>
+      // 개발 모드 확인 (개발 중에 활성화)
+      const isDevelopmentMode =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1" ||
+        window.location.search.includes("debug=1") ||
+        window.location.pathname.includes("index-lang.html");
+
+      function detectAndRedirect() {
+        // 디버그 정보 요소들
+        const debugInfo = document.getElementById("debugInfo");
+        const manualLinks = document.getElementById("manualLinks");
+        const debugBrowserLang = document.getElementById("debugBrowserLang");
+        const debugSavedLang = document.getElementById("debugSavedLang");
+        const debugTargetLang = document.getElementById("debugTargetLang");
+
+        // 개발 모드에서는 디버그 정보와 수동 링크 표시
+        if (isDevelopmentMode) {
+          debugInfo.classList.add("show");
+          manualLinks.classList.add("show");
+
+          // 개발 모드에서만 수동 링크를 빠르게 표시
+          setTimeout(() => {
+            if (manualLinks && isDevelopmentMode) {
+              manualLinks.style.display = "block";
+            }
+          }, 500);
+        }
+
+        // 1. URL에서 언어 파라미터 확인
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get("lang");
+
+        // 2. 저장된 언어 설정 확인
+        const savedLang = localStorage.getItem("userLanguage");
+
+        // 3. 브라우저 언어 감지
+        const browserLang = navigator.language || navigator.userLanguage;
+
+        // 디버그 정보 업데이트
+        if (isDevelopmentMode) {
+          debugBrowserLang.textContent = browserLang;
+          debugSavedLang.textContent = savedLang || "없음";
+        }
+
+        let targetLang = "ko"; // 기본값: 한국어
+
+        // 우선순위: URL > 저장된 설정 > 브라우저 언어
+        if (urlLang === "en" || urlLang === "ko") {
+          targetLang = urlLang;
+          localStorage.setItem("userLanguage", targetLang);
+        } else if (savedLang === "en" || savedLang === "ko") {
+          targetLang = savedLang;
+        } else if (browserLang.startsWith("en")) {
+          targetLang = "en";
+        }
+
+        // 디버그 정보 업데이트
+        if (isDevelopmentMode) {
+          debugTargetLang.textContent = targetLang;
+          console.log("언어 감지 결과:", {
+            urlLang,
+            savedLang,
+            browserLang,
+            targetLang,
+            redirectUrl: `/${targetLang}/`,
+          });
+        }
+
+        // 즉시 리다이렉트 (개발 모드에서만 약간의 딜레이)
+        const redirectDelay = isDevelopmentMode ? 800 : 300;
+
+        setTimeout(() => {
+          window.location.replace(`/${targetLang}/`);
+        }, redirectDelay);
+      }
+
+      // 페이지 로드 시 실행
+      document.addEventListener("DOMContentLoaded", detectAndRedirect);
+
+      // 개발용 단축키 (개발 모드에서만 작동)
+      if (isDevelopmentMode) {
+        document.addEventListener("keydown", function (e) {
+          // Ctrl + D: 디버그 정보 토글
+          if (e.ctrlKey && e.key === "d") {
+            e.preventDefault();
+            const debugInfo = document.getElementById("debugInfo");
+            debugInfo.classList.toggle("show");
+          }
+
+          // Ctrl + K: 한국어로 강제 이동
+          if (e.ctrlKey && e.key === "k") {
+            e.preventDefault();
+            localStorage.setItem("userLanguage", "ko");
+            window.location.href = "/ko/";
+          }
+
+          // Ctrl + E: 영어로 강제 이동
+          if (e.ctrlKey && e.key === "e") {
+            e.preventDefault();
+            localStorage.setItem("userLanguage", "en");
+            window.location.href = "/en/";
+          }
+
+          // Ctrl + R: 언어 설정 리셋
+          if (e.ctrlKey && e.key === "r") {
+            e.preventDefault();
+            localStorage.removeItem("userLanguage");
+            location.reload();
+          }
+        });
+
+        console.log("🔧 개발 모드 활성화");
+        console.log(
+          "단축키: Ctrl+D (디버그), Ctrl+K (한국어), Ctrl+E (영어), Ctrl+R (리셋)"
+        );
+      }
+    </script>
+
+    <!-- 검색엔진을 위한 언어별 링크 -->
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/ko/" />
+      <p><a href="/ko/">한국어로 이동</a> | <a href="/en/">Go to English</a></p>
+    </noscript>
+  </body>
+</html>

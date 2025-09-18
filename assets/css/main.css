@@ -341,25 +341,46 @@ body {
 }
 
 .footer-biz-info {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 30px 20px;
+  margin-top: 20px;
+  padding: 10px;
   border-top: 1px solid rgba(0, 255, 136, 0.3);
 }
 
 .footer-biz-item {
   color: #aaa;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  padding: 5px 10px;
-}
-
-.footer-biz-item:hover {
-  color: #00ff88;
-}
-
-.footer-biz-item p {
-  font-size: 15px;
+  padding: 5px;
+  font-size: 13px;
   line-height: 1.6;
+}
+
+.footer-biz-item a {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:link {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:visited {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:hover {
+  text-decoration: underline;
+  text-decoration-style: none;
+  color: #aaa;
+}
+
+.footer-biz-item a:active {
+  text-decoration: underline;
+  text-decoration-style: none;
+  color: #aaa;
 }
 
 /* 알림 */
