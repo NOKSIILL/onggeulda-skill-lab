@@ -327,10 +327,13 @@ class ComponentLoader {
     if (logo) {
       logo.addEventListener("click", (e) => {
         e.preventDefault();
-        if (logo == "/ko/") {
+        if (logo === "/ko/") {
           window.location.href = "/ko/";
+        } else if (logo === "/en/") {
+          window.location.href = "/en/";
+        } else {
+          window.location.href = "/";
         }
-        //window.location.href = "/ko/";
       });
     }
 
