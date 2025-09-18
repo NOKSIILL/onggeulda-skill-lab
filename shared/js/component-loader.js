@@ -327,9 +327,9 @@ class ComponentLoader {
     if (logo) {
       logo.addEventListener("click", (e) => {
         e.preventDefault();
-        if (href === "/ko/") {
+        if (href.startsWith("/ko/")) {
           window.location.href = "/ko/";
-        } else if (href === "/en/") {
+        } else if (href.startsWith("/en/")) {
           window.location.href = "/en/";
         } else {
           window.location.href = "/";
