@@ -472,7 +472,7 @@ body {
   .about-content {
     flex: 1;
     min-width: 0;
-    max-width: none;
+    max-width: 800px;
     margin: 0;
     padding: 40px 20px;
     order: 2;
